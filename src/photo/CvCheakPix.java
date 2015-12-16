@@ -2,29 +2,26 @@ package photo;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
 import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 
 public class CvCheakPix {
 	public static void main(String[] args){
 		
-	       double[] data = new double[3];
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-		Mat A = Imgcodecs.imread("./images/color.jpg");	// 入力画像の取得
-		Mat C = A.clone();
-		for (int i = 0; i < A.rows(); i++){
-		    for (int j = 0; j < A.cols(); j++) {
-		        data = A.get(i, j);
-		        data[0] = data[0];
-		        data[1] = data[1];
-		        data[2] = data[2];
-		        C.put(i, j, data);
-		        
-				System.out.println("Blue：" + data[0]);
-				System.out.println("Green：" + data[1]);
-				System.out.println("Red：" + data[2]);
-		    
-		    }
-		}
+		Mat im = Imgcodecs.imread("./images/color.jpg");											// 入力画像の取得
+		Mat hsv = new Mat();
+		Mat mask = new Mat();
+		Mat im2 = new Mat();
+		Imgproc.cvtColor(im, hsv, Imgproc.COLOR_BGR2HSV);						// HSV色空間に変換
+		Core.inRange(hsv, new Scalar(40,10,0), new Scalar(70,255,255), mask);	// 緑色領域のマスク作成
+		im.copyTo(im2, mask);																	// マスクを 用いて入力画像から緑色領域を抽出
+		Imgproc.cvtColor(im2, im2, Imgproc.COLOR_RGB2GRAY);				//グレイスケールに変換
+		Imgcodecs.imwrite("./images/test2.jpg", im2);					//test2.jpgとして書き出し
+		int grayCount = Core.countNonZero(im2);							//ｉｍ２内の０でない値をカウント
+		System.out.println("Gray：" + grayCount);
+
 		    }
 		
 		
