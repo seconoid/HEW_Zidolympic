@@ -1,9 +1,18 @@
 <!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 <head>
+
 <meta charset="UTF-8" />
 </head>
 <body>
+
+
+<!-- main_layout.jspにコンテンツとタイトルを渡す -->
+<c:import url="./layout/main_layout.jsp">
+	<c:param name="title" value="アップロード"/>
+	<c:param name="content">
 
 
 <script type="text/javascript" src="http://jsdo.it/Yukisuke/y9Jv/js"></script>
@@ -37,4 +46,9 @@
     <script type="text/javascript" src="./js/js.js"></script>
     
 </div>
+
+		<a href="index.jsp">いんでっくす</a>
+	</c:param>
+</c:import>
+
 </body>
