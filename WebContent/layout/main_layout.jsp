@@ -6,14 +6,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="./css/common.css" />
 <title>${param.title}</title>
 </head>
 <body>
 <!-- ヘッダのインクルード -->
 <c:import url="./layout/header.jsp" />
-<div id="main">
-	<!-- コンテンツの展開 -->
-	 ${param.content}
+<div class="wrapper">
+	<div class="contents">
+		<!-- コンテンツの展開 -->
+		 ${param.content}
+	</div>
 </div>
 <!-- フッタのインクルード -->
 <c:import url="./layout/footer.jsp" />
