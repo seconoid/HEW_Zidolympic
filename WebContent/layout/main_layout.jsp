@@ -7,7 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="./css/common.css" />
-<title>${param.title}</title>
+<title>ジドリンピック | ${param.title}</title>
 </head>
 <body>
 <!-- ヘッダのインクルード -->
