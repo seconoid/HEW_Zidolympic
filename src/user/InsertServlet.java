@@ -49,20 +49,19 @@ public class InsertServlet extends HttpServlet {
 		
 		
 		if(id == null ||  id.isEmpty()){
-			request.setAttribute("idErr", "idを入力して");
+			request.setAttribute("idErr", "IDを入力してください。");
 			isErr = true;
 		}
 		
 		if(name == null ||  name.isEmpty()){
-			request.setAttribute("nameErr", "nameを入力して");
+			request.setAttribute("nameErr", "名前を入力してください。");
 			isErr = true;
 		}
 		
 		if(pass == null ||  pass.isEmpty()){
-			request.setAttribute("passErr", "ﾊﾟｽを入力して");
+			request.setAttribute("passErr", "パスワードを入力してください");
 			isErr = true;
 		}
-		
 		
 		
 		if(!isErr){

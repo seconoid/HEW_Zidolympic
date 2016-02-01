@@ -7,6 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="./css/common.css" />
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <title>ジドリンピック | ${param.title}</title>
 </head>
 <body>
