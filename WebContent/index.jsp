@@ -9,5 +9,10 @@
 		<div class="mv">
 			<img class="mv01" src="./images/mv01.png" alt="" />
 		</div>
+		<div class="main-contentst">
+			<div class="content-box">競技一覧</div>
+			<div class="content-box">写真一覧</div>
+			<div class="content-box">ランキング</div>
+		</div>
 	</c:param>
 </c:import>
