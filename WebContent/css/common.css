@@ -24,6 +24,7 @@
 
 /* 全体 */
 .wrapper {
+	margin: 0a;
 	width: 1200px;
 }
 
@@ -50,7 +51,6 @@
 .main-contents {
 	width: 1000px;
 	height: 300px;
-	overflow: hidden;
 }
 
 .content-box {
@@ -62,6 +62,7 @@
 
 /* フッタ */
 .footer {
+	clear: both;
 	background: #6d6d6d;
 	fontsize: 10px;
 	overflow: hidden;
