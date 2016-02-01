@@ -47,10 +47,12 @@
 .main-contents {
 	width: 1000px;
 	height: 300px;
+	overflow: hidden;
 }
 
 .content-box {
 	background: #9c38dc;
 	float: left;
 	width: 333px;
+	height: 300px;
 }
