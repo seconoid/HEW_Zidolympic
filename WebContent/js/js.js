@@ -9,7 +9,7 @@ var localMediaStream = null;
 var hasGetUserMedia = function() {
     return (navigator.getUserMedia || navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia || navigator.msGetUserMedia);
-};
+}
  
 //エラー
 var onFailSoHard = function(e) {
@@ -22,7 +22,7 @@ var snapshot = function() {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         document.getElementById('img01').src = canvas.toDataURL('image/jpeg');
     }
-};
+}
  
 
 var screenshot=function()
@@ -31,7 +31,7 @@ var screenshot=function()
     var base64 = canvas.toDataURL();    // firfoxならtoblobで直接blobにして保存できます。
     var blob = Base64toBlob(base64);
     saveBlob(blob,"default.jpg");
-};
+}
 
 
 
