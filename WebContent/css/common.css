@@ -4,6 +4,7 @@
   border: 0;
 }
 
+/* ヘッダ領域 */
 .header{
 	background: #fffc00;
 	height: 80px;
@@ -21,6 +22,7 @@
 	width: 120px;
 }
 
+/* 全体 */
 .wrapper {
 	width: 1200px;
 }
@@ -30,6 +32,7 @@
 	width: 1000px;
 }
 
+/* メインビジュアル */
 .mv{
 	background-image: url(../images/bg_mainimg01.png);
 	background-repeat-x: no-repeat;
@@ -46,4 +49,31 @@
 .box {
 	width: 300px;
 	height: 300px;
+}
+
+/* フッタ */
+.footer {
+	background: #6d6d6d;
+	fontsize: 10px;
+	overflow: hidden;
+}
+
+.f-list {
+	margin: 0 auto;
+	height: 50px;
+	width: 800px;
+}
+
+.f-item {
+	display: block;
+	float: left;
+	margin: 20px 0;
+	width: 150px;
+}
+
+.copyright {
+	color: f6f6f6;
+	margin: 20px 0;
+	text-align: center;
+	overflow: hidden;
 }
