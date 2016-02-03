@@ -11,6 +11,11 @@
 	line-height: 80px;
 }
 
+ul {
+	margin: 0;
+	padding: 0;
+}
+
 .header.gnavi {
 	height: 80px;
 	width: 100%;
