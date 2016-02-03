@@ -23,7 +23,7 @@
 <body>
 <!-- ヘッダのインクルード -->
 <c:import url="./layout/header.jsp" />
-<div class="wrapper">
+<div class="container">
 	<div class="contents">
 		<!-- コンテンツの展開 -->
 		 ${param.content}

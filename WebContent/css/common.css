@@ -22,12 +22,6 @@
 	width: 120px;
 }
 
-/* ‘S‘Ì */
-.wrapper {
-	margin: 0a;
-	width: 1200px;
-}
-
 .contents {
 	margin: 0 auto;
 	width: 1000px;
@@ -86,4 +80,20 @@
 	margin: 20px 0;
 	text-align: center;
 	overflow: hidden;
+}
+
+.join {
+	margin: 30px auto;
+	width: 450px;
+}
+
+.form-title {
+	font-size: 20px;
+	margin: 20px 0;
+}
+
+.btn-w100 {
+	padding: 10px 0;
+	margin: 20px 0;
+	width: 100%;
 }
