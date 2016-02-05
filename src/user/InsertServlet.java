@@ -42,7 +42,6 @@ public class InsertServlet extends HttpServlet {
 		String mail_adress = request.getParameter("mail_adress");
 		String birthday = request.getParameter("birthday");
 		String sex = request.getParameter("sex");
-		
 		boolean delete_flag = false;
 		
 		boolean  isErr = false;

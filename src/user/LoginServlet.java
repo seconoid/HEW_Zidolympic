@@ -1,11 +1,13 @@
 package user;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginServlet
@@ -33,7 +35,42 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+		// エンコーディング
+		request.setCharacterEncoding("utf-8");
+		
+		String id = request.getParameter("id");
+		String pass = request.getParameter("password");
+		boolean isErr = false;
+		
+		// ID(メールアドレス）かパスワードが空だった場合
+		if( id == null ||  id.isEmpty() || pass == null || pass.isEmpty() ){
+			request.setAttribute("idErr", "ユーザIDもしくはパスワードに誤りがあります。");
+			isErr = true;
+		}
+		
+		// データベースにアクセス
+		ZIdolyDao dao = new ZIdolyDao();
+		User user = dao.select(id, pass);
 
+		// 存在チェック
+		if(!isErr){
+			// 存在チェック
+			if(user == null){
+				request.setAttribute("loginErr", "いません" );
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			}			
+		}
+		
+		// エラーチェック
+		if(isErr){
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}else{
+			// セッションに登録
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+			
+			// 遷移
+			response.sendRedirect("index.jsp");
+		}
+	}
 }
