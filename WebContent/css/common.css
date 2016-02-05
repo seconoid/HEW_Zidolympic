@@ -87,14 +87,22 @@ ul {
 	overflow: hidden;
 }
 
+/* ÉtÉHÅ[ÉÄ */
+
 .join {
 	margin: 30px auto;
 	width: 450px;
 }
 
+.login {
+	margin: 30px auto;
+	width: 380px;
+}
+
 .form-title {
 	font-size: 20px;
-	margin: 20px 0;
+	margin: 20px auto;
+	text-align: center;
 }
 
 .btn-w100 {
