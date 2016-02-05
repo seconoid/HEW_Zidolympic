@@ -64,7 +64,7 @@ public class InsertServlet extends HttpServlet {
 		
 		
 		if(!isErr){
-			ZIdolyDao dao = new ZIdolyDao();
+			UserDao dao = new UserDao();
 			int count = dao.insert(id, name, pass, mail_adress, birthday, sex, delete_flag);
 			
 			if(count <= 0){

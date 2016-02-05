@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		// データベースにアクセス
-		ZIdolyDao dao = new ZIdolyDao();
+		UserDao dao = new UserDao();
 		User user = dao.select(id, pass);
 
 		// 存在チェック

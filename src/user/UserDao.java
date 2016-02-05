@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ZIdolyDao{
+public class UserDao{
 	/**
 	 * 接続オブジェクトを生成して返す
 	 * @return 接続オブジェクト
@@ -69,9 +69,7 @@ public class ZIdolyDao{
 			count = ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
-			return count;
 		}
-
 		return count;
 	}
 	
