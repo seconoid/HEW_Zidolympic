@@ -10,6 +10,7 @@
 		<li class="nav-item join-btn"><a href="./join.jsp">新規登録</a></li>
 		<li class="nav-item login-btn"><a href="./login.jsp">ログイン</a></li>
 		<li class="nav-item logout-btn"><a href="#">ログアウト</a></li>
+		<li class="nav-item">${ sessionScope.user.getName() }</li>
 	</ul>
 </div>
 <!-- ヘッダ部ここまで -->
