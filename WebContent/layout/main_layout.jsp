@@ -4,12 +4,6 @@
 <% request.setCharacterEncoding("utf8"); %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html>
-<head>
-<link rel="stylesheet" href="./css/common.css" />
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-=======
 <html lang="ja">
 <head>
 <!-- bootstrap テンプレート -->
@@ -24,17 +18,12 @@
 	<script src="js/respond.min.js"></script>
 <![endif]-->
 <!-- bootstrap ここまで  -->
->>>>>>> ef61938d8d570398ccb6abe0ce51f66f577f19d6
-<title>ジドリンピック | ${param.title}</title>
+<title>ジドリンピック / ${param.title}</title>
 </head>
 <body>
 <!-- ヘッダのインクルード -->
 <c:import url="./layout/header.jsp" />
-<<<<<<< HEAD
-<div class="wrapper">
-=======
 <div class="container">
->>>>>>> ef61938d8d570398ccb6abe0ce51f66f577f19d6
 	<div class="contents">
 		<!-- コンテンツの展開 -->
 		 ${param.content}
@@ -42,14 +31,11 @@
 </div>
 <!-- フッタのインクルード -->
 <c:import url="./layout/footer.jsp" />
-<<<<<<< HEAD
-=======
 
 <!-- jsファイル -->
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="./bootstrap/js/bootstrap.min.js"></script>
 <!--  js ここまで -->
->>>>>>> ef61938d8d570398ccb6abe0ce51f66f577f19d6
 </body>
 </html>

@@ -11,8 +11,6 @@
 <body>
 
 
-
-
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
 	<c:param name="title" value="スプラトゥーチ"/>
@@ -24,7 +22,6 @@
 <script type="text/javascript" src="http://jsdo.it/Yukisuke/c1VD/js"></script>
 
 <script type="text/javascript" src="http://jsdo.it/Yukisuke/6SNU/js"></script>
-
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>

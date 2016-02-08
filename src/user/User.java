@@ -2,8 +2,15 @@ package user;
 
 public class User {
 	
-	public String id;
+	public String id; // ユーザID
+	public String name; // ユーザ名
+	public String password; // パスワード
+	public String mail_adress; // メールアドレス
+	public String birthday; // 誕生日
+	public String sex; // 性別
+	public boolean delete_flag; // 削除判定（true で凍結アカウント）
 	
+	// getter & setter
 	public String getId() {
 		return id;
 	}
@@ -11,10 +18,6 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	public boolean delete_flag;
-	
-	public String name;
 	
 	public String getName() {
 		return name;
@@ -55,12 +58,4 @@ public class User {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-
-	public String password;
-	
-	public String mail_adress;
-	
-	public String birthday;
-	
-	public String sex;
 }

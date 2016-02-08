@@ -42,7 +42,6 @@ public class InsertServlet extends HttpServlet {
 		String mail_adress = request.getParameter("mail_adress");
 		String birthday = request.getParameter("birthday");
 		String sex = request.getParameter("sex");
-		
 		boolean delete_flag = false;
 		
 		boolean  isErr = false;
@@ -65,7 +64,7 @@ public class InsertServlet extends HttpServlet {
 		
 		
 		if(!isErr){
-			ZIdolyDao dao = new ZIdolyDao();
+			UserDao dao = new UserDao();
 			int count = dao.insert(id, name, pass, mail_adress, birthday, sex, delete_flag);
 			
 			if(count <= 0){
