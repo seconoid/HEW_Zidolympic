@@ -4,7 +4,8 @@
 
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
-	<c:param name="title" value=""/>
+	<c:param name="title" value="マイページ"/>
 	<c:param name="content">
+	<p><a href="./user_confilm.jsp">設定</a></p>
 	</c:param>
 </c:import>
