@@ -137,10 +137,42 @@ ul {
 	padding: 0;
 	width: 200px;
 	height: 200px;
-	background: #9a9a9a;
+	background: #aaaaaa;
 }
 
 .pic-title {
 	color: #fcfcfc;
 }
 
+/* é ê^ÉäÉXÉg */
+.search-form {
+	margin: 20px auto;
+}
+
+.pic-list {
+	padding: 20px;
+	margin: 20px auto;
+	background: #ac62fe;
+	overflow: hidden;
+}
+
+.pic-row {
+	clear: both;
+}
+
+.pic-area {
+	padding: 10px;
+	background: #52d26a;
+}
+
+.paging {
+	clear: both;
+	width: 600px;
+	color: #fcfcfc;
+	text-align: center;
+}
+
+.page {
+	float: left;
+	text-align: center;
+}
