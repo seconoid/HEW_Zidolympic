@@ -4,11 +4,11 @@
 
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
-	<c:param name="title" value="ログイン"/>
+	<c:param name="title" value="本人確認"/>
 	<c:param name="content">
 	<div class="login">
-		<h2 class="form-title">ログイン</h2>
-		<form action="LoginServlet" method="post">
+		<h2 class="form-title">本人認証</h2>
+		<form action="AuthServlet" method="post">
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-4">
@@ -31,7 +31,7 @@
 					</div>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary btn-w100">ログイン</button>
+			<button type="submit" class="btn btn-primary btn-w100">認証</button>
 			${ mess }
 		</form>
 	</div>
