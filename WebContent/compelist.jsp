@@ -4,10 +4,7 @@
 
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
-	<c:param name="title" value="ジドリンピック"/>
+	<c:param name="title" value=""/>
 	<c:param name="content">
-		<div class="mv">
-			<img class="mv01" src="./images/mv01.png" alt="" />
-		</div>
 	</c:param>
 </c:import>

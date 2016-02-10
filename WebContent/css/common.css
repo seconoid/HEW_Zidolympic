@@ -4,7 +4,46 @@
   border: 0;
 }
 
-body {
-  background: #FFFFFF;
-  font: 30px sans-serif;
+.header{
+	background: #fffc00;
+	height: 80px;
+	line-height: 80px;
+}
+
+.header.gnavi {
+	height: 80px;
+	width: 100%;
+}
+
+.nav-item {
+	display: block;
+	float: left;
+	width: 120px;
+}
+
+.wrapper {
+	width: 1200px;
+}
+
+.contents {
+	margin: 0 auto;
+	width: 1000px;
+}
+
+.mv{
+	background-image: url(../images/bg_mainimg01.png);
+	background-repeat-x: no-repeat;
+	background-repeat-y: no-repeat;
+	position: relative;
+	width: 1000px;
+	height: 700px;
+}
+
+.mv01{
+	width: 1000px;
+}
+
+.box {
+	width: 300px;
+	height: 300px;
 }

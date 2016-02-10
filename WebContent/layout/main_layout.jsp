@@ -3,17 +3,20 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("utf8"); %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<!DOCTYPE html>
+<html>
 <head>
-<title>${param.title}</title>
+<link rel="stylesheet" href="./css/common.css" />
+<title>ジドリンピック | ${param.title}</title>
 </head>
 <body>
 <!-- ヘッダのインクルード -->
 <c:import url="./layout/header.jsp" />
-<div id="main">
-	<!-- コンテンツの展開 -->
-	 ${param.content}
+<div class="wrapper">
+	<div class="contents">
+		<!-- コンテンツの展開 -->
+		 ${param.content}
+	</div>
 </div>
 <!-- フッタのインクルード -->
 <c:import url="./layout/footer.jsp" />
