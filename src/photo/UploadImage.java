@@ -1,21 +1,27 @@
 package photo;
 
-import java.io.File;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+
+import org.apache.tomcat.util.codec.binary.Base64;
+
+
+
+
 
 /**
  * Servlet implementation class UploadImage
  */
 @WebServlet("/UploadImage")
-@MultipartConfig(location = "", maxFileSize = 1024 * 1024 * 2)
 public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -44,33 +50,88 @@ public class UploadImage extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
+		
+		request.setCharacterEncoding("utf8");
 
 		
+		/*
+		 * バイナリを見たくてもSystem.out.println(binary)で出さないこと
+		 * キャパオーバーする(コンソール壊れる)
+		 */
 		
-		// パラメータ"filename"のマルチパートデータ値を取得
-		Part part = request.getPart("filename");
-
-		// HTTPヘッダの値を取得
-		String contentDisposition = part.getHeader("content-disposition");
-		// ファイルサイズの取得
-
-
-		/* アップロードしたファイル名の取得 */
-		// 変数contentDispositionから"filename="以降を抜き出す
-		int filenamePosition = contentDisposition.indexOf("filename=");
-		String filename = contentDisposition.substring(filenamePosition);
-		// "filename="と"を除く
-		filename = filename.replace("filename=", "");
-		filename = filename.replace("\"", "");
-		// 絶対パスからファイル名のみ取り出す
-		filename = new File(filename).getName();
-
-			// 画像ファイルをpath+filenameとして保存
-		//C:…の部分を自分のパスに変えてやって（ローカルのHEWプロジェクトの中のUploadImagesというフォルダまで）
-		part.write("C://Users/mikan.shelty/Documents/workspace/HEW_Zidolympic/WebContent/UploadImages" + "/" + filename);
+		
+		
+		int count=0;
+		String name="test";
+		
+		ContributionDAO dao=new ContributionDAO();
+		String filename=dao.select();
+		
+		if(!filename.equals("")){
+			filename=filename.replace("test", "");
+			filename=filename.replace(".png", "");
 			
-			// サムネール画像の作成
+			try{
+				count=Integer.parseInt(filename);
+				System.out.println(count+"カウント");
+				count=count+1;
+				filename=name+String.valueOf(count)+".png";
+			}catch(NumberFormatException e){
+				filename=name+"0.png";
+			}
+			
+		}else{
+			filename=name+"0.png";
 		}
+		System.out.println(filename);
+		
+		
+
+//////////////////////////////////////////////バイナリ始まり
+		
+		//バイナリ受け取り
+	String binary=request.getParameter("h");
+	binary.replace(" ", "+");
+	System.out.println(binary.length());
+	
+	try{
+	//そのまま受け取るとキャパオーバーするから配列で受け取る（変換）
+	byte[] bytes = Base64.decodeBase64(binary.substring(22).getBytes());
+	
+	//バイナリ配列をインプットストリームでデータにする（プログラム上）
+	ByteArrayInputStream input = new ByteArrayInputStream(bytes);
+	
+	//データをプログラム上で読み取る
+	BufferedImage image = ImageIO.read(input);
+	
+	//読み取ったデータをserver側に出力する
+	FileOutputStream output = 
+	new FileOutputStream("C:\\Users\\mikan.shelty\\Documents\\workspace\\HEW_Zidolympic\\WebContent\\UploadImages\\"+filename); 
+	ImageIO.write(image, "png", output); 
+	input.close();
+	output.close();
+	System.out.println("保存できました");
+	}catch(IOException e){
+	//変換できなかった場合
+	System.out.println("保存できませんでした");
+	}		
+	
+/////////////////////////////////////////////////////////////バイナリ終わり
+	
+
+		
+		int count2=dao.insert(filename);
+		if(count2==0){
+			request.setAttribute("mes","<h1>アップロード出来ませんでした</h1>");
+		}
+		if(count2>0){
+			request.setAttribute("mes","<h2>アップロード出来ました</h2>");
+		}
+
+		request.getRequestDispatcher("try.jsp").forward(request,response);
+
+	}
+	
+	
 
 }
