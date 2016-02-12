@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- ヘッダ部 -->
 <div class="header">
 	<ul class="gnavi">
@@ -16,7 +17,7 @@
 		<!-- ログイン状態の時にユーザ名とログアウトを表示 -->
 		<c:if test="${ sessionScope.user != null }">
 			<li class="nav-item logout-btn"><a href="LogoutServlet">ログアウト</a></li>
-			<li class="nav-item">${ sessionScope.user.getName() }</li>
+			<li class="nav-item"><a href="mypage.jsp">${ sessionScope.user.getName() }</a></li>
 		</c:if>
 	</ul>
 </div>
