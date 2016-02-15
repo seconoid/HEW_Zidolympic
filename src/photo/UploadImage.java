@@ -106,7 +106,7 @@ public class UploadImage extends HttpServlet {
 	
 	//読み取ったデータをserver側に出力する
 	FileOutputStream output = 
-	new FileOutputStream("C:\\Users\\mikan.shelty\\Documents\\workspace\\HEW_Zidolympic\\WebContent\\UploadImages\\"+filename); 
+	new FileOutputStream("C:\\Users\\yusuke-01\\workspace_JV11\\HEW_Zidolympic\\images"+filename); 
 	ImageIO.write(image, "png", output); 
 	input.close();
 	output.close();
