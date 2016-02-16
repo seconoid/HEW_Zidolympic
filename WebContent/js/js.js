@@ -21,6 +21,9 @@ var snapshot = function() {
     if (localMediaStream) {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         document.getElementById('img01').src = canvas.toDataURL('image/jpeg');
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        document.getElementById('img02').src = canvas.toDataURL('image/jpeg');
+
     }
     click++;
     click_count2++;

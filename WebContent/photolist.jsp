@@ -23,43 +23,46 @@
 	</div>
 	<!-- 写真をリストで表示 -->
 	<div class="pic-list">
-		<!-- １行 -->
+	
 		<div class="pic-row">
+		<c:forEach var="p" items="${ photolist }"  begin="0" end="3">
 			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
+				<div class="pic">
+				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				</div>
+				<div class="pic-title">${p.img_title}</div>
 			</div>
-			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
-			</div>
-			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
-			</div>
-			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
-			</div>
+			</c:forEach>
 		</div>
-		<!-- １行 -->
 		<div class="pic-row">
+		<c:forEach var="p" items="${ photolist }"  begin="4" end="7">
 			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
+				<div class="pic">
+				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				</div>
+				<div class="pic-title">${p.img_title}</div>
 			</div>
+			</c:forEach>
+		</div>
+		<div class="pic-row">
+		<c:forEach var="p" items="${ photolist }"  begin="8" end="11">
 			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
+				<div class="pic">
+				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				</div>
+				<div class="pic-title">${p.img_title}</div>
 			</div>
+			</c:forEach>
+		</div>
+		<div class="pic-row">
+		<c:forEach var="p" items="${ photolist }"  begin="12" end="15">
 			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
+				<div class="pic">
+				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				</div>
+				<div class="pic-title">${p.img_title}</div>
 			</div>
-			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
-			</div>
+			</c:forEach>
 		</div>
 		<!-- ページング -->
 		<div class="paging">

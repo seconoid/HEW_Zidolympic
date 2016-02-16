@@ -48,11 +48,21 @@ public class ContributionDAO {
 			e.printStackTrace();
 		}
 		return filename;
+		
+		
 	}
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//ファイル名を入れる
-	public int insert(String filename){
+	public int insert(String filename,String img_title){
 		int count2=0; //更新件数（上手くいけば1件）
 		
 		//DB接続
@@ -103,12 +113,13 @@ public class ContributionDAO {
 				try(
 					Connection con=getConnection();
 					PreparedStatement ps=con.prepareStatement(
-							"insert into contribution_details(contribution_id,title_id,img_pass) value(?,?,?) ");
+							"insert into contribution_details(contribution_id,title_id,img_pass,img_title) value(?,?,?,?) ");
 						){
 				//？を置き換える
 				ps.setInt(1,contribution_id);
 				ps.setInt(2,1);
 				ps.setString(3,filename);
+				ps.setString(4,img_title);
 				//SQL実行(更新系のSQLはexecuteUpdateで実行)
 				count2=ps.executeUpdate();//戻り値は実行件数
 				}catch(SQLException e){
@@ -120,15 +131,4 @@ public class ContributionDAO {
 			}
 		return count2;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-		
-	
-
 }

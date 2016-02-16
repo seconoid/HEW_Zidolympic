@@ -77,6 +77,7 @@ CREATE TABLE Contribution_details
 	contribution_id int NOT NULL,
 	title_id int NOT NULL,
 	img_pass varchar(255) NOT NULL,
+	img_title varchar(32) NOT NULL,
 	PRIMARY KEY (contribution_id, title_id)
 );
 
@@ -316,6 +317,3 @@ ALTER TABLE Contribution_details
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
-
-
-
