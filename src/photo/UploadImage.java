@@ -105,8 +105,9 @@ public class UploadImage extends HttpServlet {
 	BufferedImage image = ImageIO.read(input);
 	
 	//読み取ったデータをserver側に出力する
+	//// *******   pathは各自変更すること *********** ///
 	FileOutputStream output = 
-	new FileOutputStream("C:\\Users\\mikan.shelty\\Documents\\workspace\\HEW_Zidolympic\\WebContent\\UploadImages\\"+filename); 
+	new FileOutputStream("C:\\Users\\nakayama.akito\\workspace_jv11\\HEW_Zidolympic\\WebContent\\UploadImages\\"+filename); 
 	ImageIO.write(image, "png", output); 
 	input.close();
 	output.close();

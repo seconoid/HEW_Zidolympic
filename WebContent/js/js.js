@@ -9,7 +9,7 @@ var localMediaStream = null;
 var hasGetUserMedia = function() {
     return (navigator.getUserMedia || navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia || navigator.msGetUserMedia);
-}
+};
  
 //エラー
 var onFailSoHard = function(e) {
@@ -26,7 +26,7 @@ var snapshot = function() {
     click_count2++;
 	$("#wrapper .text_box").text( click_count2 + "回キャプチャされました");
 	
-}
+};
 
 var click_count = 0; 
 var click_count2 = 0; 
@@ -110,7 +110,7 @@ function kakunin(){
 	    return true;
 	    
 	    
-}
+};
 	
 
 
