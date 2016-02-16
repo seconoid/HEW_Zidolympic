@@ -99,13 +99,12 @@ CREATE TABLE Member
 	password char(32) NOT NULL,
 	mail_adress varchar(255) NOT NULL,
 	birthday date NOT NULL,
-	-- Uomen
+	-- Women
 	-- Men
-	-- でUかMで判断する
+	-- Other
+	-- のU,M,O で判断する
 	-- 
-	sex char(1) NOT NULL COMMENT 'Uomen
-Men
-でUかMで判断する
+	sex char(1) NOT NULL COMMENT 'Women, Men Other のU,M,Oで判断する
 ',
 	-- 削除はしない、
 	-- フラグを立てたらログインできないようにする

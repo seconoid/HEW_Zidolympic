@@ -89,6 +89,8 @@ public class UploadImage extends HttpServlet {
 
 //////////////////////////////////////////////バイナリ始まり
 		
+		String img_title=request.getParameter("title");
+		
 		//バイナリ受け取り
 	String binary=request.getParameter("h");
 	binary.replace(" ", "+");
@@ -119,8 +121,10 @@ public class UploadImage extends HttpServlet {
 /////////////////////////////////////////////////////////////バイナリ終わり
 	
 
-		
-		int count2=dao.insert(filename);
+		if(img_title.equals("")||img_title==null){
+			img_title="無題";
+		}
+		int count2=dao.insert(filename,img_title);
 		if(count2==0){
 			request.setAttribute("mes","<h1>アップロード出来ませんでした</h1>");
 		}
