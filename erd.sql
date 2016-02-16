@@ -77,6 +77,7 @@ CREATE TABLE Contribution_details
 	contribution_id int NOT NULL,
 	title_id int NOT NULL,
 	img_pass varchar(255) NOT NULL,
+	img_title varchar(32) NOT NULL,
 	PRIMARY KEY (contribution_id, title_id)
 );
 
@@ -99,12 +100,13 @@ CREATE TABLE Member
 	password char(32) NOT NULL,
 	mail_adress varchar(255) NOT NULL,
 	birthday date NOT NULL,
-	-- Women
+	-- Uomen
 	-- Men
-	-- Other
-	-- のU,M,O で判断する
+	-- でUかMで判断する
 	-- 
-	sex char(1) NOT NULL COMMENT 'Women, Men Other のU,M,Oで判断する
+	sex char(1) NOT NULL COMMENT 'Uomen
+Men
+でUかMで判断する
 ',
 	-- 削除はしない、
 	-- フラグを立てたらログインできないようにする
@@ -315,6 +317,3 @@ ALTER TABLE Contribution_details
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
-
-
-
