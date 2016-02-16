@@ -14,7 +14,7 @@ public class PhotoListDAO {
 			throws ClassNotFoundException,SQLException{
 		Class.forName("com.mysql.jdbc.Driver");
 		return DriverManager.getConnection(
-				"jdbc:mysql://localhost/hew?useUnicode=true&characterEncoding=utf8",
+				"jdbc:mysql://localhost/hew2016?useUnicode=true&characterEncoding=utf8",
 				"root",
 				""
 				);

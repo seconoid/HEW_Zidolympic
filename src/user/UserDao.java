@@ -18,7 +18,7 @@ public class UserDao{
 						, SQLException{
 		Class.forName("com.mysql.jdbc.Driver");
 		return DriverManager.getConnection(
-				"jdbc:mysql://localhost/hew?characterEncoding=utf8"
+				"jdbc:mysql://localhost/hew2016?characterEncoding=utf8"
 				, "root"
 				, "");
 	}
