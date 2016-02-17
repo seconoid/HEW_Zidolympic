@@ -4,6 +4,10 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -107,12 +111,30 @@ public class UploadImage extends HttpServlet {
 	BufferedImage image = ImageIO.read(input);
 	
 	//読み取ったデータをserver側に出力する
-	//// *******   pathは各自変更すること *********** ///
-	FileOutputStream output = 
-	new FileOutputStream("C:\\Users\\nakayama.akito\\workspace_jv11\\HEW_Zidolympic\\WebContent\\UploadImages\\"+filename); 
+	//// *******   pathはpropertiesより読み込み *********** ///
+	// propertiesより読み込み
+	ResourceBundle bundle = null;
+	try {
+		bundle = ResourceBundle.getBundle("path");
+	}catch (MissingResourceException e) {
+		e.printStackTrace();
+	}
+	// パスを取得
+	String path = bundle.getString("uploadPath");
+	String url = "";
+	
+	// 正規表現で抜き取り(""が入り込んでくるため）
+	Pattern p = Pattern.compile("^\"(.+)\"$");
+	Matcher m = p.matcher(path);
+	if (m.find()){
+		System.out.println(m.group(1));
+		url = m.group(1);
+	}
+	FileOutputStream output = new FileOutputStream(url+filename); 
 	ImageIO.write(image, "png", output); 
 	input.close();
 	output.close();
+	
 	System.out.println("保存できました");
 	}catch(IOException e){
 	//変換できなかった場合
