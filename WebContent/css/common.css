@@ -176,3 +176,57 @@ ul {
 	float: left;
 	text-align: center;
 }
+
+#contents{
+	width:1000px;
+	height:330px;
+	background-color:#DDD;
+}
+#maincapt{
+	position:relative;
+	width:450px;
+	height:330px;
+	background-color:#000;
+	float:left;
+}
+
+#maincapt video{
+	position:absolute;
+	left:50px;
+}
+
+#hozon{
+	position:absolute;
+	left:90px;
+	bottom:15px;
+}
+
+#capture{
+	position:absolute;
+	left:30px;
+	bottom:15px;
+}
+#maincapt input{
+	margin:20 20;
+}
+
+.text_box{
+	position:absolute;
+	bottom:-13px;
+	left:5px;
+	color:#FFF;
+}
+
+#capture_images{
+	 width:450px;
+	 height:330px;
+	 background-color:#000;
+	 float:right;
+	 position:relative;
+}
+
+#capture_images img{
+	position:absolute;
+	top:60px;
+	left:50px;
+}
