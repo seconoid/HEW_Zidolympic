@@ -111,10 +111,6 @@ public class UploadImage extends HttpServlet {
 	BufferedImage image = ImageIO.read(input);
 	
 	//読み取ったデータをserver側に出力する
-<<<<<<< HEAD
-	FileOutputStream output = 
-	new FileOutputStream("C:\\Users\\yusuke-01\\workspace_JV11\\HEW_Zidolympic\\images"+filename); 
-=======
 	//// *******   pathはpropertiesより読み込み *********** ///
 	// propertiesより読み込み
 	ResourceBundle bundle = null;
@@ -135,7 +131,6 @@ public class UploadImage extends HttpServlet {
 		url = m.group(1);
 	}
 	FileOutputStream output = new FileOutputStream(url+filename); 
->>>>>>> 1e38b4ff6c01ed75afb71175212c1023bb45e873
 	ImageIO.write(image, "png", output); 
 	input.close();
 	output.close();
