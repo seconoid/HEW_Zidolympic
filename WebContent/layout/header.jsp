@@ -7,7 +7,7 @@
 	<ul class="gnavi">
 		<li class="nav-item"><h1><a href="./index.jsp">ロゴ</a></h1></li>
 		<li class="nav-item"><a href="./compelist.jsp">競技一覧</a></li>
-		<li class="nav-item"><a href="./photolist.jsp">写真一覧</a></li>
+		<li class="nav-item"><a href="/HEW_Zidolympic/PhotoListServlet">写真一覧</a></li>
 		<li class="nav-item"><a href="./ranking.jsp">ランキング</a></li>
 		<!-- ログイン状態でない場合に新規登録とログインを表示 -->
 		<c:if test="${ sessionScope.user == null }">
