@@ -9,10 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
-
-
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
 	<c:param name="title" value="トライジドリング"/>
@@ -25,7 +21,7 @@
 <!-- 下の保存押したらフォームが起動する -->
     <form action="UploadImage" method="post" name="x">
     <input type="hidden" id="h" name="h">
-   <input type="text" name="title" id="title"placeholder="画像タイトルを入力してね">
+   <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね">
     </form>
 
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
@@ -40,7 +36,7 @@
 <th align="center"> 
     <button id="capture">capture</button>
     <!-- 保存押したら上のフォームが起動する -->
-	<button  onClick="kakunin()">ほぞん</button>
+	<button onClick="kakunin()">ほぞん</button>
  </th></tr><tr><th><p class="text_box">buttonを押すとテキストが変わる</p></th></tr>
     <!-- 保存を押されたらアップロードできるようにしないといけない -->
     

@@ -54,17 +54,11 @@ public class UploadImage extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		request.setCharacterEncoding("utf8");
-
-		
 		/*
 		 * バイナリを見たくてもSystem.out.println(binary)で出さないこと
 		 * キャパオーバーする(コンソール壊れる)
 		 */
-		
-		
-		
 		int count=0;
 		String name="test";
 		
@@ -92,9 +86,7 @@ public class UploadImage extends HttpServlet {
 		
 
 //////////////////////////////////////////////バイナリ始まり
-		
 		String img_title=request.getParameter("title");
-		
 		//バイナリ受け取り
 	String binary=request.getParameter("h");
 	binary.replace(" ", "+");
@@ -142,9 +134,8 @@ public class UploadImage extends HttpServlet {
 	}		
 	
 /////////////////////////////////////////////////////////////バイナリ終わり
-	
 
-		if(img_title.equals("")||img_title==null){
+		if(img_title.equals("") || img_title==null){
 			img_title="無題";
 		}
 		int count2=dao.insert(filename,img_title);
@@ -158,7 +149,4 @@ public class UploadImage extends HttpServlet {
 		request.getRequestDispatcher("try.jsp").forward(request,response);
 
 	}
-	
-	
-
 }

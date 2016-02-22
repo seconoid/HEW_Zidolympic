@@ -21,8 +21,8 @@ public class CvCheakPix {
 		Imgcodecs.imwrite("./images/test2.jpg", im2);					//test2.jpgとして書き出し
 		int grayCount = Core.countNonZero(im2);							//ｉｍ２内の０でない値をカウント
 		System.out.println("Gray：" + grayCount);
+		
+		
 		    }
-		
-		
 	}
 

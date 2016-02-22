@@ -17,6 +17,8 @@ public class ContributionDAO {
 			
 			//// properties より環境変数を取得する
 			// propertiesより読み込み
+		
+		
 			ResourceBundle bundle = null;
 			try {
 				bundle = ResourceBundle.getBundle("path");
@@ -39,8 +41,6 @@ public class ContributionDAO {
 			return DriverManager.getConnection(
 					url, "root", "");
 		}
-
-	
 	
 	//ファイル名取得の為
 	public String select(){
@@ -76,7 +76,7 @@ public class ContributionDAO {
 	// 写真を登録
 	public int insert(String filename,String img_title){
 		int count=0; //更新件数（上手くいけば1件）
-		
+
 		//DB接続
 		try(
 				Connection con=getConnection();
@@ -84,7 +84,7 @@ public class ContributionDAO {
 						"insert into contribution(member_no,score,point,exhibition_status,status_update_admin_id)"
 						+ " value(1,1000,100,0,?) ");
 				){
-			ps.setString(1,"mikan");
+			ps.setString(1,"suto");
 
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
 			count=ps.executeUpdate();//戻り値は実行件数
