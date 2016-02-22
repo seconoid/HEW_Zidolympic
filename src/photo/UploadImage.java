@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
@@ -131,7 +133,37 @@ public class UploadImage extends HttpServlet {
 		if(count2>0){
 			request.setAttribute("mes","<h2>アップロード出来ました</h2>");
 		}
+		
+		
+		
+		
+		HttpSession page_out_session = request.getSession(true);
 
+		ArrayList<PageOut> page_session = (ArrayList<PageOut>)page_out_session.getAttribute("page_out");
+		ArrayList<PageOut> mikan=new ArrayList<PageOut>();
+			
+		PageOut a=new PageOut();
+		a.setTitle(img_title);
+		a.setPass(filename);
+		mikan.add(a);
+		
+		if(page_session==null){
+			System.out.println("null");
+			page_out_session.setAttribute("page_out", mikan);
+		}else{
+			System.out.println("nullじゃない");
+			page_session.addAll(mikan);
+			page_out_session.setAttribute("page_out", page_session);
+		}
+		if(page_session!=null&&!page_session.equals("")&&
+				page_session.size()!=3){
+			request.setAttribute("save","<button id=hozon onClick=kakunin()>ほぞん</button>");
+		}else if(page_session!=null&&!page_session.equals("")&&
+				page_session.size()==3){
+			request.setAttribute("save","<button id=hozon >もう保存は出来ません</button>");
+		}
+		
+		
 		request.getRequestDispatcher("try.jsp").forward(request,response);
 
 	}

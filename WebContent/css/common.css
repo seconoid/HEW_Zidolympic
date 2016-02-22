@@ -230,3 +230,22 @@ ul {
 	top:60px;
 	left:50px;
 }
+
+#try_img{
+	width:1000px;
+	height:258px;
+	background-color:#000;
+}
+
+
+#try_img table{
+	width:333px;
+	float:left;
+}
+
+#try_img td{
+	width:330px;
+	margin-right:3px;
+	text-align:center;
+	
+}

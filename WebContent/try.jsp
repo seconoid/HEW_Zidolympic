@@ -34,13 +34,21 @@
 			<video id="video" autoplay width="320" height="240"></video>
 		    <button id="capture">capture</button>
 		    <!-- 保存押したら上のフォームが起動する -->
-		    <button id="hozon" onClick="kakunin()">ほぞん</button>
-			<p class="text_box">buttonを押すとテキストが変わる</p>
+		    
+		    <c:if test="${save == null||page_out.size()<3}" >
+			<button id="hozon" onClick="kakunin()">ほぞん</button>
+		    <c:if test="${page_out.size()>=3}" >
+			<button id="hozon">保存できません</button>
+			</c:if>
+			
+			</c:if>${save}
+		    
+		    <p class="text_box">buttonを押すとテキストが変わる</p>
 		    <!-- 保存を押されたらアップロードできるようにしないといけない -->
 	</div>
 	
 	<div id="capture_images" style="visibility:hidden">
-			<p>いま撮った画像です。よければ「保存」を押して</p><!-- 表示用 -->
+			<p class="text_box">いま撮った画像です。よければ「保存」を押して</p><!-- 表示用 -->
 			<img id="img02" width="320" height="240"/>
 		    <img id="img01" width="600" height="480" hidden="img01"/><!-- 画像化用 -->
 		    <canvas id="canvas" width="600" height="480" hidden="canvas"></canvas><!-- 画像化用 -->
@@ -49,7 +57,16 @@
 </div>
 <!-- カメラ 終了-->
 
-<a href="index.jsp">いんでっくす</a>
+<p>保存された画像たちです</p>
+<div id="try_img">
+	<c:forEach var="a" items="${ page_out }">
+	<table>
+		<tr><td>${a.title}</td></tr>
+		<tr><td><img src="/HEW_Zidolympic/UploadImages/${a.pass}" width="320" height="240">
+	</td></tr></table>
+	</c:forEach>
+</div>
+
 </c:param>
 </c:import>
 

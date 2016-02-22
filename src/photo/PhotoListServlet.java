@@ -47,8 +47,7 @@ public class PhotoListServlet extends HttpServlet {
 			}
 		for(int i=1;i<=pgs;i++){
 			if(Integer.parseInt(check)==i){
-				page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+">"
-						+ "<font color=#fff>"+Integer.toString(i)+"</font></a>"+"　";
+				page=page+"<font color=#fff>"+Integer.toString(i)+"</font>"+"　";
 			}else{
 			page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+">"+Integer.toString(i)+"</a>"+"　";
 			}
