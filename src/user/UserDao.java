@@ -75,7 +75,7 @@ public class UserDao{
 	}
 	
 	// 新規ユーザ登録
-	public int insert(String id, String name, String password, String Mail_adress ,String birthday, String sex,boolean delete_flag){
+	public int insert(String id, String name, String password, String mail_adress ,String birthday, String sex,boolean delete_flag){
 		int count = 0;
 		try(
 			Connection con = getConnection();
@@ -85,7 +85,7 @@ public class UserDao{
 			ps.setString(1, id);
 			ps.setString(2, name);
 			ps.setString(3, password);
-			ps.setString(4, Mail_adress);
+			ps.setString(4, mail_adress);
 			ps.setString(5, birthday);
 			ps.setString(6, sex);
 			ps.setBoolean(7, delete_flag);
@@ -127,4 +127,26 @@ public class UserDao{
 		return user;
 	}
 	
+	public int update(String id, String name, String password, String mail_adress ,String birthday){
+		// 更新件数
+		int count = 0;
+		
+		try(
+			Connection con = getConnection();
+			PreparedStatement ps = con.prepareStatement(
+					// SQL
+					"update member set id = ?, name = ?, mail_adress = ?, birthday = ?  where id = ? and password = ?");
+					){
+			ps.setString(1, id);
+			ps.setString(2, name);
+			ps.setString(3, mail_adress);
+			ps.setString(4, birthday);
+			ps.setString(5, id);
+			ps.setString(6, password);
+			count = ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return count;
+	}
 }

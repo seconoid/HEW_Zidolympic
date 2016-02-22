@@ -8,7 +8,7 @@
 	<c:param name="content">
 	<div class="join">
 		<h2 class="form-title">ユーザ情報</h2>
-		<form action="InsertServlet" method="post">
+		<form action="UpdateServlet" method="post">
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-3">
@@ -62,6 +62,7 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" name="sex" value="${ auth.sex }" >
 			<button type="submit" class="btn btn-primary btn-w100">変更を保存</button>
 			${ mess }
 		</form>
