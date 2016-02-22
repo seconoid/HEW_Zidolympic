@@ -2,6 +2,7 @@ package user;
 
 public class User {
 	
+	public int member_no; // １意のID
 	public String id; // ユーザID
 	public String name; // ユーザ名
 	public String password; // パスワード
@@ -11,6 +12,14 @@ public class User {
 	public boolean delete_flag; // 削除判定（true で凍結アカウント）
 	
 	// getter & setter
+	public int getNo() {
+		return member_no;
+	}
+	
+	public void setNo(int member_no) {
+		this.member_no = member_no;
+	}
+	
 	public String getId() {
 		return id;
 	}

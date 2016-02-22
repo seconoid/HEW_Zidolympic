@@ -4,18 +4,19 @@
 
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
-	<c:param name="title" value="設定"/>
+	<c:param name="title" value="新規登録"/>
 	<c:param name="content">
+	<!-- 新規登録フォーム -->
 	<div class="join">
-		<h2 class="form-title">ユーザ情報</h2>
-		<form action="UpdateServlet" method="post">
+		<h2 class="form-title">「ジドリンピック」に参加しよう！</h2>
+		<form action="InsertServlet" method="post">
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-3">
 						<label>ユーザID</label>
 					</div>
 					<div class="col-xs-9">
-						<input type="text" name="id"  class="form-control" value="${ auth.id}" required>
+						<input type="text" name="id"  class="form-control" required>
 						${ idErr }
 					</div>
 				</div>
@@ -26,7 +27,7 @@
 						<label>ユーザ名</label>
 					</div>
 					<div class="col-xs-9">
-						<input type="text" name="name"  class="form-control" value="${ auth.name }" required>
+						<input type="text" name="name"  class="form-control" required>
 						${ nameErr }
 					</div>
 				</div>
@@ -37,7 +38,7 @@
 						<label>パスワード</label>
 					</div>
 					<div class="col-xs-9">
-						<input type="password" name="password" class="form-control" value="${ auth.password }" required>
+						<input type="password" name="password" class="form-control" required>
 						${ passErr }
 					</div>
 				</div>
@@ -48,7 +49,7 @@
 						<label>メールアドレス</label>
 					</div>
 					<div class="col-xs-9">
-						<input type="email" name="mail_adress" class="form-control" value="${ auth.mail_adress }" required>
+						<input type="email" name="mail_adress" class="form-control" required>
 					</div>
 				</div>
 			</div>
@@ -58,12 +59,28 @@
 						<label>生年月日</label>
 					</div>
 					<div class="col-xs-9">
-						<input type="date" name="birthday" class="form-control" value="${ auth.birthday }" >
+						<input type="date" name="birthday" class="form-control">
 					</div>
 				</div>
 			</div>
-			<input type="hidden" name="sex" value="${ auth.sex }" >
-			<button type="submit" class="btn btn-primary btn-w100">変更を保存</button>
+			<div class="row">
+				<div class="col-xs-3">
+					<b>性別</b>
+				</div>
+				<div class="col-xs-9">
+					<div class="radio-inline">
+						<label>
+							<input type="radio" name="sex" value="0" checked><b>男</b>
+						</label>
+					</div>
+					<div class="radio-inline">
+						<label>
+							<input type="radio" name="sex" value="1"><b>女</b>
+						</label>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary btn-w100">アカウントを作成</button>
 			${ mess }
 		</form>
 	</div>

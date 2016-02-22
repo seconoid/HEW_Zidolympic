@@ -1,23 +1,28 @@
 package user;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import photo.PhotoList;
+import photo.PhotoListDAO;
+
 /**
- * Servlet implementation class Join
+ * Servlet implementation class MypageServlet
  */
-@WebServlet("/Join")
-public class Join extends HttpServlet {
+@WebServlet("/MypageServlet")
+public class MypageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Join() {
+    public MypageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +31,15 @@ public class Join extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf8");
+		
+		PhotoListDAO dao=new PhotoListDAO();
+		ArrayList<PhotoList> list=dao.mypageSelect();
+		
+		
+		request.setAttribute("photolist", list);
+		
+		request.getRequestDispatcher("mypage.jsp").forward(request, response);
 	}
 
 	/**

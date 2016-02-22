@@ -5,6 +5,10 @@ import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -15,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+
+import user.User;
 
 
 
@@ -54,7 +60,11 @@ public class UploadImage extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		request.setCharacterEncoding("utf8");
-
+		// HttpSession のオブジェクトを取得
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		int no = user.getNo();
+		System.out.println("No:" + no);
 		
 		/*
 		 * バイナリを見たくてもSystem.out.println(binary)で出さないこと
@@ -109,11 +119,30 @@ public class UploadImage extends HttpServlet {
 	BufferedImage image = ImageIO.read(input);
 	
 	//読み取ったデータをserver側に出力する
-	FileOutputStream output = 
-	new FileOutputStream("C:\\Users\\mikan.shelty\\Documents\\workspace\\HEW_Zidolympic\\WebContent\\UploadImages\\"+filename); 
+	//// *******   pathはpropertiesより読み込み *********** ///
+	// propertiesより読み込み
+	ResourceBundle bundle = null;
+	try {
+		bundle = ResourceBundle.getBundle("path");
+	}catch (MissingResourceException e) {
+		e.printStackTrace();
+	}
+	// パスを取得
+	String path = bundle.getString("uploadPath");
+	String url = "";
+	
+	// 正規表現で抜き取り(""が入り込んでくるため）
+	Pattern p = Pattern.compile("^\"(.+)\"$");
+	Matcher m = p.matcher(path);
+	if (m.find()){
+		System.out.println(m.group(1));
+		url = m.group(1);
+	}
+	FileOutputStream output = new FileOutputStream(url+filename); 
 	ImageIO.write(image, "png", output); 
 	input.close();
 	output.close();
+	
 	System.out.println("保存できました");
 	}catch(IOException e){
 	//変換できなかった場合
@@ -126,7 +155,7 @@ public class UploadImage extends HttpServlet {
 		if(img_title.equals("")||img_title==null){
 			img_title="無題";
 		}
-		int count2=dao.insert(filename,img_title);
+		int count2=dao.insert(no,filename,img_title);
 		if(count2==0){
 			request.setAttribute("mes","<h1>アップロード出来ませんでした</h1>");
 		}

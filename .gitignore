@@ -2,3 +2,6 @@
 /.settings
 /.classpath
 /.project
+/WebContent/UploadImages/
+*.properties
+*.db
