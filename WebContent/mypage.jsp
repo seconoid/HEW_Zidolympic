@@ -12,18 +12,14 @@
 		<div class="content-title">自分の投稿写真</div>
 		<div class="mypage-pic">
 			<!-- 写真リスト -->
-			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
-			</div>
-			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
-			</div>
-			<div class="pic-area">
-				<div class="pic">写真</div>
-				<div class="pic-title">テスト投稿</div>
-			</div>
+			<c:forEach var="p" items="${ photolist }"  begin="0" end="2">
+				<div class="pic-area">
+					<div class="pic">
+						<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+					</div>
+					<div class="pic-title">${p.img_title}</div>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 	<!-- お気に入り -->

@@ -17,7 +17,7 @@
 		<!-- ログイン状態の時にユーザ名とログアウトを表示 -->
 		<c:if test="${ sessionScope.user != null }">
 			<li class="nav-item logout-btn"><a href="LogoutServlet">ログアウト</a></li>
-			<li class="nav-item"><a href="mypage.jsp">${ sessionScope.user.getName() }</a></li>
+			<li class="nav-item"><a href="MypageServlet">${ sessionScope.user.getName() }</a></li>
 		</c:if>
 	</ul>
 </div>

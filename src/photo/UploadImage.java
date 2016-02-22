@@ -15,8 +15,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+
+import user.User;
 
 
 
@@ -56,7 +59,11 @@ public class UploadImage extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		request.setCharacterEncoding("utf8");
-
+		// HttpSession のオブジェクトを取得
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		int no = user.getNo();
+		System.out.println("No:" + no);
 		
 		/*
 		 * バイナリを見たくてもSystem.out.println(binary)で出さないこと
@@ -147,7 +154,7 @@ public class UploadImage extends HttpServlet {
 		if(img_title.equals("")||img_title==null){
 			img_title="無題";
 		}
-		int count2=dao.insert(filename,img_title);
+		int count2=dao.insert(no,filename,img_title);
 		if(count2==0){
 			request.setAttribute("mes","<h1>アップロード出来ませんでした</h1>");
 		}

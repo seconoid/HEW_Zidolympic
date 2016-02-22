@@ -39,11 +39,7 @@ public class PhotoListServlet extends HttpServlet {
 		
 		request.setAttribute("photolist", list);
 		
-		request.getRequestDispatcher("photolist.jsp").forward(request, response);
-
-		
-		
-		
+		request.getRequestDispatcher("photolist.jsp").forward(request, response);		
 	}
 
 	/**
