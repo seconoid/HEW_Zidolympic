@@ -33,9 +33,89 @@ public class PhotoListServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf8");
 		
+		String check=request.getParameter("check");
+		ArrayList<PhotoList> list=new ArrayList<PhotoList>();
 		PhotoListDAO dao=new PhotoListDAO();
-		ArrayList<PhotoList> list=dao.select();
+		list=dao.select();
+
+		//下の（1 2 3 4 5 ）ページ数を出す処理
+		list=dao.select();
+		String page="";
+		int pgs = list.size() / 16;
+		if (list.size() % 16 != 0) {
+			pgs = pgs + 1;
+			}
+		for(int i=1;i<=pgs;i++){
+			if(Integer.parseInt(check)==i){
+				page=page+"<font color=#fff>"+Integer.toString(i)+"</font>"+"　";
+			}else{
+			page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+">"+Integer.toString(i)+"</a>"+"　";
+			}
+		}
+		request.setAttribute("page",page);
+
 		
+		
+		
+		
+		if(check!=null){
+			String a=request.getParameter("check");
+			int num=0;
+			try{
+				num=Integer.parseInt(a);
+			}catch(NumberFormatException e){
+			}
+			// <<⇇一つ前のページに戻すボタン処理
+			if(num>=2){
+				int k=num-1;
+				request.setAttribute("back", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＜＜</a>");
+			}
+			
+			
+			
+			
+			
+			int page_end=num*15+num;//１６件ずつ出したいからnum×１５＋ページ数をする
+			int page_start=page_end-16;//出す最初の値を知りたいから―１６する
+			ArrayList<PhotoList> list2=dao.select();//ここでBETWEENを使わないのは途中でIDの空きが出た場合の為
+			list.clear();//初期化
+			int i=0;
+			if(list2.size()>0){
+				boolean ERR=false;
+				while(page_start<page_end&&!ERR){
+					if(page_start==list2.size()){
+						ERR=true;
+					}
+					if(!ERR){
+				PhotoList p=list2.get(page_start);
+				PhotoList g = new PhotoList();
+				
+				g.setContribution_id(p.getContribution_id());
+				g.setImg_pass(p.getImg_pass());
+				g.setImg_title(p.getImg_title());
+				
+				list.add(g);
+				i++;
+				page_start++;
+					}
+			}
+			}
+			
+			
+			
+			
+			// <<⇇一つ次のページに進むボタン処理
+			int l=list2.size()-1;
+			int L=list.size()-1;
+			PhotoList p=list2.get(l);
+			PhotoList h=list.get(L);
+			if(p.getContribution_id()!=h.getContribution_id()){
+				int k=num+1;
+			request.setAttribute("next", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＞＞</a>");
+			}
+			
+			
+		}
 		
 		request.setAttribute("photolist", list);
 		

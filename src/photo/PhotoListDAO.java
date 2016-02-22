@@ -1,3 +1,4 @@
+
 package photo;
 
 import java.sql.Connection;
@@ -61,6 +62,7 @@ public class PhotoListDAO {
 				//次のデータが存在したらオブジェクトを生成する
 				PhotoList p = new PhotoList();
 				//生成したオブジェクトにデータをセットする
+				p.setContribution_id(rs.getInt("contribution_id"));
 				p.setImg_pass(rs.getString("img_pass"));
 				p.setImg_title(rs.getString("img_title"));
 				//生成したオブジェクトをリストに追加
@@ -110,5 +112,6 @@ public class PhotoListDAO {
 		
 		
 		return list;
-	}
+	
+}
 }

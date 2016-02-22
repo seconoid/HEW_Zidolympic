@@ -66,9 +66,9 @@
 		</div>
 		<!-- ページング -->
 		<div class="paging">
-			<div class="page-ahead page">　　＜＜　　</div>
-			<div class="page-ahead page">　　１　　</div>
-			<div class="page-ahead page">　　＞＞　　</div>
+			<div class="page-ahead page">　　${back}　　</div>
+			<div class="page-ahead page">　　${page}　　</div>
+			<div class="page-ahead page">　　${next}　　</div>
 		</div>
 	</div>
 	</c:param>

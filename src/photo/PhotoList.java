@@ -2,6 +2,7 @@ package photo;
 
 public class PhotoList {
 
+	private int contribution_id;
 	private String img_pass;
 	private String img_title;
 
@@ -19,6 +20,14 @@ public class PhotoList {
 
 	public void setImg_title(String img_title) {
 		this.img_title = img_title;
+	}
+
+	public int getContribution_id() {
+		return contribution_id;
+	}
+
+	public void setContribution_id(int contribution_id) {
+		this.contribution_id = contribution_id;
 	}
 	
 	
