@@ -12,14 +12,21 @@
 		<div class="content-title">自分の投稿写真</div>
 		<div class="mypage-pic">
 			<!-- 写真リスト -->
-			<c:forEach var="p" items="${ photolist }"  begin="0" end="2">
-				<div class="pic-area">
-					<div class="pic">
-						<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+			<c:if test="${!empty photolist }">
+				<c:forEach var="p" items="${ photolist }"  begin="0" end="2">
+					<div class="pic-area">
+						<div class="pic">
+							<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+						</div>
+						<div class="pic-title">${p.img_title}</div>
 					</div>
-					<div class="pic-title">${p.img_title}</div>
+				</c:forEach>
+			</c:if>
+			<c:if test="${empty photolist }">
+				<div class="pic-area">
+					<a href="./compelist.jsp">競技に参加して写真を投稿しよう！</a>
 				</div>
-			</c:forEach>
+			</c:if>
 		</div>
 	</div>
 	<!-- お気に入り -->
