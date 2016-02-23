@@ -59,7 +59,7 @@
 						<label>生年月日</label>
 					</div>
 					<div class="col-xs-9">
-						<input type="date" name="birthday" class="form-control">
+						<input type="date" name="birthday" class="form-control" required>
 					</div>
 				</div>
 			</div>

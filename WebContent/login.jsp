@@ -8,6 +8,9 @@
 	<c:param name="content">
 	<div class="login">
 		<h2 class="form-title">ログイン</h2>
+		<c:if test="${!empty loginErr }">
+			<div class="error-area text-danger bg-danger">${ loginErr }</div>
+		</c:if>
 		<form action="LoginServlet" method="post">
 			<div class="form-group">
 				<div class="row">
@@ -16,7 +19,6 @@
 					</div>
 					<div class="col-xs-8">
 						<input type="text" name="id"  class="form-control" required>
-						${ idErr }
 					</div>
 				</div>
 			</div>
@@ -27,7 +29,6 @@
 					</div>
 					<div class="col-xs-8">
 						<input type="password" name="password" class="form-control" required>
-						${ passErr }
 					</div>
 				</div>
 			</div>
