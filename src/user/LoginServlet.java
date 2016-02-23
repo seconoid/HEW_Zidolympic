@@ -42,6 +42,9 @@ public class LoginServlet extends HttpServlet {
 		String pass = request.getParameter("password");
 		boolean isErr = false;
 		
+		// ハッシュ計算
+		String hash = SHAGenerator.getStretchedPassword(id, pass);
+		
 		// ID(メールアドレス）かパスワードが空だった場合
 		if( id == null ||  id.isEmpty() || pass == null || pass.isEmpty() ){
 			request.setAttribute("idErr", "ユーザIDもしくはパスワードに誤りがあります。");
@@ -50,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 		
 		// データベースにアクセス
 		UserDao dao = new UserDao();
-		User user = dao.select(id, pass);
+		User user = dao.select(id, hash);
 
 		// 存在チェック
 		if(!isErr){

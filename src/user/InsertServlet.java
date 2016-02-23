@@ -43,9 +43,11 @@ public class InsertServlet extends HttpServlet {
 		String birthday = request.getParameter("birthday");
 		String sex = request.getParameter("sex");
 		boolean delete_flag = false;
-		
+
 		boolean  isErr = false;
-		
+
+		// ハッシュ計算
+		String hash = SHAGenerator.getStretchedPassword(id, pass);
 		
 		if(id == null ||  id.isEmpty()){
 			request.setAttribute("idErr", "IDを入力してください。");
@@ -65,7 +67,7 @@ public class InsertServlet extends HttpServlet {
 		
 		if(!isErr){
 			UserDao dao = new UserDao();
-			int count = dao.insert(id, name, pass, mail_adress, birthday, sex, delete_flag);
+			int count = dao.insert(id, name, hash, mail_adress, birthday, sex, delete_flag);
 			
 			if(count <= 0){
 				request.setAttribute("mes", "データが更新されてない");

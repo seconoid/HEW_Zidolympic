@@ -40,7 +40,10 @@ public class AuthServlet extends HttpServlet {
 				
 				String id = request.getParameter("id");
 				String pass = request.getParameter("password");
+				
 				boolean isErr = false;
+				// ハッシュ計算
+				String hash = SHAGenerator.getStretchedPassword(id, pass);
 				
 				// ID(メールアドレス）かパスワードが空だった場合
 				if( id == null ||  id.isEmpty() || pass == null || pass.isEmpty() ){
@@ -50,7 +53,7 @@ public class AuthServlet extends HttpServlet {
 				
 				// データベースにアクセス
 				UserDao dao = new UserDao();
-				User user = dao.auth(id, pass);
+				User user = dao.auth(id, hash);
 
 				// 存在チェック
 				if(!isErr){

@@ -97,7 +97,7 @@ CREATE TABLE Member
 	-- ログインする時に使う任意のID
 	id varchar(20) NOT NULL COMMENT 'ログインする時に使う任意のID',
 	name varchar(20) NOT NULL,
-	password char(32) NOT NULL,
+	password varchar(256) NOT NULL,
 	mail_adress varchar(255) NOT NULL,
 	birthday date NOT NULL,
 	-- Uomen
@@ -317,3 +317,6 @@ ALTER TABLE Contribution_details
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
+
+
+
