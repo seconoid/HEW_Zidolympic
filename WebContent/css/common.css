@@ -111,6 +111,12 @@ ul {
 	width: 100%;
 }
 
+.error-area {
+	padding: 7px 10px;
+	margin: 20px 0px;
+	border-radius: 5px;
+}
+
 /* マイページ */
 .mypage-content {
 	margin: 10px 0;

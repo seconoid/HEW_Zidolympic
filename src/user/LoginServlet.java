@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 		
 		// ID(メールアドレス）かパスワードが空だった場合
 		if( id == null ||  id.isEmpty() || pass == null || pass.isEmpty() ){
-			request.setAttribute("idErr", "ユーザIDもしくはパスワードに誤りがあります。");
+			request.setAttribute("loginErr", "ユーザIDもしくはパスワードに誤りがあります。");
 			isErr = true;
 		}
 		
@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 		if(!isErr){
 			// 存在チェック
 			if(user == null){
-				request.setAttribute("loginErr", "いません" );
+				request.setAttribute("loginErr", "ユーザIDもしくはパスワードに誤りがあります。");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}			
 		}

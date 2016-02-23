@@ -33,7 +33,6 @@
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary btn-w100">ログイン</button>
-			${ mess }
 		</form>
 	</div>
 	</c:param>
