@@ -135,10 +135,11 @@ public class UploadImage extends HttpServlet {
 	
 /////////////////////////////////////////////////////////////バイナリ終わり
 
+		int score = 0;
 		if(img_title.equals("") || img_title==null){
 			img_title="無題";
 		}
-		int count2=dao.insert(filename,img_title);
+		int count2=dao.insert(score, filename,img_title);
 		if(count2==0){
 			request.setAttribute("mes","<h1>アップロード出来ませんでした</h1>");
 		}
