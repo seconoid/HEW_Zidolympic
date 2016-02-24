@@ -19,7 +19,7 @@
 <script type="text/javascript" src="js/camera.js"></script>
 
 <!-- 下の保存押したらフォームが起動する -->
-    <form action="/HEW_Zidolympic/spUp" method="post" name="x">
+    <form action="spUp" method="post" name="x">
     <input type="hidden" id="h" name="h">
    <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね">
     </form>
