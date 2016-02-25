@@ -28,7 +28,9 @@
 		<c:forEach var="p" items="${ photolist }"  begin="0" end="3">
 			<div class="pic-area">
 				<div class="pic">
+				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				</a>
 				</div>
 				<div class="pic-title">${p.img_title}</div>
 			</div>
@@ -38,7 +40,9 @@
 		<c:forEach var="p" items="${ photolist }"  begin="4" end="7">
 			<div class="pic-area">
 				<div class="pic">
+				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				</a>
 				</div>
 				<div class="pic-title">${p.img_title}</div>
 			</div>
@@ -48,7 +52,9 @@
 		<c:forEach var="p" items="${ photolist }"  begin="8" end="11">
 			<div class="pic-area">
 				<div class="pic">
+				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				</a>
 				</div>
 				<div class="pic-title">${p.img_title}</div>
 			</div>
@@ -58,7 +64,9 @@
 		<c:forEach var="p" items="${ photolist }"  begin="12" end="15">
 			<div class="pic-area">
 				<div class="pic">
+				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				</a>
 				</div>
 				<div class="pic-title">${p.img_title}</div>
 			</div>
