@@ -102,7 +102,7 @@ public class ContributionDAO {
 			PreparedStatement ps=con.prepareStatement(
 			"select contribution_id from contribution where status_update_admin_id=? order by contribution_id desc");
 					){
-				ps.setString(1,"mikan");
+				ps.setString(1,"suto");
 				ResultSet rs = ps.executeQuery();
 				if(rs.next()){
 					contribution_id=rs.getInt("contribution_id");
