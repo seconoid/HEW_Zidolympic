@@ -73,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", user);
 			
 			// 遷移
-			response.sendRedirect("mypage.jsp");
+			response.sendRedirect("MypageServlet");
 		}
 	}
 }

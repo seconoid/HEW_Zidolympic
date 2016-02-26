@@ -80,16 +80,24 @@ public class PhotoListDAO {
 		return list;
 	}
 
-	public ArrayList<PhotoList> mypageSelect(){
+	public ArrayList<PhotoList> mypageSelect(int no){
+		
 		ArrayList<PhotoList> list = new ArrayList<PhotoList>();
 		
-		//tryの()内に書くと必要に応じてクローズしてくれる
+		///// tryの()内に書くと必要に応じてクローズしてくれる
 		try(
 				Connection con = getConnection();
 						
-				PreparedStatement ps = con.prepareStatement("select * from Contribution_details order by contribution_id desc");
-				
+				// ログインしているユーザが投稿した写真を取得
+				PreparedStatement ps = con.prepareStatement(
+						"select cd.contribution_id, img_pass, img_title "
+						+ "from contribution as c, contribution_details as cd "
+						+ "where c.contribution_id = cd.contribution_id "
+						+ "and member_no = ?;"
+						);
 				){
+			// ?の置換
+			ps.setInt(1, no);
 			//SQL実行と結果セットの受け取り
 			ResultSet rs = ps.executeQuery();
 			//結果セットからオブジェクトにデータを入れる

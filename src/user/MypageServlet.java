@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import photo.PhotoList;
 import photo.PhotoListDAO;
@@ -33,8 +34,13 @@ public class MypageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf8");
 		
+		// セッションよりIDを取得
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		int no = user.getNo();
+		
 		PhotoListDAO dao=new PhotoListDAO();
-		ArrayList<PhotoList> list=dao.mypageSelect();
+		ArrayList<PhotoList> list=dao.mypageSelect(no);
 		
 		
 		request.setAttribute("photolist", list);
