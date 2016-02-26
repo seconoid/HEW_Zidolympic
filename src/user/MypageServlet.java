@@ -40,10 +40,13 @@ public class MypageServlet extends HttpServlet {
 		int no = user.getNo();
 		
 		PhotoListDAO dao=new PhotoListDAO();
+		// 自分が投稿した写真を取得
 		ArrayList<PhotoList> list=dao.mypageSelect(no);
-		
+		// 自分がお気に入りした写真を取得
+		//		ArrayList<PhotoList> favList = dao.mypageSelect(no);
 		
 		request.setAttribute("photolist", list);
+		//     request.setAttribute("favList", favList);
 		
 		request.getRequestDispatcher("mypage.jsp").forward(request, response);
 	}
