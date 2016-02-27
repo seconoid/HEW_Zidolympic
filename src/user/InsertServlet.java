@@ -67,6 +67,7 @@ public class InsertServlet extends HttpServlet {
 		
 		// エラーが無かったら
 		if(!isErr){
+			// 会員テーブルにユーザを追加
 			UserDao dao = new UserDao();
 			int count = dao.insert(id, name, hash, mail_adress, birthday, sex, delete_flag);
 			
@@ -75,8 +76,21 @@ public class InsertServlet extends HttpServlet {
 			}else{
 				// セッションに登録
 				User user = dao.select(id, hash);
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
+				
+				// 初期ポイントを付与
+				int point = 1000;
+				int no = user.getNo();
+				int count2 = dao.pointInsert(no, point);
+				
+				// データ更新はできているか
+				if(count2 <= 0){
+					request.setAttribute("mes", "データが更新されてない");
+				}else{
+					// セッションに登録
+					user.setPoint(point);
+					HttpSession session = request.getSession();
+					session.setAttribute("user", user);
+				}
 				
 				// マイページに遷移
 				request.setAttribute("mes", "データを更新しました");

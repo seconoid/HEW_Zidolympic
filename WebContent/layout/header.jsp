@@ -18,6 +18,7 @@
 		<c:if test="${ sessionScope.user != null }">
 			<li class="nav-item logout-btn"><a href="LogoutServlet">ログアウト</a></li>
 			<li class="nav-item"><a href="MypageServlet">${ sessionScope.user.getName() }</a></li>
+			<li class="nav-item logout-btn">${ sessionScope.user.getPoint() }pt</li>
 		</c:if>
 	</ul>
 </div>

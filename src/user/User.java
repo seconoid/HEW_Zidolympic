@@ -9,6 +9,7 @@ public class User {
 	public String mail_adress; // メールアドレス
 	public String birthday; // 誕生日
 	public String sex; // 性別
+	public int point; // 所有ポイント
 	public boolean delete_flag; // 削除判定（true で凍結アカウント）
 	
 	// getter & setter
@@ -58,6 +59,14 @@ public class User {
 
 	public void setbirthday(String birthday) {
 		this.birthday = birthday;
+	}
+	
+	public int getPoint() {
+		return point;
+	}
+	
+	public void setPoint(int point) {
+		this.point = point;
 	}
 
 	public String getSex() {

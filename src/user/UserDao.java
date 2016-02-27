@@ -78,6 +78,7 @@ public class UserDao{
 	// 新規ユーザ登録
 	public int insert(String id, String name, String password, String mail_adress ,String birthday, String sex,boolean delete_flag){
 		int count = 0;
+		// 会員を追加
 		try(
 			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement(
@@ -90,6 +91,7 @@ public class UserDao{
 			ps.setString(5, birthday);
 			ps.setString(6, sex);
 			ps.setBoolean(7, delete_flag);
+			
 			count = ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -128,6 +130,7 @@ public class UserDao{
 		return user;
 	}
 	
+	// ユーザ情報更新
 	public int update(String id, String name, String password, String mail_adress ,String birthday){
 		// 更新件数
 		int count = 0;
@@ -144,6 +147,26 @@ public class UserDao{
 			ps.setString(4, birthday);
 			ps.setString(5, id);
 			ps.setString(6, password);
+			count = ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	// 初期ポイントを付与
+	public int pointInsert(int no, int point){
+		// 更新件数
+		int count = 0;
+		
+		try(
+			Connection con = getConnection();
+			PreparedStatement ps = con.prepareStatement(
+					"insert into possession values(?,?)");
+				){
+			ps.setInt(1, no);
+			ps.setInt(2, point);
+			
 			count = ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
