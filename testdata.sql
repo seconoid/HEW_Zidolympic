@@ -30,6 +30,7 @@ insert into title values(203, 2, "職業");
 
 
 -- 管理者テーブル
+
 insert into admin (admin_id, name, password, delete_flag) values ("suto", "すとう", "40721", 0);
 
 -- 利用者テーブル
@@ -39,5 +40,6 @@ insert into member values(3, "suto", "suto", "40721", "suto@gmail", 1992-01-29, 
 
 -- 画像詳細テーブル
 insert into contribution_details(contribution_id,title_id,img_pass,img_title) value(1, 1, "test0.png", "ほんだつばさ");
+
 insert into admin (admin_id, name, password, delete_flag) values ("mikan", "みかん", "45006", 0);
 insert into admin (admin_id, name, password, delete_flag) values ("secon", "secon", "0416", 0);
