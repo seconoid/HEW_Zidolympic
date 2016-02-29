@@ -19,12 +19,9 @@ public class CvCheakPix {
 		Imgproc.cvtColor(im2, im2, Imgproc.COLOR_RGB2GRAY);				//グレイスケールに変換
 		Imgcodecs.imwrite("C:\\Users\\yusuke-01\\workspace_JV11\\HEW_Zidolympic\\WebContent\\UploadImages\\cvTest100.png", im2);					//cvtest100.jpgとして書き出し
 		int grayCount = Core.countNonZero(im2);							//ｉｍ２内の０でない値をカウント
-		
 		System.out.println("Gray：" + grayCount);
-		System.out.println("画像：：："+ filename);
 
 		return grayCount;
-		
 		    }
 	}
 

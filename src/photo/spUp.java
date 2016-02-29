@@ -149,9 +149,8 @@ public class spUp extends HttpServlet {
 		if(count2>0){
 			request.setAttribute("mes","<h2>アップロード出来ました</h2>");
 		}
-
-
-		request.setAttribute("grayCount", cv);
+		
+		request.setAttribute("grayCt", cv);
 		request.getRequestDispatcher("splatorch.jsp").forward(request,response);
 
 	}
