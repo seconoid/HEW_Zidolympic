@@ -9,10 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> remotes/origin/branch-c
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
 	<c:param name="title" value="トライジドリング"/>

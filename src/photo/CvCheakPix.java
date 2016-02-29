@@ -14,7 +14,11 @@ public class CvCheakPix {
 		Mat mask = new Mat();
 		Mat im2 = new Mat();
 		Imgproc.cvtColor(im, hsv, Imgproc.COLOR_BGR2HSV);						// HSV色空間に変換
+<<<<<<< HEAD
 		Core.inRange(hsv, new Scalar(60,100,100), new Scalar(120,255,255), mask);	// 青色領域のマスク作成
+=======
+		Core.inRange(hsv, new Scalar(60,100,100), new Scalar(120,255,255), mask);	// 緑色領域のマスク作成
+>>>>>>> remotes/origin/branch-c
 		im.copyTo(im2, mask);												// マスクを 用いて入力画像から緑色領域を抽出
 		Imgproc.cvtColor(im2, im2, Imgproc.COLOR_RGB2GRAY);				//グレイスケールに変換
 		Imgcodecs.imwrite("C:\\Users\\yusuke-01\\workspace_JV11\\HEW_Zidolympic\\WebContent\\UploadImages\\cvTest100.png", im2);					//cvtest100.jpgとして書き出し

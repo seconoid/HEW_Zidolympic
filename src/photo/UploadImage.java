@@ -47,9 +47,6 @@ public class UploadImage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-	
-	
-	
 	}
 
 	/**
@@ -58,18 +55,28 @@ public class UploadImage extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
 		request.setCharacterEncoding("utf8");
+=======
+		request.setCharacterEncoding("utf8");
+
+>>>>>>> remotes/origin/branch-c
 		// HttpSession のオブジェクトを取得
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		int no = user.getNo();
 		System.out.println("No:" + no);
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> remotes/origin/branch-c
 		/*
 		 * バイナリを見たくてもSystem.out.println(binary)で出さないこと
 		 * キャパオーバーする(コンソール壊れる)
 		 */
+<<<<<<< HEAD
 		
 		
 		
@@ -96,8 +103,15 @@ public class UploadImage extends HttpServlet {
 			filename=name+"0.png";
 		}
 		System.out.println(filename);
+=======
+		int count=0;
+		String name="test";
+>>>>>>> remotes/origin/branch-c
 		
+		ContributionDAO dao=new ContributionDAO();
+		String filename=dao.select();
 		
+<<<<<<< HEAD
 
 //////////////////////////////////////////////バイナリ始まり
 		
@@ -198,5 +212,121 @@ public class UploadImage extends HttpServlet {
 	}
 	
 	
+=======
+		if(!filename.equals("")){
+			filename=filename.replace("test", "");
+			filename=filename.replace(".png", "");
+			
+			try{
+				count=Integer.parseInt(filename);
+				System.out.println(count+"カウント");
+				count=count+1;
+				filename=name+String.valueOf(count)+".png";
+			}catch(NumberFormatException e){
+				filename=name+"0.png";
+			}
+			
+		}else{
+			filename=name+"0.png";
+		}
+		System.out.println(filename);
+		
+		
+>>>>>>> remotes/origin/branch-c
 
+//////////////////////////////////////////////バイナリ始まり
+		String img_title=request.getParameter("title");
+		//バイナリ受け取り
+	String binary=request.getParameter("h");
+	binary.replace(" ", "+");
+	System.out.println(binary.length());
+	
+	try{
+	//そのまま受け取るとキャパオーバーするから配列で受け取る（変換）
+	byte[] bytes = Base64.decodeBase64(binary.substring(22).getBytes());
+	
+	//バイナリ配列をインプットストリームでデータにする（プログラム上）
+	ByteArrayInputStream input = new ByteArrayInputStream(bytes);
+	
+	//データをプログラム上で読み取る
+	BufferedImage image = ImageIO.read(input);
+	
+	//読み取ったデータをserver側に出力する
+	//// *******   pathはpropertiesより読み込み *********** ///
+	// propertiesより読み込み
+	ResourceBundle bundle = null;
+	try {
+		bundle = ResourceBundle.getBundle("path");
+	}catch (MissingResourceException e) {
+		e.printStackTrace();
+	}
+	// パスを取得
+	String path = bundle.getString("uploadPath");
+	String url = "";
+	
+	// 正規表現で抜き取り(""が入り込んでくるため）
+	Pattern p = Pattern.compile("^\"(.+)\"$");
+	Matcher m = p.matcher(path);
+	if (m.find()){
+		System.out.println(m.group(1));
+		url = m.group(1);
+	}
+	FileOutputStream output = new FileOutputStream(url+filename); 
+	ImageIO.write(image, "png", output); 
+	input.close();
+	output.close();
+	
+	System.out.println("保存できました");
+	}catch(IOException e){
+	//変換できなかった場合
+	System.out.println("保存できませんでした");
+	}		
+	
+/////////////////////////////////////////////////////////////バイナリ終わり
+
+		int score = 0;
+		if(img_title.equals("") || img_title==null){
+			img_title="無題";
+		}
+		int count2=dao.insert(no,filename,img_title);
+		if(count2==0){
+			request.setAttribute("mes","<h1>アップロード出来ませんでした</h1>");
+		}
+		if(count2>0){
+			request.setAttribute("mes","<h2>アップロード出来ました</h2>");
+		}
+		
+		
+		
+		
+		HttpSession page_out_session = request.getSession(true);
+
+		ArrayList<PageOut> page_session = (ArrayList<PageOut>)page_out_session.getAttribute("page_out");
+		ArrayList<PageOut> mikan=new ArrayList<PageOut>();
+			
+		PageOut a=new PageOut();
+		a.setTitle(img_title);
+		a.setPass(filename);
+		mikan.add(a);
+		
+		if(page_session==null){
+			System.out.println("null");
+			page_out_session.setAttribute("page_out", mikan);
+		}else{
+			System.out.println("nullじゃない");
+			page_session.addAll(mikan);
+			page_out_session.setAttribute("page_out", page_session);
+		}
+		if(page_session!=null&&!page_session.equals("")&&
+				page_session.size()!=3){
+			request.setAttribute("save","<button id=hozon onClick=kakunin()>ほぞん</button>");
+		}else if(page_session!=null&&!page_session.equals("")&&
+				page_session.size()==3){
+			request.setAttribute("save","<button id=hozon >もう保存は出来ません</button>");
+		}
+		
+		
+		request.getRequestDispatcher("try.jsp").forward(request,response);
+
+	}
 }

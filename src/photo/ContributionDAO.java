@@ -17,6 +17,11 @@ public class ContributionDAO {
 			
 			//// properties より環境変数を取得する
 			// propertiesより読み込み
+<<<<<<< HEAD
+=======
+		
+		
+>>>>>>> remotes/origin/branch-c
 			ResourceBundle bundle = null;
 			try {
 				bundle = ResourceBundle.getBundle("path");
@@ -39,8 +44,11 @@ public class ContributionDAO {
 			return DriverManager.getConnection(
 					url, "root", "");
 		}
+<<<<<<< HEAD
 
 	
+=======
+>>>>>>> remotes/origin/branch-c
 	
 	//ファイル名取得の為
 	public String select(){
@@ -54,8 +62,11 @@ public class ContributionDAO {
 				PreparedStatement ps=con.prepareStatement(
 						"select img_pass from Contribution_details order by contribution_id DESC");
 				){
+<<<<<<< HEAD
 			
 
+=======
+>>>>>>> remotes/origin/branch-c
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
 			ResultSet rs = ps.executeQuery();
 			
@@ -74,19 +85,32 @@ public class ContributionDAO {
 	}
 		
 	// 写真を登録
+<<<<<<< HEAD
 	public int insert(int no, String filename,String img_title){
 		int count=0; //更新件数（上手くいけば1件）
 		
+=======
+	public int insert(int score, String filename,String img_title){
+		int count=0; //更新件数（上手くいけば1件）
+
+>>>>>>> remotes/origin/branch-c
 		//DB接続
 		try(
 				Connection con=getConnection();
 				PreparedStatement ps=con.prepareStatement(
 						"insert into contribution(member_no,score,point,exhibition_status,status_update_admin_id)"
+<<<<<<< HEAD
 						+ " value(?,1000,100,0,?) ");
 				){
 			ps.setInt(1,no);
 			ps.setString(2,"suto");
 
+=======
+						+ " value(1,?,100,0,?) ");
+				){
+			ps.setInt(1, score);
+			ps.setString(2,"suto");
+>>>>>>> remotes/origin/branch-c
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
 			count=ps.executeUpdate();//戻り値は実行件数
 			
@@ -104,7 +128,13 @@ public class ContributionDAO {
 			PreparedStatement ps=con.prepareStatement(
 			"select contribution_id from contribution where status_update_admin_id=? order by contribution_id desc");
 					){
+<<<<<<< HEAD
 				ps.setString(1,"suto");
+=======
+
+				ps.setString(1,"suto");
+
+>>>>>>> remotes/origin/branch-c
 				ResultSet rs = ps.executeQuery();
 				if(rs.next()){
 					contribution_id=rs.getInt("contribution_id");
