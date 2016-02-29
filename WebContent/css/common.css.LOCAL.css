@@ -255,19 +255,3 @@ ul {
 	text-align:center;
 	
 }
-
-/* ƒ|ƒCƒ“ƒgw“ü */
-.buy-form {
-	margin: 30px 0;
-}
-
-.buy-point {
-	margin: 0 auto;
-	width: 550px;
-}
-
-.caution {
-	margin: 0 20px;
-	color: red;
-	font-size: 12px;
-}

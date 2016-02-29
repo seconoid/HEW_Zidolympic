@@ -77,6 +77,7 @@ CREATE TABLE Contribution_details
 	contribution_id int NOT NULL,
 	title_id int NOT NULL,
 	img_pass varchar(255) NOT NULL,
+	img_title varchar(32) NOT NULL,
 	PRIMARY KEY (contribution_id, title_id)
 );
 
@@ -96,7 +97,7 @@ CREATE TABLE Member
 	-- ログインする時に使う任意のID
 	id varchar(20) NOT NULL COMMENT 'ログインする時に使う任意のID',
 	name varchar(20) NOT NULL,
-	password char(32) NOT NULL,
+	password varchar(256) NOT NULL,
 	mail_adress varchar(255) NOT NULL,
 	birthday date NOT NULL,
 	-- Uomen
