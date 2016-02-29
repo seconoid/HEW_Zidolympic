@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class InsertServlet
@@ -42,11 +43,12 @@ public class InsertServlet extends HttpServlet {
 		String mail_adress = request.getParameter("mail_adress");
 		String birthday = request.getParameter("birthday");
 		String sex = request.getParameter("sex");
-		
 		boolean delete_flag = false;
-		
+
 		boolean  isErr = false;
-		
+
+		// ハッシュ計算
+		String hash = SHAGenerator.getStretchedPassword(id, pass);
 		
 		if(id == null ||  id.isEmpty()){
 			request.setAttribute("idErr", "IDを入力してください。");
@@ -63,20 +65,37 @@ public class InsertServlet extends HttpServlet {
 			isErr = true;
 		}
 		
-		
+		// エラーが無かったら
 		if(!isErr){
-			ZIdolyDao dao = new ZIdolyDao();
-			int count = dao.insert(id, name, pass, mail_adress, birthday, sex, delete_flag);
+			// 会員テーブルにユーザを追加
+			UserDao dao = new UserDao();
+			int count = dao.insert(id, name, hash, mail_adress, birthday, sex, delete_flag);
 			
 			if(count <= 0){
 				request.setAttribute("mes", "データが更新されてない");
 			}else{
+				// セッションに登録
+				User user = dao.select(id, hash);
+				
+				// 初期ポイントを付与
+				int point = 1000;
+				int no = user.getNo();
+				int count2 = dao.pointInsert(no, point);
+				
+				// データ更新はできているか
+				if(count2 <= 0){
+					request.setAttribute("mes", "データが更新されてない");
+				}else{
+					// セッションに登録
+					user.setPoint(point);
+					HttpSession session = request.getSession();
+					session.setAttribute("user", user);
+				}
+				
+				// マイページに遷移
 				request.setAttribute("mes", "データを更新しました");
+				request.getRequestDispatcher("mypage.jsp").forward(request, response);
 			}
 		}
-		
-		request.getRequestDispatcher("join.jsp").forward(request, response);
-		
 	}
-
 }
