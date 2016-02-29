@@ -29,6 +29,15 @@
 	<div id="maincapt">
 		 <form	 action="UploadImage" method="post" name="x">
 	     <input type="hidden" id="h" name="h">
+	     
+	     
+	     
+	     
+	     <font color="#ffffff">${titlename}</font>
+	     
+	     
+	     
+	     
 	   	 <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね">
 	     </form>
 			<video id="video" autoplay width="320" height="240"></video>
