@@ -32,8 +32,4 @@
 		<a href="index.jsp">いんでっくす</a>
 	</c:param>
 </c:import>
-<<<<<<< HEAD
 </body></html>
-=======
-</body></html>
->>>>>>> remotes/origin/branch-c

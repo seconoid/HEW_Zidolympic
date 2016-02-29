@@ -5,9 +5,4 @@
 /WebContent/UploadImages/
 *.properties
 *.db
-<<<<<<< HEAD
 /bin
-=======
-/bin
-/build
->>>>>>> remotes/origin/branch-c
