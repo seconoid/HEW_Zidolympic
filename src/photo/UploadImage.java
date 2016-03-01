@@ -64,6 +64,7 @@ public class UploadImage extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		int no = user.getNo();
+		int title_id = 0;
 		System.out.println("No:" + no);
 		
 		/*
@@ -151,11 +152,10 @@ public class UploadImage extends HttpServlet {
 	
 /////////////////////////////////////////////////////////////バイナリ終わり
 	
-
 		if(img_title.equals("")||img_title==null){
 			img_title="無題";
 		}
-		int count2=dao.insert(no,filename,img_title);
+		int count2=dao.insert(no, title_id , filename,img_title);
 		if(count2==0){
 			request.setAttribute("mes","<h1>アップロード出来ませんでした</h1>");
 		}

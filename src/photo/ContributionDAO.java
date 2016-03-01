@@ -74,7 +74,7 @@ public class ContributionDAO {
 	}
 		
 	// 写真を登録
-	public int insert(int no, String filename,String img_title){
+	public int insert(int no,int score ,String filename,String img_title){
 		int count=0; //更新件数（上手くいけば1件）
 		
 		//DB接続
@@ -82,10 +82,11 @@ public class ContributionDAO {
 				Connection con=getConnection();
 				PreparedStatement ps=con.prepareStatement(
 						"insert into contribution(member_no,score,point,exhibition_status,status_update_admin_id)"
-						+ " value(?,1000,100,0,?) ");
+						+ " value(?,?,100,0,?) ");
 				){
 			ps.setInt(1,no);
-			ps.setString(2,"suto");
+			ps.setInt(2, score);
+			ps.setString(3,"secon");
 
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
 			count=ps.executeUpdate();//戻り値は実行件数
@@ -104,7 +105,7 @@ public class ContributionDAO {
 			PreparedStatement ps=con.prepareStatement(
 			"select contribution_id from contribution where status_update_admin_id=? order by contribution_id desc");
 					){
-				ps.setString(1,"suto");
+				ps.setString(1,"secon");
 				ResultSet rs = ps.executeQuery();
 				if(rs.next()){
 					contribution_id=rs.getInt("contribution_id");
@@ -123,7 +124,7 @@ public class ContributionDAO {
 					Connection con=getConnection();
 					PreparedStatement ps=con.prepareStatement(
 							// 投稿テーブルに新規レコード
-							"insert into contribution_details(contribution_id,title_id,img_pass,img_title) value(?,?,?,?) ");
+							"insert into contribution_details(contribution_id, title_id, img_pass, img_title) value(?,?,?,?) ");
 						){
 					//？を置き換える
 					ps.setInt(1,contribution_id);

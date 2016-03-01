@@ -30,9 +30,4 @@ public class PhotoList {
 		this.contribution_id = contribution_id;
 	}
 	
-	
-	
-	
-	
-	
 }
