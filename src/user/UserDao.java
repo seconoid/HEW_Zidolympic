@@ -54,7 +54,11 @@ public class UserDao{
 				Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(
 						// SQL
-						"select * from Member where id = ? and password = ? ");
+						"select member.member_no, id, name, possession.point "
+						+ "from member, possession "
+						+ "where member.member_no = possession.member_no "
+						+ "and id = ? "
+						+ "and password = ? ");
 						){
 					// ? を置き換え
 					ps.setString(1, id);
@@ -67,6 +71,7 @@ public class UserDao{
 						user.setNo(rs.getInt("member_no"));
 						user.setId(rs.getString("id"));
 						user.setName(rs.getString("name"));
+						user.setPoint(rs.getInt("point"));
 					}
 				}catch(Exception e){
 					e.printStackTrace();
