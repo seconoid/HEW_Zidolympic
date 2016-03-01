@@ -5,3 +5,4 @@
 /WebContent/UploadImages/
 *.properties
 *.db
+/bin

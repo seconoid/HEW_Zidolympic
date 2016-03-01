@@ -85,7 +85,7 @@ public class ContributionDAO {
 						+ " value(?,1000,100,0,?) ");
 				){
 			ps.setInt(1,no);
-			ps.setString(2,"mikan");
+			ps.setString(2,"suto");
 
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
 			count=ps.executeUpdate();//戻り値は実行件数
@@ -104,8 +104,7 @@ public class ContributionDAO {
 			PreparedStatement ps=con.prepareStatement(
 			"select contribution_id from contribution where status_update_admin_id=? order by contribution_id desc");
 					){
-				
-				ps.setString(1,"mikan");
+				ps.setString(1,"suto");
 				ResultSet rs = ps.executeQuery();
 				if(rs.next()){
 					contribution_id=rs.getInt("contribution_id");
