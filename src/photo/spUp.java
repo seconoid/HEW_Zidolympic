@@ -15,8 +15,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+
+import user.User;
 
 /**
  * Servlet implementation class UploadImage
@@ -53,6 +56,12 @@ public class spUp extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf8");
+		// HttpSession のオブジェクトを取得
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		int no = user.getNo();
+		System.out.println("No:" + no);
+		
 		/*
 		 * バイナリを見たくてもSystem.out.println(binary)で出さないこと
 		 * キャパオーバーする(コンソール壊れる)
@@ -137,14 +146,15 @@ public class spUp extends HttpServlet {
 	System.out.println(cv);
 	int score = cv;
 	///////////////////
-	int title_id = 0;
+//	int title_id = 0;
 
 		if(img_title.equals("") || img_title==null){
 			img_title="無題";
 		}
-		int count2=dao.insert(score, title_id, filename, img_title);
+//		int count2=dao.insert(no, filename,img_title);
+		int count2 = 1;
 		if(count2==0){
-			request.setAttribute("mes","<h1>アップロード出来ませんでした</h1>");
+			request.setAttribute("mes","<h2>アップロード出来ませんでした</h2>");
 		}
 		if(count2>0){
 			request.setAttribute("mes","<h2>アップロード出来ました</h2>");

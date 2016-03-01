@@ -93,7 +93,7 @@ public class PhotoListDAO {
 						"select cd.contribution_id, img_pass, img_title "
 						+ "from contribution as c, contribution_details as cd "
 						+ "where c.contribution_id = cd.contribution_id "
-						+ "and member_no = ?;"
+						+ "and member_no = ? order by contribution_id desc;"
 						);
 				){
 			// ?の置換

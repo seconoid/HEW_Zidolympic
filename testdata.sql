@@ -1,12 +1,13 @@
 -- テストデータ
 -- 競技テーブル
 
-insert into Competition values(1, 'トライジドリング', 150, '3枚撮る');
+insert into Competition values(1, "トライジドリング", 150, "3枚撮る");
 insert into Competition values(2, "シンクロジドリング", 100, "お題に沿って撮る");
-insert into Competition values(3, 'スプラトゥーチ', 50, '光って面積を取れ');
+insert into Competition values(3, "スプラトゥーチ", 50, "光って面積を取れ");
+
 
 -- タイトルテーブル
--- 1XX で トライ, 2XX で シンクロ用タイトル
+-- 1XX で トライ, 2XX で シンクロ 3XXでスプラ用 タイトル 
 insert into title values(101, 1, "アンパンマン");
 insert into title values(102, 1, "ヤギ");
 insert into title values(103, 1, "槍投げ");
@@ -28,13 +29,14 @@ insert into title values(118, 1, "サボテン");
 insert into title values(201, 2, "必殺技");
 insert into title values(202, 2, "芸人");
 insert into title values(203, 2, "職業");
+insert into title values(300, 3, "光で塗りつぶせ！");
 
 
 -- 管理者テーブル
-
 insert into admin (admin_id, name, password, delete_flag) values ("suto", "すとう", "40721", 0);
 insert into admin (admin_id, name, password, delete_flag) values ("mikan", "みかん", "45006", 0);
 insert into admin (admin_id, name, password, delete_flag) values ("secon", "secon", "0416", 0);
+
 
 
 -- 利用者テーブル
@@ -44,4 +46,5 @@ insert into member values(3, "suto", "suto", "40721", "suto@gmail", 1992-01-29, 
 
 -- 画像詳細テーブル
 insert into contribution_details(contribution_id,title_id,img_pass,img_title) value(1, 1, "test0.png", "ほんだつばさ");
+
 

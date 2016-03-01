@@ -80,6 +80,31 @@ public class UserDao{
 		return user;
 	}
 	
+	// 会員番号のみ取得
+	public int selectNo(String id, String password){
+		int no = 0;
+		try(
+				Connection con = getConnection();
+				PreparedStatement ps = con.prepareStatement(
+						// SQL
+						"select member_no from member where id = ? and password = ?");
+						){
+					// ? を置き換え
+					ps.setString(1, id);
+					ps.setString(2, password);
+					
+					// 結果を代入
+					ResultSet rs = ps.executeQuery();
+					if(rs.next()){
+						no = rs.getInt("member_no");
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+					return 0;
+				}
+		return no;
+	}
+	
 	// 新規ユーザ登録
 	public int insert(String id, String name, String password, String mail_adress ,String birthday, String sex,boolean delete_flag){
 		int count = 0;
