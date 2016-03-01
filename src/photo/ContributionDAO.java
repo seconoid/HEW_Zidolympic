@@ -86,7 +86,7 @@ public class ContributionDAO {
 				){
 			ps.setInt(1,no);
 			ps.setInt(2, score);
-			ps.setString(3,"secon");
+			ps.setString(3,"suto");
 
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
 			count=ps.executeUpdate();//戻り値は実行件数
@@ -105,7 +105,7 @@ public class ContributionDAO {
 			PreparedStatement ps=con.prepareStatement(
 			"select contribution_id from contribution where status_update_admin_id=? order by contribution_id desc");
 					){
-				ps.setString(1,"secon");
+				ps.setString(1,"suto");
 				ResultSet rs = ps.executeQuery();
 				if(rs.next()){
 					contribution_id=rs.getInt("contribution_id");
@@ -127,10 +127,10 @@ public class ContributionDAO {
 							"insert into contribution_details(contribution_id, title_id, img_pass, img_title) value(?,?,?,?) ");
 						){
 					//？を置き換える
-					ps.setInt(1,contribution_id);
-					ps.setInt(2,1);
-					ps.setString(3,filename);
-					ps.setString(4,img_title);
+					ps.setInt(1, contribution_id);
+					ps.setInt(2, 300);
+					ps.setString(3, filename);
+					ps.setString(4, img_title);
 					//SQL実行(更新系のSQLはexecuteUpdateで実行)
 					count=ps.executeUpdate();//戻り値は実行件数 基本的には１
 					}catch(SQLException e){
