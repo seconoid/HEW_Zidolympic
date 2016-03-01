@@ -37,7 +37,7 @@ public class UserDao{
 		Pattern p = Pattern.compile("^\"(.+)\"$");
 		Matcher m = p.matcher(db);
 		if (m.find()){
-			System.out.println(m.group(1));
+			//System.out.println(m.group(1));
 			url = m.group(1);
 		}
 		
@@ -45,7 +45,6 @@ public class UserDao{
 		return DriverManager.getConnection(
 				url, "root", "");
 	}
-	
 	// ユーザ照会
 	public User select(String id, String password){
 		// 戻り値
@@ -78,6 +77,31 @@ public class UserDao{
 					return null;
 				}
 		return user;
+	}
+	
+	// 会員番号のみ取得
+	public int selectNo(String id, String password){
+		int no = 0;
+		try(
+				Connection con = getConnection();
+				PreparedStatement ps = con.prepareStatement(
+						// SQL
+						"select member_no from member where id = ? and password = ?");
+						){
+					// ? を置き換え
+					ps.setString(1, id);
+					ps.setString(2, password);
+					
+					// 結果を代入
+					ResultSet rs = ps.executeQuery();
+					if(rs.next()){
+						no = rs.getInt("member_no");
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+					return 0;
+				}
+		return no;
 	}
 	
 	// 新規ユーザ登録

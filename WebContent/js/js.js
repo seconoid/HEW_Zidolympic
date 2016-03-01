@@ -110,6 +110,7 @@ function kakunin(){
 	
 	    document.getElementById("h").value=base64;
 	    document.forms["x"].submit();
+	    
 	    return true;
 	    
 	    

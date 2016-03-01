@@ -35,7 +35,7 @@ public class InsertServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8");
 		
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
@@ -74,13 +74,23 @@ public class InsertServlet extends HttpServlet {
 			if(count <= 0){
 				request.setAttribute("mes", "データが更新されてない");
 			}else{
-				// セッションに登録
-				User user = dao.select(id, hash);
-				
-				// 初期ポイントを付与
+				// 初期ポイントを設定
+				User user = null;
 				int point = 1000;
-				int no = user.getNo();
-				int count2 = dao.pointInsert(no, point);
+				
+				// ナンバーを取得
+				int no = dao.selectNo(id, hash);
+				int count2 = 0;
+			
+				if(no == 0){
+					isErr = true;
+					System.out.println("DBErr");
+				}else{
+					// 初期ポイントを付与
+					count2 = dao.pointInsert(no, point);
+					// セッションに登録
+					user = dao.select(id, hash);
+				}
 				
 				// データ更新はできているか
 				if(count2 <= 0){

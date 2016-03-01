@@ -33,20 +33,24 @@ public class TryServlet extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		request.setCharacterEncoding("utf8");
-		
+
+		String save=request.getParameter("save");
+		String mes=request.getParameter("mes");
 		
 		TitleDAO dao=new TitleDAO();
 		List<Title> titlelist=dao.random_select();
-		
-		
+		System.out.println(titlelist.size()+"タイトルサイズ");
 		Random random=new Random();
-		System.out.println(titlelist.size());
 		int i=random.nextInt(titlelist.size());
 		Title p=(Title)titlelist.get(i);
 		int title_id=p.getTitle_id();
 		String titlename=p.getName();
 		request.setAttribute("titlename", titlename);
 		request.setAttribute("title_id", title_id);
+		request.setAttribute("save", save);
+		request.setAttribute("mes", mes);
+		
+		System.out.println("TryServletにはきてる");
 		
 		request.getRequestDispatcher("try.jsp").forward(request, response);
 

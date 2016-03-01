@@ -61,19 +61,21 @@ public class LoginServlet extends HttpServlet {
 			if(user == null){
 				request.setAttribute("loginErr", "ユーザIDもしくはパスワードに誤りがあります。");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
+				return;
 			}			
 		}
 		
 		// エラーチェック
 		if(isErr){
 			request.getRequestDispatcher("login.jsp").forward(request, response);
+			return;
 		}else{
 			// セッションに登録
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			
 			// 遷移
 			response.sendRedirect("MypageServlet");
+			return;
 		}
 	}
 }

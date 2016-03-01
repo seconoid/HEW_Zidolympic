@@ -29,10 +29,7 @@
 	<div id="maincapt">
 		 <form	 action="UploadImage" method="post" name="x">
 	     <input type="hidden" id="h" name="h">
-	     
-	     
-	     
-	     
+	     <input type="hidden" id="titleid" name="titleid" value="${title_id}">
 	     <font color="#ffffff">${titlename}</font>
 	     
 	     
