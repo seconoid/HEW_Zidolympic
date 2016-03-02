@@ -6,6 +6,13 @@
 <c:import url="./layout/main_layout.jsp">
 	<c:param name="title" value="マイページ"/>
 	<c:param name="content">
+	<!-- 非ログイン時はログイン画面に遷移 -->
+	<c:if test="${ sessionScope.user == null }">
+		<%
+			request.setAttribute("loginErr", "ログインが必要です");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		%>
+	</c:if>
 	<!-- 投稿履歴 -->
 	<h2>マイページ</h2>
 	<div class="archive mypage-content">
