@@ -73,7 +73,7 @@ public class ContributionDAO {
 	}
 		
 	// 写真を登録
-	public int insert(int no,int defaultscore, String filename,String img_title,int title_id,int sortcount){
+	public int insert(int no, double score, String filename,String img_title,int title_id,int sortcount){
 		int count=0; //更新件数（上手くいけば1件）
 		
 		//DB接続
@@ -84,7 +84,7 @@ public class ContributionDAO {
 						+ " value(?,?,100,0,?) ");
 				){
 			ps.setInt(1,no);
-			ps.setInt(2, defaultscore);
+			ps.setDouble(2, score);
 			ps.setString(3,"suto");
 
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
