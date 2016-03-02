@@ -250,6 +250,7 @@ public int score_update(int con_id,Double score){
 				){
 			System.out.println("きききき"+con_id);
 			System.out.println("きききき"+score);
+			System.out.printf("score%f", score);
 			ps.setInt(1,con_id);
 			ps.setDouble(2,score);
 			count=ps.executeUpdate();
