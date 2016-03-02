@@ -194,6 +194,7 @@ public class UploadImage extends HttpServlet {
 		if(page_session==null){
 			int defaultscore=0;
 			count2=dao.insert(no,defaultscore,filename,img_title,title_id,sortcount);
+
 			page_out_session.setAttribute("page_out", mikan);
 			start = System.nanoTime();
 		}else{
