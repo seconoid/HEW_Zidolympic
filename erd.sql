@@ -51,7 +51,7 @@ CREATE TABLE Contribution
 	contribution_id int NOT NULL AUTO_INCREMENT,
 	member_no int NOT NULL,
 	contribution_timestamp timestamp NOT NULL,
-	score int,
+	score double,
 	-- 実際に使用したポイントの情報
 	-- 
 	point int NOT NULL COMMENT '実際に使用したポイントの情報
@@ -72,6 +72,7 @@ CREATE TABLE Contribution_details
 	title_id int NOT NULL,
 	img_pass varchar(255) NOT NULL,
 	img_title varchar(32) NOT NULL,
+	count int DEFAULT 0 NOT NULL,
 	PRIMARY KEY (contribution_id, title_id)
 );
 CREATE TABLE Favorite

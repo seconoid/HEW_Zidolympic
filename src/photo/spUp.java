@@ -60,7 +60,6 @@ public class spUp extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		int no = user.getNo();
-		int title_id = 0;
 		System.out.println("No:" + no);
 		
 		/*
@@ -142,6 +141,8 @@ public class spUp extends HttpServlet {
 	
 /////////////////////////////////////////////////////////////バイナリ終わり
 	
+	int sortcount=dao.sort_select();
+	
 	//////////////////openCVｸﾗｽを使用
 	int cv = CvCheakPix.a(filename);
 	System.out.println(cv);
@@ -151,8 +152,9 @@ public class spUp extends HttpServlet {
 		if(img_title.equals("") || img_title==null){
 			img_title="無題";
 		}
-		int spCount=dao.insert(no, score ,title_id, filename, img_title);		
+		int spCount=dao.insert(no, score, filename,img_title , 22, sortcount);		
 		if(spCount==0){
+
 			request.setAttribute("mes","<h2>アップロード出来ませんでした</h2>");
 		}
 		if(spCount>0){

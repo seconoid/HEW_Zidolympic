@@ -37,7 +37,7 @@ public class UserDao{
 		Pattern p = Pattern.compile("^\"(.+)\"$");
 		Matcher m = p.matcher(db);
 		if (m.find()){
-			System.out.println(m.group(1));
+			//System.out.println(m.group(1));
 			url = m.group(1);
 		}
 		
@@ -45,7 +45,6 @@ public class UserDao{
 		return DriverManager.getConnection(
 				url, "root", "");
 	}
-	
 	// ユーザ照会
 	public User select(String id, String password){
 		// 戻り値
