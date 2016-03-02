@@ -3,8 +3,6 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 var localMediaStream = null;
 
-
-
 //カメラ使えるかチェック
 var hasGetUserMedia = function() {
     return (navigator.getUserMedia || navigator.webkitGetUserMedia ||
@@ -23,7 +21,6 @@ var snapshot = function() {
         document.getElementById('img01').src = canvas.toDataURL('image/jpeg');
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         document.getElementById('img02').src = canvas.toDataURL('image/jpeg');
-
     }
     click++;
     click_count2++;
@@ -34,9 +31,6 @@ var snapshot = function() {
 var click_count = 0; 
 var click_count2 = 0; 
 var click=0;
-
-
-
 
 if (hasGetUserMedia()) {
     console.log("カメラ OK");
@@ -67,6 +61,7 @@ $("#capture").click(function() {
 		$("#wrapper .text_box").text( click_count2 + "回キャプチャされたので競技参加終了です");
 	}
 	});
+
 $("#stop").click(function() {
     localMediaStream.stop();
 });
@@ -75,11 +70,7 @@ $("video").click(function() {
     document.getElementById('capture_images').style.visibility = "visible";
 });
 
-
-
-
 function kakunin(){
-	
 	//クリックしたらカウントしていく
 	click_count++;
 	//保存されたらクリック数加算する
@@ -95,29 +86,17 @@ function kakunin(){
 		click_count2=5;
 		click=15;
 	}
-
 	
 	$("#wrapper .text_box").text( click_count + "回保存されました");
 
-	
-	
-	
-	
-	
 		var canvas = document.getElementById("canvas");
 	    var base64 = canvas.toDataURL();    // firfoxならtoblobで直接blobにして保存できます。
 	    var blob = Base64toBlob(base64);
 	
 	    document.getElementById("h").value=base64;
 	    document.forms["x"].submit();
-	    return true;
-	    
-	    
+	    return true;	    
 };
-	
-
-
-
 
 var onload = function()
 {

@@ -33,7 +33,6 @@ function saveBlob(_blob,_file)
     }
 }
 
-
 function ArraytoBlob(_mime,_array)
 {
     // ArrayBufferやUint8Arrayなら入れなおす工数がなくなります
