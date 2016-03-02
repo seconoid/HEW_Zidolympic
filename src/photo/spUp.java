@@ -151,11 +151,11 @@ public class spUp extends HttpServlet {
 		if(img_title.equals("") || img_title==null){
 			img_title="無題";
 		}
-		int count2=dao.insert(no, score ,title_id, filename, img_title);		
-		if(count2==0){
+		int spCount=dao.insert(no, score ,title_id, filename, img_title);		
+		if(spCount==0){
 			request.setAttribute("mes","<h2>アップロード出来ませんでした</h2>");
 		}
-		if(count2>0){
+		if(spCount>0){
 			request.setAttribute("mes","<h2>アップロード出来ました</h2>");
 		}
 		
