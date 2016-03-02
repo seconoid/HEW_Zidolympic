@@ -9,10 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
-
-
+<!-- 非ログイン時はログイン画面に遷移 -->
+<c:if test="${ sessionScope.user == null }">
+<%
+	request.setAttribute("loginErr", "ログインが必要です");
+	request.getRequestDispatcher("login.jsp").forward(request, response);
+%>
+</c:if>
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
 	<c:param name="title" value="トライジドリング"/>
