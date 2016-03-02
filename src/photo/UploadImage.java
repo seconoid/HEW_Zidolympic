@@ -192,7 +192,7 @@ public class UploadImage extends HttpServlet {
 		long start =0;
 		long end =0;
 		if(page_session==null||page_session.equals("")){
-			count2=dao.insert(no,filename,img_title,title_id,sortcount);
+			count2=dao.insert(no, 100, filename,img_title,title_id,sortcount);
 			page_out_session.setAttribute("page_out", mikan);
 			start = System.nanoTime();
 		}else{
