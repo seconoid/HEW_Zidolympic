@@ -73,7 +73,7 @@ public class ContributionDAO {
 	}
 		
 	// 写真を登録
-	public int insert(int no, String filename,String img_title,int title_id,int sortcount){
+	public int insert(int no,int defaultscore, String filename,String img_title,int title_id,int sortcount){
 		int count=0; //更新件数（上手くいけば1件）
 		
 		//DB接続
@@ -81,10 +81,11 @@ public class ContributionDAO {
 				Connection con=getConnection();
 				PreparedStatement ps=con.prepareStatement(
 						"insert into contribution(member_no,score,point,exhibition_status,status_update_admin_id)"
-						+ " value(?,1000,100,0,?) ");
+						+ " value(?,?,100,0,?) ");
 				){
 			ps.setInt(1,no);
-			ps.setString(2,"suto");
+			ps.setInt(2, defaultscore);
+			ps.setString(3,"suto");
 
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
 			count=ps.executeUpdate();//戻り値は実行件数

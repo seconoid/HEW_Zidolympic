@@ -191,8 +191,9 @@ public class UploadImage extends HttpServlet {
 		int count2=0;
 		long start =0;
 		long end =0;
-		if(page_session==null||page_session.equals("")){
-			count2=dao.insert(no,filename,img_title,title_id,sortcount);
+		if(page_session==null){
+			int defaultscore=0;
+			count2=dao.insert(no,defaultscore,filename,img_title,title_id,sortcount);
 			page_out_session.setAttribute("page_out", mikan);
 			start = System.nanoTime();
 		}else{
@@ -212,12 +213,13 @@ public class UploadImage extends HttpServlet {
 				String s=String.valueOf(sco);
 				System.err.println(s.replace(".","")+"リプレイス");
 				s=s.replace(".","");
-				s = s.substring(0, 10);
+				s = s.substring(0, 9);
 				
 
 				System.out.println(s+"スコアString");
 				
 				int score=Integer.parseInt(s);
+				System.out.println(score);
 				int score_count=dao.score_update(con_id,score);
 				System.out.println("Time:" + score + "ms");
 			}
