@@ -84,7 +84,7 @@ public class ContributionDAO {
 						+ " value(?,1000,100,0,?) ");
 				){
 			ps.setInt(1,no);
-			ps.setString(2,"mikan");
+			ps.setString(2,"suto");
 
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
 			count=ps.executeUpdate();//戻り値は実行件数
