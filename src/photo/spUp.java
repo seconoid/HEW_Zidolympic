@@ -145,13 +145,13 @@ public class spUp extends HttpServlet {
 	//////////////////openCVｸﾗｽを使用
 	int cv = CvCheakPix.a(filename);
 	System.out.println(cv);
-//	int score = cv;
+	int score = cv;
 	///////////////////
 
 		if(img_title.equals("") || img_title==null){
 			img_title="無題";
 		}
-		int count2=dao.insert(no, title_id, filename, img_title);
+		int count2=dao.insert(no, score ,title_id, filename, img_title);		
 		if(count2==0){
 			request.setAttribute("mes","<h2>アップロード出来ませんでした</h2>");
 		}

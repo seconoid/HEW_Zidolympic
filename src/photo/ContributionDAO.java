@@ -74,7 +74,7 @@ public class ContributionDAO {
 	}
 		
 	// 写真を登録
-	public int insert(int no,int score ,String filename,String img_title){
+	public int insert(int no,int score ,int title_id ,String filename,String img_title){
 		int count=0; //更新件数（上手くいけば1件）
 		
 		//DB接続
@@ -126,6 +126,7 @@ public class ContributionDAO {
 							// 投稿テーブルに新規レコード
 							"insert into contribution_details(contribution_id, title_id, img_pass, img_title) value(?,?,?,?) ");
 						){
+					
 					//？を置き換える
 					ps.setInt(1, contribution_id);
 					ps.setInt(2, 300);
