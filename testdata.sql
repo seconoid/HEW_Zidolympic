@@ -5,7 +5,6 @@ insert into Competition values(2, "シンクロジドリング", 100, "お題に
 insert into Competition values(3, "スプラトゥーチ", 50, "光って面積を取れ");
 
 -- タイトルテーブル
--- 1XX で トライ, 2XX で シンクロ用タイトル
 insert into title(competition_id,name) values(1, "アンパンマン");
 insert into title(competition_id,name) values(1, "ヤギ");
 insert into title(competition_id,name) values(1, "槍投げ");
@@ -27,7 +26,9 @@ insert into title(competition_id,name) values(1, "サボテン");
 insert into title(competition_id,name) values(2, "必殺技");
 insert into title(competition_id,name) values(2, "芸人");
 insert into title(competition_id,name) values(2, "職業");
+insert into title(competition_id,name) values(3, "塗りつぶす");
+
+-- 管理者テーブル
 insert into admin (admin_id, name, password, delete_flag) values ("suto", "すとう", "40721", 0);
 insert into admin (admin_id, name, password, delete_flag) values ("mikan", "みかん", "45006", 0);
 insert into admin (admin_id, name, password, delete_flag) values ("secon", "secon", "0416", 0);
-insert into admin (admin_id, name, password, delete_flag) values ("mikan", "mikan", "mikan", 0);
