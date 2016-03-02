@@ -240,7 +240,7 @@ public int sort_select(){
 }
 	
 	
-public int score_update(int con_id,Double score){
+public int score_update(int con_id,int score){
 	int count=0; //更新件数（上手くいけば1件）
 		try(
 		Connection con=getConnection();
@@ -249,9 +249,9 @@ public int score_update(int con_id,Double score){
 				){
 			System.out.println("きききき"+con_id);
 			System.out.println("きききき"+score);
-			System.out.printf("score%f", score);
-			ps.setInt(1,con_id);
-			ps.setDouble(2,score);
+			ps.setDouble(1,score);
+			ps.setInt(2,con_id);
+			
 			count=ps.executeUpdate();
 			if(count!=0){
 				System.err.println("更新できてる");

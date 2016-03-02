@@ -202,11 +202,22 @@ public class UploadImage extends HttpServlet {
 			//時間計測///////////////////////////////////////////
 			if(page_session.size()==3){
 				end = System.nanoTime();
+
+				String s1=String.valueOf(start);
+				String s2=String.valueOf(end);
+				Double s3=Double.parseDouble(s1);
+				Double s4=Double.parseDouble(s2);
 				
-				Double score=(double) (end - start / 1000);
-				String s=String.valueOf(score);
-				//s = s.substring(0, s.length()-3);
-				score=Double.parseDouble(s);
+				Double sco=(double) (end - start / 1000);
+				String s=String.valueOf(sco);
+				System.err.println(s.replace(".","")+"リプレイス");
+				s=s.replace(".","");
+				s = s.substring(0, 10);
+				
+
+				System.out.println(s+"スコアString");
+				
+				int score=Integer.parseInt(s);
 				int score_count=dao.score_update(con_id,score);
 				System.out.println("Time:" + score + "ms");
 			}
