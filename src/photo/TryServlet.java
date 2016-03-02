@@ -1,6 +1,7 @@
 package photo;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class TryServlet
@@ -34,6 +36,13 @@ public class TryServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf8");
 
+		HttpSession page_out_session = request.getSession(true);
+		ArrayList<PageOut> page_session = (ArrayList<PageOut>)page_out_session.getAttribute("page_out");
+if(page_session!=null){
+	page_session.clear();
+}
+		
+		
 		String save=request.getParameter("save");
 		String mes=request.getParameter("mes");
 		
