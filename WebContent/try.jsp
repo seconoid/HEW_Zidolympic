@@ -30,7 +30,7 @@
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <div id="contents">
 	<div id="maincapt">
-		 <form	 action="UploadImage" method="post" name="x">
+		 <form action="/HEW_Zidolympic/UploadImage" method="post" name="x">
 	     <input type="hidden" id="h" name="h">
 	     <input type="hidden" id="titleid" name="titleid" value="${title_id}">
 	     <font color="#ffffff">${titlename}</font>
