@@ -37,7 +37,10 @@ public class MypageServlet extends HttpServlet {
 		// セッションよりIDを取得
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
-		int no = user.getNo();
+		int no = 0;
+		if(user != null){
+			no = user.getNo();
+		}
 		
 		PhotoListDAO dao=new PhotoListDAO();
 		// 自分が投稿した写真を取得

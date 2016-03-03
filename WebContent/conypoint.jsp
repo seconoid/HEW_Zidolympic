@@ -6,6 +6,20 @@
 <c:import url="./layout/main_layout.jsp">
 	<c:param name="title" value="ポイント変換"/>
 	<c:param name="content">
+	<!-- 非ログイン時はログイン画面に遷移 -->
+	<c:if test="${ sessionScope.user == null }">
+		<%
+			request.setAttribute("loginErr", "ログインが必要です");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		%>
+	</c:if>
+	<!-- 認証画面を通らなかった場合に認証画面へ -->
+	<c:if test="${ sessionScope.user.getNo() != auth.getNo() }">
+		<%
+			request.setAttribute("url", "conypoint.jsp");
+			request.getRequestDispatcher("user_confilm.jsp").forward(request, response);
+		%>
+	</c:if>
 		<div class="buy-point">
 		<h2 class="form-title">ポイント購入</h2>
 		<c:if test="${!empty loginErr }">
