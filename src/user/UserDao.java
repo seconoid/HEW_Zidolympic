@@ -147,6 +147,7 @@ public class UserDao{
 					if(rs.next()){
 						user = new User();
 						user.setId(rs.getString("id"));
+						user.setNo(rs.getInt("member_no"));
 						user.setName(rs.getString("name"));
 						user.setPassword(rs.getString("password"));
 						user.setMail_adress(rs.getString("mail_adress"));

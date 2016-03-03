@@ -36,43 +36,36 @@ public class AuthServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// エンコーディング
-				request.setCharacterEncoding("utf-8");
-				
-				String id = request.getParameter("id");
-				String pass = request.getParameter("password");
-				String url = request.getParameter("url");
-				
-				boolean isErr = false;
-				// ハッシュ計算
-				String hash = SHAGenerator.getStretchedPassword(id, pass);
-				
-				// ID(メールアドレス）かパスワードが空だった場合
-				if( id == null ||  id.isEmpty() || pass == null || pass.isEmpty() ){
-					request.setAttribute("AuthErr", "ユーザIDもしくはパスワードに誤りがあります");
-					isErr = true;
-				}
-				
-				// データベースにアクセス
-				UserDao dao = new UserDao();
-				User user = dao.auth(id, hash);
-
-				// 存在チェック
-				if(!isErr){
-					// 存在チェック
-					if(user == null){
-						request.setAttribute("AuthErr", "認証エラーです" );
-						request.getRequestDispatcher("user_confilm.jsp").forward(request, response);
-					}			
-				}
-				
-				// エラーチェック
-				if(isErr){
-					request.getRequestDispatcher("user_confilm").forward(request, response);
-				}else{
-					// 認証情報を渡して遷移
-					request.setAttribute("auth", user);
-					request.getRequestDispatcher(url).forward(request, response);
-				}
+		request.setCharacterEncoding("utf-8");
+		
+		String id = request.getParameter("id");
+		String pass = request.getParameter("password");
+		String url = request.getParameter("url");
+		
+		boolean isErr = false;
+		// ハッシュ計算
+		String hash = SHAGenerator.getStretchedPassword(id, pass);
+		
+		// ID(メールアドレス）かパスワードが空だった場合
+		if( id == null ||  id.isEmpty() || pass == null || pass.isEmpty() ){
+			request.setAttribute("authErr", "ユーザIDもしくはパスワードに誤りがあります");
+			isErr = true;
+		}
+		// データベースにアクセス
+		UserDao dao = new UserDao();
+		User user = dao.auth(id, hash);
+		// 存在チェック
+		if(!isErr){
+			// 存在チェック
+			if(user == null){
+				request.setAttribute("authErr", "認証エラーです" );
+			}else{
+				// 認証情報を渡して遷移
+				request.setAttribute("auth", user);
+				request.getRequestDispatcher(url).forward(request, response);
+			}
+		}else{
+			request.getRequestDispatcher("user_confilm.jsp").forward(request, response);
+		}
 	}
-
 }
