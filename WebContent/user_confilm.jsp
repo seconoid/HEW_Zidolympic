@@ -32,7 +32,7 @@
 					</div>
 				</div>
 			</div>
-			<input type="hidden" name="url" value="userinfo_update.jsp">
+			<input type="hidden" name="url" value="${ url }">
 			<button type="submit" class="btn btn-primary btn-w100">認証</button>
 		</form>
 	</div>

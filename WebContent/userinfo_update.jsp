@@ -16,6 +16,7 @@
 	<!-- 認証画面を通らなかった場合に認証画面へ -->
 	<c:if test="${ sessionScope.user.getNo() != auth.getNo() }">
 		<%
+			request.setAttribute("url", "userinfo_update.jsp");
 			request.getRequestDispatcher("user_confilm.jsp").forward(request, response);
 		%>
 	</c:if>
