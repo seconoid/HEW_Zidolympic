@@ -40,6 +40,7 @@ public class AuthServlet extends HttpServlet {
 				
 				String id = request.getParameter("id");
 				String pass = request.getParameter("password");
+				String url = request.getParameter("url");
 				
 				boolean isErr = false;
 				// ハッシュ計算
@@ -47,7 +48,7 @@ public class AuthServlet extends HttpServlet {
 				
 				// ID(メールアドレス）かパスワードが空だった場合
 				if( id == null ||  id.isEmpty() || pass == null || pass.isEmpty() ){
-					request.setAttribute("idErr", "ユーザIDもしくはパスワードに誤りがあります。");
+					request.setAttribute("AuthErr", "ユーザIDもしくはパスワードに誤りがあります");
 					isErr = true;
 				}
 				
@@ -59,21 +60,18 @@ public class AuthServlet extends HttpServlet {
 				if(!isErr){
 					// 存在チェック
 					if(user == null){
-						request.setAttribute("AuthErr", "認証エラー" );
-						request.getRequestDispatcher("mypage.jsp").forward(request, response);
+						request.setAttribute("AuthErr", "認証エラーです" );
+						request.getRequestDispatcher("user_confilm.jsp").forward(request, response);
 					}			
 				}
 				
 				// エラーチェック
 				if(isErr){
-					request.getRequestDispatcher("index.jsp").forward(request, response);
+					request.getRequestDispatcher("user_confilm").forward(request, response);
 				}else{
-					// セッションに登録
-					HttpSession session = request.getSession();
-					session.setAttribute("auth", user);
-					
-					// 遷移
-					response.sendRedirect("userinfo_update.jsp");
+					// 認証情報を渡して遷移
+					request.setAttribute("auth", user);
+					request.getRequestDispatcher(url).forward(request, response);
 				}
 	}
 

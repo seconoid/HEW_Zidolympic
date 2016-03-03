@@ -45,7 +45,7 @@
 		</div>
 	</div>
 	<div class="setting mypage-content">
-		<div class="content-title"><a href="./user_confilm.jsp">設定</a></div>
+		<div class="content-title"><a href="./userinfo_update.jsp">設定</a></div>
 	</div>
 	</c:param>
 </c:import>
