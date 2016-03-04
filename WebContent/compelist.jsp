@@ -8,7 +8,7 @@
 	<c:param name="content">
 	<h2>競技一覧</h2>
 	<div class="content-box"><a href="/HEW_Zidolympic/TryServlet">トライジドリング</a></div>
-	<div class="content-box"><a href="./synchroj.jsp">シンクロナイズドジドリング</a></div>
+	<div class="content-box"><a href="/HEW_Zidolympic/SynchroServlet">シンクロナイズドジドリング</a></div>
 	<div class="content-box"><a href="./splatorch.jsp">スプラトゥーチ</a></div>
 	</c:param>
 </c:import>
