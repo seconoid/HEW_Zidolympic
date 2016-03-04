@@ -23,9 +23,9 @@
 		<div class="buy-point">
 		<h2 class="form-title">ポイント購入</h2>
 		<c:if test="${!empty loginErr }">
-			<div class="error-area text-danger bg-danger">${ loginErr }</div>
+			<div class="error-area text-danger bg-danger">${ pointErr }</div>
 		</c:if>
-		<form action="#" method="post">
+		<form action="PointServlet" method="post">
 			<div class="form-group">
 				<div class="row buy-form">
 					<div class="form-inline">
@@ -35,7 +35,7 @@
 						<div class="col-xs-9 buy-amount">
 							<div class="form-inline">
 								<div class="form-group">
-									<input type="text" name="money" class="form-control">
+									<input type="text" name="point" class="form-control">
 									<label>pt<span class="caution">※1pt = 1円</span></label>
 								</div>
 							</div>
@@ -75,13 +75,13 @@
 				       	</div>
 				       	<div class="col-xs-9">
 				       		<label class="radio-inline">
-				       			<input type="radio" name="card" onClick="selectCard(1)">5000円
+				       			<input type="radio" name="card" value=5000 onClick="selectCard(1)">5000円
 				       		</label>
 				       		<label class="radio-inline">
-								<input type="radio" name="card" onClick="selectCard(2)">2000円
+								<input type="radio" name="card" value=2000 onClick="selectCard(2)">2000円
 				            </label>
 				            <label class="radio-inline">
-				            	<input type="radio" name="card" onClick="selectCard(3)">1000円
+				            	<input type="radio" name="card" value=1000 onClick="selectCard(3)">1000円
 				            </label>
 				        </div>
 				    </div>
@@ -95,6 +95,7 @@
 				</div>
 				-->
 			</div>
+			<input type="hidden" name="member_no" value="${ auth.getNo() }">
 			<button type="submit" class="btn btn-primary btn-w100">お支払い</button>
 		</form>
 	</div>
