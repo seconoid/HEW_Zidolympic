@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import utility.AbstractDAO;
 
 public class ContributionDAO extends AbstractDAO{
@@ -237,7 +238,26 @@ public int score_update(int con_id,int score){
 	return count;
 	}
 	
-	
+public int tag_insert(int id_count,String tag){
+	int count=0; //更新件数（上手くいけば1件）
+					try(
+				Connection con=getConnection();
+				PreparedStatement ps=con.prepareStatement(
+						// 投稿テーブルに新規レコード
+						"insert into tag(contribution_id,name) value(?,?) ");
+					){
+				//？を置き換える
+				ps.setInt(1,id_count);
+				ps.setString(2,tag);
+				//SQL実行(更新系のSQLはexecuteUpdateで実行)
+				count=ps.executeUpdate();//戻り値は実行件数 基本的には１
+				}catch(SQLException e){
+					e.printStackTrace();
+				}catch(ClassNotFoundException e){
+						e.printStackTrace();
+				}
+	return count;
+	}
 	
 	
 	}

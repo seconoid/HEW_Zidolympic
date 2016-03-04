@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -30,7 +30,7 @@
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <div id="contents">
 	<div id="maincapt">
-		 <form	 action="UploadImage" method="post" name="x">
+		 <form action="/HEW_Zidolympic/UploadImage" method="post" name="x">
 	     <input type="hidden" id="h" name="h">
 	     <input type="hidden" id="titleid" name="titleid" value="${title_id}">
 	     <font color="#ffffff">${titlename}</font>
@@ -52,7 +52,7 @@
 			
 			</c:if>${save}
 		    
-		    <p class="text_box">buttonを押すとテキストが変わる</p>
+		    ${revenge}
 		    <!-- 保存を押されたらアップロードできるようにしないといけない -->
 	</div>
 	
@@ -65,7 +65,7 @@
 	</div>
 </div>
 <!-- カメラ 終了-->
-
+<c:if test="${fn:length(page_out)>0}">
 <p>保存された画像たちです</p>
 <div id="try_img">
 	<c:forEach var="a" items="${ page_out }">
@@ -75,7 +75,7 @@
 	</td></tr></table>
 	</c:forEach>
 </div>
-
+ </c:if>
 </c:param>
 </c:import>
 
