@@ -51,19 +51,19 @@
 					<div class="col-xs-9">
 						<div class="form-inline">
 							<div class="form-group">
-								<input type="text" name="cardNo1" class="form-control" size="4">
+								<input type="text" name="cardNo1" class="form-control" size="4" id="digit1">
 								<label>-</label>
 							</div>
 							<div class="form-group">
-								<input type="text" name="cardNo2" class="form-control" size="4">
+								<input type="text" name="cardNo2" class="form-control" size="4" id="digit2">
 								<label>-</label>
 							</div>
 							<div class="form-group">
-								<input type="text" name="cardNo3" class="form-control" size="4">
+								<input type="text" name="cardNo3" class="form-control" size="4" id="digit3">
 								<label>-</label>
 							</div>
 							<div class="form-group">
-								<input type="text" name="cardNo4" class="form-control" size="4">
+								<input type="text" name="cardNo4" class="form-control" size="4" id="digit4">
 							</div>
 						</div>
 					</div>
@@ -75,13 +75,13 @@
 				       	</div>
 				       	<div class="col-xs-9">
 				       		<label class="radio-inline">
-				       			<input type="radio" name="card">5000円
+				       			<input type="radio" name="card" onClick="selectCard(1)">5000円
 				       		</label>
 				       		<label class="radio-inline">
-								<input type="radio" name="card">2000円
+								<input type="radio" name="card" onClick="selectCard(2)">2000円
 				            </label>
 				            <label class="radio-inline">
-				            	<input type="radio" name="card">1000円
+				            	<input type="radio" name="card" onClick="selectCard(3)">1000円
 				            </label>
 				        </div>
 				    </div>
