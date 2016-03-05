@@ -50,7 +50,7 @@ ${fov_out}
 
 
 		<h3>画像詳細</h3>
-		<p>投稿ユーザ</p>
+		<p>${ sessionScope.user.getName() }</p>
 		<p>競技名</p>
 		<p>投稿日時</p>
 		<p>コメント（画像タイトル）</p>
