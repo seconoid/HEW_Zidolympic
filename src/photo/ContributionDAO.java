@@ -1,47 +1,15 @@
 package photo;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ContributionDAO {
-	private Connection getConnection()
-			throws ClassNotFoundException
-							, SQLException{
-			
-			//// properties より環境変数を取得する
-			// propertiesより読み込み
-			ResourceBundle bundle = null;
-			try {
-				bundle = ResourceBundle.getBundle("path");
-			}catch (MissingResourceException e) {
-				e.printStackTrace();
-			}
-			// パスを取得
-			String db = bundle.getString("db");
-			String url = "";
-		
-			// 正規表現で抜き取り(""が入り込んでくるため）
-			Pattern p = Pattern.compile("^\"(.+)\"$");
-			Matcher m = p.matcher(db);
-			if (m.find()){
-				System.out.println(m.group(1));
-				url = m.group(1);
-			}
-			
-			Class.forName("com.mysql.jdbc.Driver");
-			return DriverManager.getConnection(
-					url, "root", "");
-		}
+import utility.AbstractDAO;
 
-	
-	
+public class ContributionDAO extends AbstractDAO{
 	//ファイル名取得の為
 	public String select(){
 		
@@ -275,7 +243,74 @@ public int score_update(int con_id,int score){
 	return count;
 	}
 	
+public int tag_insert(int id_count,String tag){
+	int count=0; //更新件数（上手くいけば1件）
+					try(
+				Connection con=getConnection();
+				PreparedStatement ps=con.prepareStatement(
+						// 投稿テーブルに新規レコード
+						"insert into tag(contribution_id,name) value(?,?) ");
+					){
+				//？を置き換える
+				ps.setInt(1,id_count);
+				ps.setString(2,tag);
+				//SQL実行(更新系のSQLはexecuteUpdateで実行)
+				count=ps.executeUpdate();//戻り値は実行件数 基本的には１
+				}catch(SQLException e){
+					e.printStackTrace();
+				}catch(ClassNotFoundException e){
+						e.printStackTrace();
+				}
+	return count;
+	}
+
+
+
+
+
+
+public List<Tag> ranking_select(){
+
+	List<Tag> tag_ranking=new ArrayList<Tag>();
 	
+//DB接続
+try(
+		Connection con=getConnection();
+		PreparedStatement ps=con.prepareStatement(
+				"SELECT x.name, (SELECT COUNT(*) FROM tag z WHERE z.name = x.name) AS Cnt,(SELECT COUNT(*) + 1 FROM (SELECT COUNT(name) AS Cnt FROM tag GROUP BY name) y WHERE x.Cnt < y.Cnt) AS Rank FROM (SELECT name, COUNT(name) AS Cnt FROM tag GROUP BY name) x;");
+		){
+	
+
+	//SQL実行(更新系のSQLはexecuteUpdateで実行)
+	ResultSet rs = ps.executeQuery();
+	while(rs.next()){
+		Tag t=new Tag();
+		t.setName(rs.getString("name"));
+		t.setCnt(rs.getInt("Cnt"));
+		t.setRank(rs.getInt("Rank"));
+		tag_ranking.add(t);
+	}
+	
+	
+}catch(SQLException e){
+	e.printStackTrace();
+}catch(ClassNotFoundException e){
+	e.printStackTrace();
+}
+return tag_ranking;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 	}

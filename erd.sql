@@ -64,6 +64,7 @@ CREATE TABLE Contribution
 ２だったら通報してる
 ',
 	status_update_admin_id varchar(20) NOT NULL,
+	comment varchar(255),
 	PRIMARY KEY (contribution_id)
 );
 CREATE TABLE Contribution_details
@@ -106,6 +107,7 @@ Men
 	delete_flag boolean COMMENT '削除はしない、
 フラグを立てたらログインできないようにする
 ',
+	profimg varchar(255),
 	PRIMARY KEY (member_no),
 	UNIQUE (id)
 );

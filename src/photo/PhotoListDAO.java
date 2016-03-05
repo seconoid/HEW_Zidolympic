@@ -80,6 +80,51 @@ public class PhotoListDAO {
 		return list;
 	}
 
+	
+	public ArrayList<PhotoList> tag_select(String tag){
+		ArrayList<PhotoList> list = new ArrayList<PhotoList>();
+		
+		//tryの()内に書くと必要に応じてクローズしてくれる
+		try(
+				Connection con = getConnection();
+						
+				PreparedStatement ps = con.prepareStatement(""
+						+ "select * from Contribution_details x,contribution y,tag z"
+						+ " where x.contribution_id=y.contribution_id and z.contribution_id=y.contribution_id"
+						+ " and z.name=? order by x.contribution_id desc");
+				
+				){
+			//SQL実行と結果セットの受け取り
+			ps.setString(1, tag);
+			ResultSet rs = ps.executeQuery();
+			//結果セットからオブジェクトにデータを入れる
+			while(rs.next()){
+				//次のデータが存在したらオブジェクトを生成する
+				PhotoList p = new PhotoList();
+				//生成したオブジェクトにデータをセットする
+				p.setContribution_id(rs.getInt("x.contribution_id"));
+				System.out.println("きてるっぽい"+rs.getInt("x.contribution_id"));
+				p.setImg_pass(rs.getString("x.img_pass"));
+				p.setImg_title(rs.getString("x.img_title"));
+				//生成したオブジェクトをリストに追加
+					list.add(p);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
+
+	
+	
+	
+	
 	public ArrayList<PhotoList> mypageSelect(int no){
 		
 		ArrayList<PhotoList> list = new ArrayList<PhotoList>();
@@ -123,7 +168,78 @@ public class PhotoListDAO {
 	
 }
 	
+public ArrayList<PhotoList> mypageFovSelect(int no){
+		
+		ArrayList<PhotoList> favList = new ArrayList<PhotoList>();
+		
+		///// tryの()内に書くと必要に応じてクローズしてくれる
+		try(
+				Connection con = getConnection();
+						
+				// ログインしているユーザが投稿した写真を取得
+				PreparedStatement ps = con.prepareStatement(
+						"select x.img_pass,x.img_title,x.contribution_id from Favorite w,contribution_details x,contribution y,member z where z.member_no=w.member_no and y.member_no=z.member_no and y.contribution_id=w.contribution_id and x.contribution_id=y.contribution_id and z.member_no=?"
+						);
+				){
+			// ?の置換
+			ps.setInt(1, no);
+			//SQL実行と結果セットの受け取り
+			ResultSet rs = ps.executeQuery();
+			//結果セットからオブジェクトにデータを入れる
+			while(rs.next()){
+				//次のデータが存在したらオブジェクトを生成する
+				PhotoList p = new PhotoList();
+				//生成したオブジェクトにデータをセットする
+				p.setContribution_id(rs.getInt("x.contribution_id"));
+				p.setImg_pass(rs.getString("x.img_pass"));
+				p.setImg_title(rs.getString("x.img_title"));
+				//生成したオブジェクトをリストに追加
+				favList.add(p);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		
+		return favList;
+	
+}
 	
 	
+	
+public String prof_select(int no){
+		
+		//int count=0; 
+		String profimg="";
+		
+		//DB接続
+		try(
+				Connection con=getConnection();
+				PreparedStatement ps=con.prepareStatement(
+						"select profimg from member where member_no=?");
+				){
+			
+			ps.setInt(1, no);
+			//SQL実行(更新系のSQLはexecuteUpdateで実行)
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+			profimg=rs.getString("profimg");
+			}else{
+				profimg=null;
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return profimg;
+		
+	}
 	
 }

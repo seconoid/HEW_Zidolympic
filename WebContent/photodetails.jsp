@@ -22,7 +22,6 @@ ${fov_out}
 			<input type="hidden" name="img_pass" value="${img_pass }"> 
 			<input type="hidden" value="${fov_val}" name="fov_val">
 			<input type="hidden" value="${con_id}" name="con_id">
-			<input type="hidden" value="${ sessionScope.user.getName() }" name="name">
 		</form>
 
 		<script>
@@ -51,9 +50,11 @@ ${fov_out}
 
 
 		<h3>画像詳細</h3>
-		<p>投稿ユーザ</p>
-		<p>競技名</p>
-		<p>投稿日時</p>
+		<p>${ sessionScope.user.getName() }</p>
+		<c:forEach items="${com}" var="h">
+		<p>${h.comname}</p>
+		<p>${h.date}</p>
+		</c:forEach>
 		<p>コメント（画像タイトル）</p>
 
 

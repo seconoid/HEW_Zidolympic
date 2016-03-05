@@ -66,6 +66,8 @@ public class UploadImage extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		
+		TitleDAO adao=new TitleDAO();
+		List<Title> titlelist=adao.random_select();
 		
 		String titleid=request.getParameter("titleid");
 		int title_id=0;
@@ -91,8 +93,12 @@ public class UploadImage extends HttpServlet {
 		if(page_session==null){
 		filename=dao.select();
 		}else{
+			if(page_session.size()!=0){
 			PageOut c=(PageOut)page_session.get(page_session.size()-1);
 			filename=c.getPass();
+			}else{
+				filename=dao.select();
+			}
 		}
 		if(!filename.equals("")){
 			filename=filename.replace("test", "");
@@ -180,12 +186,15 @@ public class UploadImage extends HttpServlet {
 		if(page_session==null||page_session.equals("")){
 			c_id=dao.no_select(no); 
 			a.setC_id(c_id+1);//なぞ
-			
-			
 		}else{
+			if(page_session.size()!=0){
 			PageOut c=(PageOut)page_session.get(page_session.size()-1);
 			con_id=c.getC_id();
 			a.setC_id(con_id);
+			}else{
+				c_id=dao.no_select(no); 
+				a.setC_id(c_id+1);//なぞ
+			}
 		}
 		a.setTitleid(title_id);
 		mikan.add(a);
@@ -195,10 +204,18 @@ public class UploadImage extends HttpServlet {
 		if(page_session==null){
 			int defaultscore=0;
 			count2=dao.insert(no,defaultscore,filename,img_title,title_id,sortcount);
+
 			page_out_session.setAttribute("page_out", mikan);
 			start = System.nanoTime();
 		}else{
-			
+			System.out.println(page_session.size()+"ページセッション");
+			if(page_session.size()==0){
+				int defaultscore=0;
+				count2=dao.insert(no,defaultscore,filename,img_title,title_id,sortcount);
+
+				page_out_session.setAttribute("page_out", mikan);
+				start = System.nanoTime();
+			}else{
 			count2=dao.nninsert(no,con_id,filename,img_title,title_id,sortcount);
 			page_session.addAll(mikan);
 			//時間計測///////////////////////////////////////////
@@ -227,11 +244,15 @@ public class UploadImage extends HttpServlet {
 			page_out_session.setAttribute("page_out", page_session);
 		}
 		if(page_session!=null&&!page_session.equals("")&&
-				page_session.size()!=3){
+				page_session.size()!=3&&page_session.size()!=0){
+			if(page_session.size()!=0){
 			request.setAttribute("save","<button id=hozon onClick=kakunin()>ほぞん</button>");
+			}
 		}else if(page_session!=null&&!page_session.equals("")&&
 				page_session.size()==3){
 			request.setAttribute("save","<button id=hozon >もう保存は出来ません</button>");
+			request.setAttribute("revenge", " <a href=/HEW_Zidolympic/TryServlet>"
+					+ "<p class=text_box>もう1回チャレンジ</p></a>");
 		}
 		
 		if(count2==0){
@@ -242,11 +263,10 @@ public class UploadImage extends HttpServlet {
 		}
 		
 		///////////////////////
-		TitleDAO adao=new TitleDAO();
-		List<Title> titlelist=adao.random_select();
 		
 		//二回目以降の同ID検索削除
 		if(page_session!=null){
+			if(page_session.size()!=0){
 		boolean flg=false;
 		for(int k=0;!flg&&page_session.size()>k;k++){
 			PageOut adf=(PageOut)page_session.get(k);
@@ -258,9 +278,16 @@ public class UploadImage extends HttpServlet {
 				}
 			}
 		}
+			}
 		}///////
 		
 		
+				/////////////////////
+		
+		
+		
+		 
+		}
 		Random random=new Random();
 		int i=random.nextInt(titlelist.size());
 		
@@ -269,12 +296,7 @@ public class UploadImage extends HttpServlet {
 		request.setAttribute("titlename", p.getName());
 		request.setAttribute("title_id", p.getTitle_id());
 		
-		/////////////////////
-		
-		
-		
-		 
-		
+
 		request.getRequestDispatcher("try.jsp").forward(request, response);
 
 	}

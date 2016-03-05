@@ -8,6 +8,9 @@
 	<c:param name="content">
 	<div class="login">
 		<h2 class="form-title">本人認証</h2>
+		<c:if test="${!empty authErr }">
+			<div class="error-area text-danger bg-danger">${ authErr }</div>
+		</c:if>
 		<form action="AuthServlet" method="post">
 			<div class="form-group">
 				<div class="row">
@@ -16,7 +19,6 @@
 					</div>
 					<div class="col-xs-8">
 						<input type="text" name="id"  class="form-control" required>
-						${ idErr }
 					</div>
 				</div>
 			</div>
@@ -27,12 +29,11 @@
 					</div>
 					<div class="col-xs-8">
 						<input type="password" name="password" class="form-control" required>
-						${ passErr }
 					</div>
 				</div>
 			</div>
+			<input type="hidden" name="url" value="${ url }">
 			<button type="submit" class="btn btn-primary btn-w100">認証</button>
-			${ mess }
 		</form>
 	</div>
 	</c:param>
