@@ -35,6 +35,7 @@
 	     
 	   	 <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね">
 	   	 <input type="text" name="tag" id="tag" placeholder="タグはこちら" size="8">
+	   	 <textarea placeholder="コメントをつけたい方はこちら" rows="2" cols="20" name="textarea"></textarea>
 	     </form>
 			<video id="video" autoplay width="320" height="240"></video>
 		    <button id="capture">capture</button>
