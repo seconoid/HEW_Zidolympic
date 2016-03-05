@@ -56,7 +56,10 @@ public class SynchroULServlet extends HttpServlet {
 		
 		String tag=request.getParameter("tag");
 		
-		
+		String textarea=request.getParameter("textarea");
+		if(textarea==null||textarea.equals("")){
+			textarea="no comment";
+		}
 		
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
@@ -145,7 +148,7 @@ int score=0;
 		if(img_title.equals("") || img_title==null){
 			img_title="無題";
 		}
-		int count2=dao.insert(no, score, filename,img_title, 19, sortcount);
+		int count2=dao.insert(no, score, filename,img_title, 19, sortcount,textarea);
 		if(count2==0){
 			request.setAttribute("mes","<h2>アップロード出来ませんでした</h2>");
 		}

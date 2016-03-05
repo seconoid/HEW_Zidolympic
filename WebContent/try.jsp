@@ -39,6 +39,13 @@
 	     
 	     
 	   	 <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね">
+	   	 <c:if test="${empty page_out}">
+	   	  <textarea placeholder="コメントをつけたい方はこちら" rows="2" cols="20" name="textarea"></textarea>
+	   	  </c:if>
+	   	  <c:if test="${!empty page_out}">
+	   	  <input type="hidden" name="comment" value="${comment}">
+	   	  ${comment}
+	   	  </c:if>
 	     </form>
 			<video id="video" autoplay width="320" height="240"></video>
 		    <button id="capture">capture</button>

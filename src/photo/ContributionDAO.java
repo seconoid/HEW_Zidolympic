@@ -41,20 +41,20 @@ public class ContributionDAO extends AbstractDAO{
 	}
 		
 	// 写真を登録
-	public int insert(int no, double score, String filename,String img_title,int title_id,int sortcount){
+	public int insert(int no, double score, String filename,String img_title,int title_id,int sortcount,String textarea){
 		int count=0; //更新件数（上手くいけば1件）
 		
 		//DB接続
 		try(
 				Connection con=getConnection();
 				PreparedStatement ps=con.prepareStatement(
-						"insert into contribution(member_no,score,point,exhibition_status,status_update_admin_id)"
-						+ " value(?,?,100,0,?) ");
+						"insert into contribution(member_no,score,point,exhibition_status,status_update_admin_id,comment)"
+						+ " value(?,?,100,0,?,?) ");
 				){
 			ps.setInt(1,no);
 			ps.setDouble(2, score);
 			ps.setString(3,"suto");
-
+			ps.setString(4, textarea);
 			//SQL実行(更新系のSQLはexecuteUpdateで実行)
 			count=ps.executeUpdate();//戻り値は実行件数
 			
