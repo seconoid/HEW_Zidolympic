@@ -201,21 +201,32 @@ public class UploadImage extends HttpServlet {
 		int count2=0;
 		long start =0;
 		long end =0;
+		String textarea="";
+		
 		if(page_session==null){
+			textarea=request.getParameter("textarea");
+			if(textarea==null||textarea.equals("")){
+				textarea="no comment";
+			}
 			int defaultscore=0;
-			count2=dao.insert(no,defaultscore,filename,img_title,title_id,sortcount);
+			count2=dao.insert(no,defaultscore,filename,img_title,title_id,sortcount,textarea);
 
 			page_out_session.setAttribute("page_out", mikan);
 			start = System.nanoTime();
 		}else{
 			System.out.println(page_session.size()+"ページセッション");
 			if(page_session.size()==0){
+				textarea=request.getParameter("textarea");
+				if(textarea==null||textarea.equals("")){
+					textarea="no comment";
+				}
 				int defaultscore=0;
-				count2=dao.insert(no,defaultscore,filename,img_title,title_id,sortcount);
+				count2=dao.insert(no,defaultscore,filename,img_title,title_id,sortcount,textarea);
 
 				page_out_session.setAttribute("page_out", mikan);
 				start = System.nanoTime();
 			}else{
+				textarea=request.getParameter("comment");
 			count2=dao.nninsert(no,con_id,filename,img_title,title_id,sortcount);
 			page_session.addAll(mikan);
 			//時間計測///////////////////////////////////////////
@@ -296,7 +307,7 @@ public class UploadImage extends HttpServlet {
 		request.setAttribute("titlename", p.getName());
 		request.setAttribute("title_id", p.getTitle_id());
 		
-
+		request.setAttribute("comment", textarea);
 		request.getRequestDispatcher("try.jsp").forward(request, response);
 
 	}

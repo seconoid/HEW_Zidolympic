@@ -152,9 +152,13 @@ public class spUp extends HttpServlet {
 		if(img_title.equals("") || img_title==null){
 			img_title="無題";
 		}
-		int spCount=dao.insert(no, score, filename,img_title , 22, sortcount);		
-		if(spCount==0){
 
+		String textarea=request.getParameter("textarea");
+		if(textarea==null||textarea.equals("")){
+			textarea="no comment";
+		}
+		int spCount=dao.insert(no, score, filename,img_title, 22, sortcount,textarea);
+		if(spCount==0){
 			request.setAttribute("mes","<h2>アップロード出来ませんでした</h2>");
 		}
 		if(spCount>0){

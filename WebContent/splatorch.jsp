@@ -26,6 +26,7 @@
     <form action="spUp" method="post" name="x">
     <input type="hidden" id="h" name="h">
    <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね">
+    <textarea placeholder="コメントをつけたい方はこちら" rows="2" cols="20" name="textarea"></textarea>
     </form>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <table width="500" height="300" align="left">
