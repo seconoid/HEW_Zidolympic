@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -124,6 +126,37 @@ public class FavoriteDAO {
 	}
 	
 	
+	
+	public List<Fov> com_select(int con_id){
+		List<Fov> com=new ArrayList<Fov>();
+		
+		try(
+				Connection con = getConnection();
+				PreparedStatement ps = con.prepareStatement(
+						"select x.name,b.contribution_timestamp from competition x,title y,contribution_details z,tag a,contribution b "
+						+ "where a.contribution_id=z.contribution_id and z.title_id=y.title_id and "
+						+ "x.competition_id=y.competition_id and z.contribution_id=?");
+				){
+			ps.setInt(1, con_id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				Fov f=new Fov();
+				f.setComname(rs.getString("x.name"));
+				f.setDate(rs.getDate("b.contribution_timestamp"));
+				com.add(f);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		return com;
+	}
 	
 	
 	

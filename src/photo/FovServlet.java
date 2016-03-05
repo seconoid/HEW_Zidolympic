@@ -1,6 +1,7 @@
 package photo;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,6 +57,9 @@ public class FovServlet extends HttpServlet {
 			request.setAttribute("fov_val", "1");
 		}
 		
+		List<Fov> com=fov.com_select(con_id);
+		request.setAttribute("com", com);
+		
 		request.setAttribute("con_id", con_id);
 		request.setAttribute("img_pass", img_pass);
 		request.getRequestDispatcher("photodetails.jsp").forward(request, response);
@@ -91,15 +95,14 @@ public class FovServlet extends HttpServlet {
 			request.setAttribute("fov_val", "1");
 			}
 		}else if(a.equals("1")){
-			System.out.println(user_no+"ゆーざなんばー");
-			System.out.println(con_id+"こんあいでぃー");
 			int count=fov.delete(user_no,con_id);
 			if(count!=0){
 			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png onclick=Change() id=fov_none>");
 			request.setAttribute("fov_val", "0");
 			}
 		}
-		
+		List<Fov> com=fov.com_select(con_id);
+		request.setAttribute("com", com);
 		request.setAttribute("con_id", con_id);
 		request.setAttribute("img_pass", img_pass);
 		request.getRequestDispatcher("photodetails.jsp").forward(request, response);
