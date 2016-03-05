@@ -141,6 +141,7 @@ public class PhotoListServlet extends HttpServlet {
 				}else if(tag!=null&&!tag.equals("")){
 					String outtag=tag.replace("#", "");
 					request.setAttribute("next", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+"&tag="+outtag+">＞＞</a>");
+					request.setAttribute("texttag", tag);
 				}
 			}
 			

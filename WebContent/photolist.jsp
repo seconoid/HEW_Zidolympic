@@ -12,7 +12,12 @@
 			<div class="form-horizontal">
 				<div class="form-group">
 					<div class="col-xs-offset-2 col-xs-6">
-						<input type="text" name="search" class="form-control" />
+					<c:if test="${empty texttag}">
+						<input type="text" name="search" class="form-control"/>
+					</c:if>
+					<c:if test="${!empty texttag}">
+					<input type="text" name="search" class="form-control" placeholder="${texttag }"/>
+					</c:if>
 					</div>
 					<div class="col-xs-2">
 						<button type="submit" class="btn">検索</button>
