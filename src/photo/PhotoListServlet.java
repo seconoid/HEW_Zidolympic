@@ -34,13 +34,18 @@ public class PhotoListServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf8");
 		
+		String tag=request.getParameter("tag");
+		
 		String check=request.getParameter("check");
 		ArrayList<PhotoList> list=new ArrayList<PhotoList>();
 		PhotoListDAO dao=new PhotoListDAO();
+		if(tag==null||tag.equals("")){
 		list=dao.select();
-
+		}else if(tag!=null&&!tag.equals("")){
+			tag="#"+tag;
+			list=dao.tag_select(tag);
+		}
 		//下の（1 2 3 4 5 ）ページ数を出す処理
-		list=dao.select();
 		String page="";
 		int pgs = list.size() / 16;
 		if (list.size() % 16 != 0) {
@@ -50,7 +55,13 @@ public class PhotoListServlet extends HttpServlet {
 			if(Integer.parseInt(check)==i){
 				page=page+"<font color=#fff>"+Integer.toString(i)+"</font>"+"　";
 			}else{
-			page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+">"+Integer.toString(i)+"</a>"+"　";
+				if(tag==null||tag.equals("")){
+					page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+">"+Integer.toString(i)+"</a>"+"　";
+				}else if(tag!=null&&!tag.equals("")){
+					String outtag=tag.replace("#","");
+					page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+"&tag="+outtag+">"+Integer.toString(i)+"</a>"+"　";					
+				}
+			
 			}
 		}
 		request.setAttribute("page",page);
@@ -69,7 +80,13 @@ public class PhotoListServlet extends HttpServlet {
 			// <<⇇一つ前のページに戻すボタン処理
 			if(num>=2){
 				int k=num-1;
-				request.setAttribute("back", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＜＜</a>");
+				if(tag==null||tag.equals("")){
+					request.setAttribute("back", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＜＜</a>");	
+				}else if(tag!=null&&!tag.equals("")){
+					String outtag=tag.replace("#","");
+					request.setAttribute("back", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+"&tag="+outtag+">＜＜</a>");
+				}
+				
 			}
 			
 			
@@ -78,7 +95,14 @@ public class PhotoListServlet extends HttpServlet {
 			
 			int page_end=num*15+num;//１６件ずつ出したいからnum×１５＋ページ数をする
 			int page_start=page_end-16;//出す最初の値を知りたいから―１６する
-			ArrayList<PhotoList> list2=dao.select();//ここでBETWEENを使わないのは途中でIDの空きが出た場合の為
+			
+			ArrayList<PhotoList> list2=new ArrayList<PhotoList>();
+			
+			if(tag==null||tag.equals("")){
+				list2=dao.select();//ここでBETWEENを使わないのは途中でIDの空きが出た場合の為
+				}else if(tag!=null&&!tag.equals("")){
+					list2=dao.tag_select(tag);
+				}
 			list.clear();//初期化
 			int i=0;
 			if(list2.size()>0){
@@ -112,7 +136,12 @@ public class PhotoListServlet extends HttpServlet {
 			PhotoList h=list.get(L);
 			if(p.getContribution_id()!=h.getContribution_id()){
 				int k=num+1;
-			request.setAttribute("next", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＞＞</a>");
+				if(tag==null||tag.equals("")){
+					request.setAttribute("next", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＞＞</a>");
+				}else if(tag!=null&&!tag.equals("")){
+					String outtag=tag.replace("#", "");
+					request.setAttribute("next", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+"&tag="+outtag+">＞＞</a>");
+				}
 			}
 			
 			

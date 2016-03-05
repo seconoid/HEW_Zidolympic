@@ -178,7 +178,8 @@ int score=0;
 			
 			
 			}
-			request.setAttribute("tag",tag);
+			String outtag=tag.replace("#", "");
+			request.setAttribute("tag","<a href=/HEW_Zidolympic/PhotoListServlet?check=1&tag="+outtag+">"+tag+"</a>");
 		}
 		
 		request.getRequestDispatcher("synchroj.jsp").forward(request,response);

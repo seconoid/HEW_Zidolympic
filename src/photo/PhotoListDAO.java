@@ -80,6 +80,51 @@ public class PhotoListDAO {
 		return list;
 	}
 
+	
+	public ArrayList<PhotoList> tag_select(String tag){
+		ArrayList<PhotoList> list = new ArrayList<PhotoList>();
+		
+		//tryの()内に書くと必要に応じてクローズしてくれる
+		try(
+				Connection con = getConnection();
+						
+				PreparedStatement ps = con.prepareStatement(""
+						+ "select * from Contribution_details x,contribution y,tag z"
+						+ " where x.contribution_id=y.contribution_id and z.contribution_id=y.contribution_id"
+						+ " and z.name=? order by x.contribution_id desc");
+				
+				){
+			//SQL実行と結果セットの受け取り
+			ps.setString(1, tag);
+			ResultSet rs = ps.executeQuery();
+			//結果セットからオブジェクトにデータを入れる
+			while(rs.next()){
+				//次のデータが存在したらオブジェクトを生成する
+				PhotoList p = new PhotoList();
+				//生成したオブジェクトにデータをセットする
+				p.setContribution_id(rs.getInt("x.contribution_id"));
+				System.out.println("きてるっぽい"+rs.getInt("x.contribution_id"));
+				p.setImg_pass(rs.getString("x.img_pass"));
+				p.setImg_title(rs.getString("x.img_title"));
+				//生成したオブジェクトをリストに追加
+					list.add(p);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
+
+	
+	
+	
+	
 	public ArrayList<PhotoList> mypageSelect(int no){
 		
 		ArrayList<PhotoList> list = new ArrayList<PhotoList>();
