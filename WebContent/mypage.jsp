@@ -15,6 +15,9 @@
 	</c:if>
 	<!-- 投稿履歴 -->
 	<h2>マイページ</h2>
+	<c:if test="${!empty pointErr }">
+		<div class="error-area text-danger bg-danger">${ pointErr }</div>
+	</c:if>
 	<div class="archive mypage-content">
 		<div class="content-title">自分の投稿写真</div>
 		<div class="mypage-pic">
