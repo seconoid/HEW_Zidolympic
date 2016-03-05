@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -163,9 +164,22 @@ int score=0;
 			}
 				int id_count=dao.no_select(no);
 				dao.tag_insert(id_count,tag);
+			List<Tag> tag_ranking=dao.ranking_select();
+			if(tag_ranking.size()!=0){
+				boolean check=false;
+			for(int tcon=0;tag_ranking.size()>tcon&&!check;tcon++){
+				Tag t=tag_ranking.get(tcon);
+				if(t.getName().equals(tag)){
+					request.setAttribute("rank", t.getRank());
+					check=true;
+				}
+			}
 			
 			
-			request.setAttribute("tag",tag);
+			
+			}
+			String outtag=tag.replace("#", "");
+			request.setAttribute("tag","<a href=/HEW_Zidolympic/PhotoListServlet?check=1&tag="+outtag+">"+tag+"</a>");
 		}
 		
 		request.getRequestDispatcher("synchroj.jsp").forward(request,response);
