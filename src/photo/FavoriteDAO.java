@@ -42,20 +42,20 @@ public class FavoriteDAO {
 		}
 
 	
-	public int select(String name,int con_id){
-		int member_no=0;
+	public int select(int user_no,int con_id){
 		int count=0;
 		try(
 				Connection con = getConnection();
-						
 				PreparedStatement ps = con.prepareStatement(
-						"select * from Member where name=?");
+						"select * from Favorite where contribution_id=? and member_no=?");
 				){
-			ps.setString(1, name);
+			ps.setInt(1, con_id);
+			ps.setInt(2, user_no);
+			
 			ResultSet rs = ps.executeQuery();
-
-			if(rs.next()){
-				member_no=rs.getInt("member_no");
+			
+			while(rs.next()){
+			count++;
 			}
 			
 		}catch(SQLException e){
@@ -64,13 +64,24 @@ public class FavoriteDAO {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
+		
+		return count;
+	}
+	
+	
+	
+	
+	
+	
+	public int insert(int user_no,int con_id){
+		int count=0;
 		try(
 				Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(
 						"insert into Favorite values(?,?)");
 				){
 			ps.setInt(1, con_id);
-			ps.setInt(2, member_no);
+			ps.setInt(2, user_no);
 			
 			count=ps.executeUpdate();
 			
@@ -81,43 +92,22 @@ public class FavoriteDAO {
 			e.printStackTrace();
 		}
 		
-		
-		
 		return count;
 	}
 	
 	
 	
 	
-	public int delete(String name,int con_id){
-		int member_no=0;
+	public int delete(int user_no,int con_id){
 		int count=0;
-		try(
-				Connection con = getConnection();
-						
-				PreparedStatement ps = con.prepareStatement(
-						"select * from Member where name=?");
-				){
-			ps.setString(1, name);
-			ResultSet rs = ps.executeQuery();
-
-			if(rs.next()){
-				member_no=rs.getInt("member_no");
-			}
-			
-		}catch(SQLException e){
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
+	
 				try(
 				Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(
-						"delete from Favorite where contribution_id=? and menber_no~?");
+						"delete from Favorite where contribution_id=? and member_no=?");
 				){
 			ps.setInt(1, con_id);
-			ps.setInt(2, member_no);
+			ps.setInt(2, user_no);
 			
 			count=ps.executeUpdate();
 			

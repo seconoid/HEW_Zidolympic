@@ -22,7 +22,6 @@ ${fov_out}
 			<input type="hidden" name="img_pass" value="${img_pass }"> 
 			<input type="hidden" value="${fov_val}" name="fov_val">
 			<input type="hidden" value="${con_id}" name="con_id">
-			<input type="hidden" value="${ sessionScope.user.getName() }" name="name">
 		</form>
 
 		<script>

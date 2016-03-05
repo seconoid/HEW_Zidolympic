@@ -7,6 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import user.User;
+
 
 /**
  * Servlet implementation class FovServlet
@@ -31,21 +35,29 @@ public class FovServlet extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		request.setCharacterEncoding("utf8");
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
 		String img_pass=request.getParameter("img_pass");
 		String conid=request.getParameter("con_id");
-		String name=request.getParameter("name");
-		System.out.println(name+"ここ");
+		int user_no=user.getNo();
 		
 		int con_id=0;
 		try{
 			con_id=Integer.parseInt(conid);
 		}catch(NumberFormatException e){}
 		
+		FavoriteDAO fov=new FavoriteDAO();
+		int count=fov.select(user_no,con_id);
+		if(count==0){
+			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png onclick=Change() id=fov_none>");
+			request.setAttribute("fov_val", "0");
+		}else{
+			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite.png onclick=Change() id=fov_none>");
+			request.setAttribute("fov_val", "1");
+		}
+		
 		request.setAttribute("con_id", con_id);
-		request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png onclick=Change() id=fov_none>");
-		request.setAttribute("fov_val", "0");
 		request.setAttribute("img_pass", img_pass);
-		request.setAttribute("name", name);
 		request.getRequestDispatcher("photodetails.jsp").forward(request, response);
 	}
 
@@ -56,15 +68,12 @@ public class FovServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		request.setCharacterEncoding("utf8");
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
 		String img_pass=request.getParameter("img_pass");
 		String a=request.getParameter("fov_val");
-		String name=request.getParameter("name");
 		String conid=request.getParameter("con_id");
-		
-		System.out.println(img_pass);
-		System.out.println(a);
-		System.out.println(name);
-		System.out.println(conid);
+		int user_no=user.getNo();
 		
 		
 		int con_id=0;
@@ -76,17 +85,19 @@ public class FovServlet extends HttpServlet {
 		
 		if(a.equals("0")){
 			
-			//int count=fov.select(name,con_id);
-			//if(count!=0){
+			int count=fov.insert(user_no,con_id);
+			if(count!=0){
 			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite.png onclick=Change() id=fov_none>");
 			request.setAttribute("fov_val", "1");
-			//}
+			}
 		}else if(a.equals("1")){
-			//int count=fov.delete(name,con_id);
-			//if(count!=0){
+			System.out.println(user_no+"ゆーざなんばー");
+			System.out.println(con_id+"こんあいでぃー");
+			int count=fov.delete(user_no,con_id);
+			if(count!=0){
 			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png onclick=Change() id=fov_none>");
 			request.setAttribute("fov_val", "0");
-			//}
+			}
 		}
 		
 		request.setAttribute("con_id", con_id);
