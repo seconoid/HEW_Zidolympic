@@ -44,6 +44,7 @@ public class PhotoListServlet extends HttpServlet {
 		}else if(tag!=null&&!tag.equals("")){
 			tag="#"+tag;
 			list=dao.tag_select(tag);
+			request.setAttribute("texttag", tag);
 		}
 		//下の（1 2 3 4 5 ）ページ数を出す処理
 		String page="";
