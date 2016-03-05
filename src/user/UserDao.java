@@ -3,6 +3,7 @@ package user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import utility.AbstractDAO;
 
 public class UserDao extends AbstractDAO{
@@ -164,4 +165,25 @@ public class UserDao extends AbstractDAO{
 		}
 		return count;
 	}
+	
+	
+	public int profimg_update(int no,String filename){
+		// 更新件数
+		int count = 0;
+		
+		try(
+			Connection con = getConnection();
+			PreparedStatement ps = con.prepareStatement(
+					// SQL
+					"update member set profimg = ? where member_no=?");
+					){
+			ps.setString(1, filename);
+			ps.setInt(2, no);
+			count = ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
 }

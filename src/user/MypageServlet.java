@@ -46,10 +46,19 @@ public class MypageServlet extends HttpServlet {
 		// 自分が投稿した写真を取得
 		ArrayList<PhotoList> list=dao.mypageSelect(no);
 		// 自分がお気に入りした写真を取得
-		//		ArrayList<PhotoList> favList = dao.mypageSelect(no);
+		ArrayList<PhotoList> favList = dao.mypageFovSelect(no);
+		
+		String profimg="";
+		profimg=dao.prof_select(no);
+		if(profimg==null){
+			request.setAttribute("profimg", "noimage.png");
+		}else{
+			request.setAttribute("profimg", profimg);
+		}
+		
 		
 		request.setAttribute("photolist", list);
-		//     request.setAttribute("favList", favList);
+		request.setAttribute("favList", favList);
 		
 		request.getRequestDispatcher("mypage.jsp").forward(request, response);
 	}
