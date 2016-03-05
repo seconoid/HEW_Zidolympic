@@ -162,7 +162,7 @@ public class spUp extends HttpServlet {
 		}
 		
 		request.setAttribute("grayCt", cv);
-		request.getRequestDispatcher("splatorch.jsp").forward(request,response);
+		request.getRequestDispatcher("splatorch_result.jsp").forward(request,response);
 
 	}
 }
