@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import utility.AbstractDAO;
 
@@ -258,6 +260,54 @@ public int tag_insert(int id_count,String tag){
 				}
 	return count;
 	}
+
+
+
+
+
+
+public List<Tag> ranking_select(){
+
+	List<Tag> tag_ranking=new ArrayList<Tag>();
+	
+//DB接続
+try(
+		Connection con=getConnection();
+		PreparedStatement ps=con.prepareStatement(
+				"SELECT x.name, (SELECT COUNT(*) FROM tag z WHERE z.name = x.name) AS Cnt,(SELECT COUNT(*) + 1 FROM (SELECT COUNT(name) AS Cnt FROM tag GROUP BY name) y WHERE x.Cnt < y.Cnt) AS Rank FROM (SELECT name, COUNT(name) AS Cnt FROM tag GROUP BY name) x;");
+		){
+	
+
+	//SQL実行(更新系のSQLはexecuteUpdateで実行)
+	ResultSet rs = ps.executeQuery();
+	while(rs.next()){
+		Tag t=new Tag();
+		t.setName(rs.getString("name"));
+		t.setCnt(rs.getInt("Cnt"));
+		t.setRank(rs.getInt("Rank"));
+		tag_ranking.add(t);
+	}
+	
+	
+}catch(SQLException e){
+	e.printStackTrace();
+}catch(ClassNotFoundException e){
+	e.printStackTrace();
+}
+return tag_ranking;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 	}
