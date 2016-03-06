@@ -157,7 +157,7 @@ public class spUp extends HttpServlet {
 		if(textarea==null||textarea.equals("")){
 			textarea="no comment";
 		}
-		int spCount=dao.insert(no, score, filename,img_title, 22, sortcount,textarea);
+		int spCount=dao.insert(no, score, filename, img_title, 3, sortcount, textarea);
 		if(spCount==0){
 			request.setAttribute("mes","<h2>アップロード出来ませんでした</h2>");
 		}
@@ -167,6 +167,5 @@ public class spUp extends HttpServlet {
 		
 		request.setAttribute("grayCt", cv);
 		request.getRequestDispatcher("splatorch_result.jsp").forward(request,response);
-
 	}
 }
