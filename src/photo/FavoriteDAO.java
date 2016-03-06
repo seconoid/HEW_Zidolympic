@@ -44,16 +44,16 @@ public class FavoriteDAO {
 		}
 
 	
-	public int select(int user_no,int con_id){
+	public int select(int user_no,int con_id,String img_pass){
 		int count=0;
 		try(
 				Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(
-						"select * from Favorite where contribution_id=? and member_no=?");
+						"select * from Favorite where contribution_id=? and member_no=? and img_pass=?");
 				){
 			ps.setInt(1, con_id);
 			ps.setInt(2, user_no);
-			
+			ps.setString(3, img_pass);
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()){
@@ -75,16 +75,16 @@ public class FavoriteDAO {
 	
 	
 	
-	public int insert(int user_no,int con_id){
+	public int insert(int user_no,int con_id,String img_pass){
 		int count=0;
 		try(
 				Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(
-						"insert into Favorite values(?,?)");
+						"insert into Favorite values(?,?,?)");
 				){
 			ps.setInt(1, con_id);
 			ps.setInt(2, user_no);
-			
+			ps.setString(3, img_pass);
 			count=ps.executeUpdate();
 			
 		}catch(SQLException e){
@@ -100,17 +100,17 @@ public class FavoriteDAO {
 	
 	
 	
-	public int delete(int user_no,int con_id){
+	public int delete(int user_no,int con_id,String img_pass){
 		int count=0;
 	
 				try(
 				Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(
-						"delete from Favorite where contribution_id=? and member_no=?");
+						"delete from Favorite where contribution_id=? and member_no=? and img_pass=?");
 				){
 			ps.setInt(1, con_id);
 			ps.setInt(2, user_no);
-			
+			ps.setString(3, img_pass);
 			count=ps.executeUpdate();
 			
 		}catch(SQLException e){
