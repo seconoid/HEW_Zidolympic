@@ -61,6 +61,8 @@ public class FovServlet extends HttpServlet {
 		
 		List<Fov> com=fov.com_select(con_id);
 		request.setAttribute("com", com);
+		List<Fov> com2=fov.com2_select(con_id);
+		request.setAttribute("com2", com2);
 		
 		request.setAttribute("con_id", con_id);
 		request.setAttribute("img_pass", img_pass);
@@ -105,6 +107,9 @@ public class FovServlet extends HttpServlet {
 		}
 		List<Fov> com=fov.com_select(con_id);
 		request.setAttribute("com", com);
+		
+		List<Fov> com2=fov.com2_select(con_id);
+		request.setAttribute("com2", com2);
 		request.setAttribute("con_id", con_id);
 		request.setAttribute("img_pass", img_pass);
 		request.getRequestDispatcher("photodetails.jsp").forward(request, response);

@@ -9,9 +9,11 @@
 
 		<p>クリックで拡大</p>
 		<div>
-			<a class="example-image-link" href="/HEW_Zidolympic/UploadImages/${img_pass}"
+		<c:forEach items="${com2}" var="d">
+			<a class="example-image-link" href="/HEW_Zidolympic/UploadImages/${d.img_pass}"
 				data-lightbox="example-1"> <img class="example-image"
-				src="/HEW_Zidolympic/UploadImages/${img_pass}" alt="image-1" /></a>
+				src="/HEW_Zidolympic/UploadImages/${d.img_pass}" alt="image-1" /></a>
+		</c:forEach>
 		</div>
 		<p>いいねは㊦クリック</p>
 ${fov_out}
