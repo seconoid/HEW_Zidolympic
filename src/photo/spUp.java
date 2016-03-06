@@ -165,6 +165,7 @@ public class spUp extends HttpServlet {
 			request.setAttribute("mes","<h2>アップロード出来ました</h2>");
 		}
 		
+		request.setAttribute("filename", filename);
 		request.setAttribute("grayCt", cv);
 		request.getRequestDispatcher("splatorch_result.jsp").forward(request,response);
 	}
