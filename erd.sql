@@ -88,6 +88,7 @@ CREATE TABLE Favorite
 (
 	contribution_id int NOT NULL,
 	member_no int NOT NULL,
+	img_pass varchar(255),
 	PRIMARY KEY (contribution_id, member_no),
 	UNIQUE (contribution_id, member_no)
 );
