@@ -131,6 +131,8 @@ public class PhotoListServlet extends HttpServlet {
 			
 			
 			// <<⇇一つ次のページに進むボタン処理
+			System.out.println(list.size()+"リストサイズ");
+			System.out.println(list2.size()+"リストサイズ");
 			int l=list2.size()-1;
 			int L=list.size()-1;
 			PhotoList p=list2.get(l);

@@ -48,7 +48,7 @@ public class FovServlet extends HttpServlet {
 		}catch(NumberFormatException e){}
 		
 		FavoriteDAO fov=new FavoriteDAO();
-		int count=fov.select(user_no,con_id,img_pass);
+		int count=fov.select(user_no,con_id);
 		if(count==0){
 			System.out.println("000000000");
 			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png onclick=Change() id=fov_none>");
@@ -91,13 +91,13 @@ public class FovServlet extends HttpServlet {
 		
 		if(a.equals("0")){
 			
-			int count=fov.insert(user_no,con_id,img_pass);
+			int count=fov.insert(user_no,con_id);
 			if(count!=0){
 			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite.png onclick=Change() id=fov_none>");
 			request.setAttribute("fov_val", "1");
 			}
 		}else if(a.equals("1")){
-			int count=fov.delete(user_no,con_id,img_pass);
+			int count=fov.delete(user_no,con_id);
 			if(count!=0){
 			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png onclick=Change() id=fov_none>");
 			request.setAttribute("fov_val", "0");

@@ -64,7 +64,7 @@ public class PhotoListDAO {
 				//生成したオブジェクトにデータをセットする
 				p.setContribution_id(rs.getInt("contribution_details.contribution_id"));
 				p.setImg_pass(rs.getString("contribution_details.img_pass"));
-				p.setImg_title(rs.getString("img_title"));
+				p.setImg_title(rs.getString("contribution_details.img_title"));
 				//生成したオブジェクトをリストに追加
 					list.add(p);
 			}
@@ -178,7 +178,7 @@ public ArrayList<PhotoList> mypageFovSelect(int no){
 						
 				// ログインしているユーザが投稿した写真を取得
 				PreparedStatement ps = con.prepareStatement(
-						"select x.img_pass,x.img_title,x.contribution_id from Favorite w,contribution_details x,contribution y,member z where z.member_no=w.member_no and y.member_no=z.member_no and y.contribution_id=w.contribution_id and x.contribution_id=y.contribution_id and z.member_no=? and w.img_pass=x.img_pass"
+						"select x.img_pass,x.img_title,x.contribution_id from Favorite w,contribution_details x,contribution y,member z where z.member_no=w.member_no and y.member_no=z.member_no and y.contribution_id=w.contribution_id and x.contribution_id=y.contribution_id and z.member_no=?"
 						);
 				){
 			// ?の置換
