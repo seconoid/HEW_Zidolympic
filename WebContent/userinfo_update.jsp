@@ -46,17 +46,6 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-3">
-						<label>パスワード</label>
-					</div>
-					<div class="col-xs-9">
-						<input type="password" name="password" class="form-control">
-						${ passErr }
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="row">
-					<div class="col-xs-3">
 						<label>メールアドレス</label>
 					</div>
 					<div class="col-xs-9">
@@ -74,6 +63,7 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" name="password" value="${ auth.password }">
 			<input type="hidden" name="sex" value="${ auth.sex }" >
 			<button type="submit" class="btn btn-primary btn-w100">変更を保存</button>
 			${ mess }

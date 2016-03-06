@@ -23,7 +23,13 @@
 	</form>
 	<!-- ここに写真 -->
 	<c:if test="${!empty pointErr }">
-		<div class="error-area text-danger bg-danger">${ pointErr }</div>
+		<div class="mes-area text-danger bg-danger">${ pointErr }</div>
+	</c:if>
+	<c:if test="${!empty updateErr }">
+		<div class="mes-area text-danger bg-danger">${ updateErr }</div>
+	</c:if>
+	<c:if test="${!empty successMes }">
+		<div class="mes-area text-success bg-success">${ successMes }</div>
 	</c:if>
 	<div class="archive mypage-content">
 		<div class="content-title">自分の投稿写真</div>

@@ -72,6 +72,7 @@ public class MypageServlet extends HttpServlet {
 		// メッセージを取得、再設定
 		request.setAttribute("pointErr", request.getAttribute("pointErr"));
 		request.setAttribute("authErr", request.getAttribute("authErr"));
+		request.setAttribute("successMes", request.getAttribute("successMes"));
 		
 		// セッションよりIDを取得
 		HttpSession session = request.getSession();

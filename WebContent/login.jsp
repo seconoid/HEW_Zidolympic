@@ -9,7 +9,7 @@
 	<div class="login">
 		<h2 class="form-title">ログイン</h2>
 		<c:if test="${!empty loginErr }">
-			<div class="error-area text-danger bg-danger">${ loginErr }</div>
+			<div class="mes-area text-danger bg-danger">${ loginErr }</div>
 		</c:if>
 		<form action="LoginServlet" method="post">
 			<div class="form-group">
