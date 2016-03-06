@@ -3,7 +3,7 @@
 
 insert into Competition values(1, "トライジドリング", 150, "3枚撮る");
 insert into Competition values(2, "シンクロジドリング", 100, "お題に沿って撮る");
-insert into Competition values(3, "スプラトゥーチ", 50, "光って面積を取れ");
+insert into Competition values(3, "スプラトゥ-チ", 50, "光って面積を取れ");
 
 
 -- タイトルテーブル
