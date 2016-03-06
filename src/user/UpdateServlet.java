@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UpdateServlet
@@ -46,32 +47,36 @@ public class UpdateServlet extends HttpServlet {
 		
 		
 		if(id == null ||  id.isEmpty()){
-			request.setAttribute("idErr", "IDを入力してください。");
+			request.setAttribute("updateErr", "未入力の項目があったため更新が行われませんでした");
 			isErr = true;
 		}
 		
 		if(name == null ||  name.isEmpty()){
-			request.setAttribute("nameErr", "名前を入力してください。");
+			request.setAttribute("updateErr", "未入力の項目があったため更新が行われませんでした");
 			isErr = true;
 		}
 		
 		if(pass == null ||  pass.isEmpty()){
-			request.setAttribute("passErr", "パスワードを入力してください");
+			request.setAttribute("updateErr", "未入力の項目があったため更新が行われませんでした");
 			isErr = true;
 		}
 		
-		
 		if(!isErr){
 			UserDao dao = new UserDao();
-			int count = dao.update(id, name, pass, mail_adress, birthday);
+			int count = dao.update(id, name, mail_adress, birthday);
 			
 			if(count <= 0){
-				request.setAttribute("mes", "データが更新されてない");
+				request.setAttribute("updateErr", "更新に失敗しました");
 			}else{
-				request.setAttribute("mes", "データを更新しました");
+				// userセッションを更新
+				HttpSession session = request.getSession();
+				User user = dao.select(id, pass);
+				session.setAttribute("user", user);
+				
+				request.setAttribute("successMes", "プロフィールを更新しました");
 				System.out.println("更新件数：" + count);
 			}
 		}
-		request.getRequestDispatcher("mypage.jsp").forward(request, response);
+		request.getRequestDispatcher("MypageServlet").forward(request, response);
 	}
 }

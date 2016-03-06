@@ -123,7 +123,7 @@ public class UserDao extends AbstractDAO{
 	}
 	
 	// ユーザ情報更新
-	public int update(String id, String name, String password, String mail_adress ,String birthday){
+	public int update(String id, String name, String mail_adress ,String birthday){
 		// 更新件数
 		int count = 0;
 		
@@ -131,14 +131,13 @@ public class UserDao extends AbstractDAO{
 			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement(
 					// SQL
-					"update member set id = ?, name = ?, mail_adress = ?, birthday = ?  where id = ? and password = ?");
+					"update member set id = ?, name = ?, mail_adress = ?, birthday = ?  where id = ?");
 					){
 			ps.setString(1, id);
 			ps.setString(2, name);
 			ps.setString(3, mail_adress);
 			ps.setString(4, birthday);
 			ps.setString(5, id);
-			ps.setString(6, password);
 			count = ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();

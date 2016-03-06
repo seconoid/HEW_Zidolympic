@@ -97,14 +97,12 @@ public class PointServlet extends HttpServlet {
 				session.setAttribute("user", user);
 				
 				System.out.println("正常に更新");
-				request.getRequestDispatcher("mypage.jsp").forward(request, response);
+				request.setAttribute("successMes", "ポイントを購入しました");
 			}else{
 				System.out.println("DBエラー");
 				request.setAttribute("pointErr", "正常に購入できませんでした");
-				request.getRequestDispatcher("conypoint.jsp").forward(request, response);
 			}
-		}else{
-			request.getRequestDispatcher("mypage.jsp").forward(request, response);
 		}
+		request.getRequestDispatcher("MypageServlet").forward(request, response);
 	}
 }

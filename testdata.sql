@@ -28,7 +28,8 @@ insert into title(competition_id,name) values(1, "サボテン");
 insert into title(competition_id,name) values(2, "必殺技");
 insert into title(competition_id,name) values(2, "芸人");
 insert into title(competition_id,name) values(2, "職業");
-insert into title(competition_id,name) values(3, "塗りつぶす");
+-- 22番目はすぷら
+insert into title(competition_id,name) values(3, "塗りつぶす"); 
 
 -- 管理者テーブル
 insert into admin (admin_id, name, password, delete_flag) values ("suto", "すとう", "40721", 0);
