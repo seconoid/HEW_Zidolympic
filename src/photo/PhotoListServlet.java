@@ -69,7 +69,12 @@ public class PhotoListServlet extends HttpServlet {
 				page=page+"<font color=#fff>"+Integer.toString(i)+"</font>"+"　";
 			}else{
 				if(tag==null||tag.equals("")){
-					page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+">"+Integer.toString(i)+"</a>"+"　";
+					if(fov==null||fov.equals("")){
+						page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+">"+Integer.toString(i)+"</a>"+"　";
+					}else if(fov!=null&&!fov.equals("")){
+						page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+"&fov=fov>"+Integer.toString(i)+"</a>"+"　";
+					}
+
 				}else if(tag!=null&&!tag.equals("")){
 					String outtag=tag.replace("#","");
 					page=page+"<a href=/HEW_Zidolympic/PhotoListServlet?check="+i+"&tag="+outtag+">"+Integer.toString(i)+"</a>"+"　";					
@@ -94,7 +99,11 @@ public class PhotoListServlet extends HttpServlet {
 			if(num>=2){
 				int k=num-1;
 				if(tag==null||tag.equals("")){
-					request.setAttribute("back", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＜＜</a>");	
+					if(fov==null||fov.equals("")){
+						request.setAttribute("back", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＜＜</a>");	
+					}else if(fov!=null||!fov.equals("")){
+						request.setAttribute("back", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+"&fov=fov>＜＜</a>");	
+					}
 				}else if(tag!=null&&!tag.equals("")){
 					String outtag=tag.replace("#","");
 					request.setAttribute("back", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+"&tag="+outtag+">＜＜</a>");
@@ -157,7 +166,11 @@ public class PhotoListServlet extends HttpServlet {
 			if(p.getContribution_id()!=h.getContribution_id()){
 				int k=num+1;
 				if(tag==null||tag.equals("")){
-					request.setAttribute("next", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＞＞</a>");
+					if(fov==null||fov.equals("")){
+						request.setAttribute("next", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+">＞＞</a>");
+					}else if(fov!=null&&!fov.equals("")){
+						request.setAttribute("next", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+"&fov=fov>＞＞</a>");
+					}
 				}else if(tag!=null&&!tag.equals("")){
 					String outtag=tag.replace("#", "");
 					request.setAttribute("next", "<a href=/HEW_Zidolympic/PhotoListServlet?check="+k+"&tag="+outtag+">＞＞</a>");
