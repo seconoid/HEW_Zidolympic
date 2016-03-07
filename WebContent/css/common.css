@@ -4,7 +4,39 @@
   padding: 0;
   border: 0;
 }
-
+figure {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+a:hover>figure img {
+        transform: scale(1.15,1.15);
+        -webkit-transform:scale(1.15,1.15);
+        -moz-transform:scale(1.15,1.15);
+        -ms-transform:scale(1.15,1.15);
+        -o-transform:scale(1.15,1.15);
+}
+figcaption {
+    background-color: rgba(0,0,0,0.6);
+    color: #FFF;
+    opacity: 0;
+    font-size: 16px;
+    font-size: 1.6rem;
+    position: absolute;
+    text-align: center;
+    -webkit-transition:all 0.25s ease-in-out;
+        transition:all 0.25s ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    padding-top: 25%;
+}
+a:hover>figure figcaption {
+    opacity: 1;
+}
 body{
 	font-family: 'Hiragino Kaku Gothic Pro', 'ƒqƒ‰ƒMƒmŠpƒS Pro W3', Meiryo, ƒƒCƒŠƒI, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
 }
