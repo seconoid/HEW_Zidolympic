@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import user.User;
 
 /**
  * Servlet implementation class PhotoListServlet
@@ -33,14 +36,23 @@ public class PhotoListServlet extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		request.setCharacterEncoding("utf8");
-		
+		String fov=request.getParameter("fov");
 		String tag=request.getParameter("tag");
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		int no = user.getNo();
+		
 		
 		String check=request.getParameter("check");
 		ArrayList<PhotoList> list=new ArrayList<PhotoList>();
 		PhotoListDAO dao=new PhotoListDAO();
 		if(tag==null||tag.equals("")){
-		list=dao.select();
+			if(fov==null||fov.equals("")){
+				list=dao.select();
+			}else if(fov!=null&&!fov.equals("")){
+				list=dao.mypageFovSelect(no);
+			}
+		
 		}else if(tag!=null&&!tag.equals("")){
 			tag="#"+tag;
 			list=dao.tag_select(tag);
@@ -100,7 +112,12 @@ public class PhotoListServlet extends HttpServlet {
 			ArrayList<PhotoList> list2=new ArrayList<PhotoList>();
 			
 			if(tag==null||tag.equals("")){
-				list2=dao.select();//ここでBETWEENを使わないのは途中でIDの空きが出た場合の為
+				if(fov==null||fov.equals("")){
+					list2=dao.select();//ここでBETWEENを使わないのは途中でIDの空きが出た場合の為
+				}else if(fov!=null&&!fov.equals("")){
+					list2=dao.mypageFovSelect(no);
+				}
+				
 				}else if(tag!=null&&!tag.equals("")){
 					list2=dao.tag_select(tag);
 				}
