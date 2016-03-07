@@ -15,7 +15,7 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-4">
-						<label>ユーザID または メールアドレス</label>
+						<label>ユーザIDまたは<br>メールアドレス</label>
 					</div>
 					<div class="col-xs-8">
 						<input type="text" name="id"  class="form-control" required>
