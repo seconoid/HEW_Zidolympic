@@ -67,9 +67,4 @@ public class PhotoList {
 		this.rank = rank;
 	}
 	
-	
-	
-	
-	
-	
 }

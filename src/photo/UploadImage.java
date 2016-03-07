@@ -77,13 +77,14 @@ public class UploadImage extends HttpServlet {
 		int no = user.getNo();
 		//int no=8;
 		//System.out.println("ユーザ番号"+user.getNo());
-		
+
 		/*
 		 * バイナリを見たくてもSystem.out.println(binary)で出さないこと
 		 * キャパオーバーする(コンソール壊れる)
 		 */
 		
 		HttpSession page_out_session = request.getSession(true);
+		@SuppressWarnings("unchecked")
 		ArrayList<PageOut> page_session = (ArrayList<PageOut>)page_out_session.getAttribute("page_out");
 		ContributionDAO dao=new ContributionDAO();
 		String filename="";
@@ -164,12 +165,12 @@ public class UploadImage extends HttpServlet {
 	}		
 	
 /////////////////////////////////////////////////////////////バイナリ終わり
+
 	int c_id=0;
 
 		if(img_title.equals("")||img_title==null){
 			img_title="無題";
 		}
-		
 
 		ArrayList<PageOut> mikan=new ArrayList<PageOut>();
 		

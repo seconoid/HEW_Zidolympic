@@ -64,7 +64,7 @@
 
 <!-- カメラ 終了-->
 <c:if test="${!empty rank}">
-<p>${tag}　　このタグの現在のrankingは${rank}位です</p>
+<p>${tag}  このタグの現在のrankingは${rank}位です</p>
 <div id="try_img">
 	<table>
 		<tr><td>${title}</td></tr>
