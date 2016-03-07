@@ -68,6 +68,7 @@
 						<div class="pic-title">${t.img_title}</div>
 					</div>
 				</c:forEach>
+				<a href="/HEW_Zidolympic/PhotoListServlet?check=1&fov=fov">全てのお気に入り画像表示</a>
 			</c:if>
 			<c:if test="${empty favList }">
 				<div class="pic-area">

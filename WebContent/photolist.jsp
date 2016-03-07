@@ -33,8 +33,19 @@
 		<c:forEach var="p" items="${ photolist }"  begin="0" end="3">
 			<div class="pic-area">
 				<div class="pic">
+<!-- 
+<span onmouseover="document.all.item('moji3').style.visibility='visible'" onmouseout="document.all.item('moji3').style.visibility='hidden'">
+<img src="のせる画像のＵＲＬ">
+</span>
+
+<div ID="moji3" style="visibility:hidden;">
+<img src="画像ＵＲＬ">
+</div> -->
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
+				<figure>
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				<figcaption>${p.img_title}<br>キャプション表示</figcaption>
+				</figure>
 				</a>
 				</div>
 				<div class="pic-title">${p.img_title}</div>
@@ -46,7 +57,10 @@
 			<div class="pic-area">
 				<div class="pic">
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
+				<figure>
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				<figcaption>${p.img_title}<br>キャプション表示</figcaption>
+				</figure>
 				</a>
 				</div>
 				<div class="pic-title">${p.img_title}</div>
@@ -58,7 +72,10 @@
 			<div class="pic-area">
 				<div class="pic">
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
+				<figure>
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				<figcaption>${p.img_title}<br>キャプション表示</figcaption>
+				</figure>
 				</a>
 				</div>
 				<div class="pic-title">${p.img_title}</div>
@@ -70,7 +87,10 @@
 			<div class="pic-area">
 				<div class="pic">
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
+				<figure>
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				 <figcaption>${p.img_title}<br>キャプション表示</figcaption>
+				</figure>
 				</a>
 				</div>
 				<div class="pic-title">${p.img_title}</div>
