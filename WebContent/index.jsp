@@ -12,7 +12,7 @@
 		<div class="main-contentst">
 			<div class="content-box"><a href="./compelist.jsp">競技一覧</a></div>
 			<div class="content-box"><a href="./photolist.jsp">写真一覧</a></div>
-			<div class="content-box"><a href="./ranking.jsp">ランキング</a></div>
+			<div class="content-box"><a href="/HEW_Zidolympic/RankingServlet">ランキング</a></div>
 		</div>
 	</c:param>
 </c:import>

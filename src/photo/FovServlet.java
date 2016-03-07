@@ -50,15 +50,19 @@ public class FovServlet extends HttpServlet {
 		FavoriteDAO fov=new FavoriteDAO();
 		int count=fov.select(user_no,con_id);
 		if(count==0){
+			System.out.println("000000000");
 			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png onclick=Change() id=fov_none>");
 			request.setAttribute("fov_val", "0");
 		}else{
+			System.out.println("1111111111");
 			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite.png onclick=Change() id=fov_none>");
 			request.setAttribute("fov_val", "1");
 		}
 		
 		List<Fov> com=fov.com_select(con_id);
 		request.setAttribute("com", com);
+		List<Fov> com2=fov.com2_select(con_id);
+		request.setAttribute("com2", com2);
 		
 		request.setAttribute("con_id", con_id);
 		request.setAttribute("img_pass", img_pass);
@@ -103,6 +107,9 @@ public class FovServlet extends HttpServlet {
 		}
 		List<Fov> com=fov.com_select(con_id);
 		request.setAttribute("com", com);
+		
+		List<Fov> com2=fov.com2_select(con_id);
+		request.setAttribute("com2", com2);
 		request.setAttribute("con_id", con_id);
 		request.setAttribute("img_pass", img_pass);
 		request.getRequestDispatcher("photodetails.jsp").forward(request, response);

@@ -53,7 +53,6 @@ public class FavoriteDAO {
 				){
 			ps.setInt(1, con_id);
 			ps.setInt(2, user_no);
-			
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()){
@@ -84,7 +83,6 @@ public class FavoriteDAO {
 				){
 			ps.setInt(1, con_id);
 			ps.setInt(2, user_no);
-			
 			count=ps.executeUpdate();
 			
 		}catch(SQLException e){
@@ -106,11 +104,10 @@ public class FavoriteDAO {
 				try(
 				Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(
-						"delete from Favorite where contribution_id=? and member_no=?");
+						"delete from Favorite where contribution_id=? and member_no=? ");
 				){
 			ps.setInt(1, con_id);
 			ps.setInt(2, user_no);
-			
 			count=ps.executeUpdate();
 			
 		}catch(SQLException e){
@@ -133,9 +130,7 @@ public class FavoriteDAO {
 		try(
 				Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(
-						"select x.name,b.contribution_timestamp from competition x,title y,contribution_details z,tag a,contribution b "
-						+ "where a.contribution_id=z.contribution_id and z.title_id=y.title_id and "
-						+ "x.competition_id=y.competition_id and z.contribution_id=?");
+						"select a.name,b.contribution_timestamp from competition a,contribution b,contribution_details c,title d where b.contribution_id=c.contribution_id and c.title_id=d.title_id and d.competition_id=a.competition_id and b.contribution_id=?");
 				){
 			ps.setInt(1, con_id);
 			
@@ -143,7 +138,7 @@ public class FavoriteDAO {
 			
 			if(rs.next()){
 				Fov f=new Fov();
-				f.setComname(rs.getString("x.name"));
+				f.setComname(rs.getString("a.name"));
 				f.setDate(rs.getDate("b.contribution_timestamp"));
 				com.add(f);
 			}
@@ -161,7 +156,34 @@ public class FavoriteDAO {
 	
 	
 	
-	
+	public List<Fov> com2_select(int con_id){
+		List<Fov> com2=new ArrayList<Fov>();
+		
+		try(
+				Connection con = getConnection();
+				PreparedStatement ps = con.prepareStatement(
+						"select * from contribution_details where contribution_id=?");
+				){
+			ps.setInt(1, con_id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				Fov f=new Fov();
+				f.setImg_pass(rs.getString("img_pass"));
+				System.out.println(rs.getString("img_pass"));
+				com2.add(f);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		return com2;
+	}
 	
 	
 	

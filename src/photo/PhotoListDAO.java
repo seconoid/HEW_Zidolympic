@@ -51,8 +51,8 @@ public class PhotoListDAO {
 		//tryの()内に書くと必要に応じてクローズしてくれる
 		try(
 				Connection con = getConnection();
-						
-				PreparedStatement ps = con.prepareStatement("select * from Contribution_details order by contribution_id desc");
+						//select * from Contribution_details order by contribution_id desc
+				PreparedStatement ps = con.prepareStatement("SELECT contribution_details.contribution_id, contribution_details.title_id, contribution_details.img_pass, img_title, count, member_no FROM contribution INNER JOIN contribution_details ON contribution.contribution_id = contribution_details.contribution_id WHERE contribution.contribution_id NOT IN (SELECT favorite.contribution_id FROM favorite) order by contribution_details.contribution_id desc");
 				
 				){
 			//SQL実行と結果セットの受け取り
@@ -62,9 +62,9 @@ public class PhotoListDAO {
 				//次のデータが存在したらオブジェクトを生成する
 				PhotoList p = new PhotoList();
 				//生成したオブジェクトにデータをセットする
-				p.setContribution_id(rs.getInt("contribution_id"));
-				p.setImg_pass(rs.getString("img_pass"));
-				p.setImg_title(rs.getString("img_title"));
+				p.setContribution_id(rs.getInt("contribution_details.contribution_id"));
+				p.setImg_pass(rs.getString("contribution_details.img_pass"));
+				p.setImg_title(rs.getString("contribution_details.img_title"));
 				//生成したオブジェクトをリストに追加
 					list.add(p);
 			}

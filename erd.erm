@@ -11,7 +11,7 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>0.8</zoom>
-	<x>0</x>
+	<x>-2</x>
 	<y>0</y>
 	<default_color>
 		<r>128</r>
@@ -138,7 +138,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2015-09-14 14:20:50</creation_date>
-			<updated_date>2016-03-05 21:52:20</updated_date>
+			<updated_date>2016-03-06 16:04:03</updated_date>
 			<model_property>
 				<name>プロジェクト名</name>
 				<value></value>
