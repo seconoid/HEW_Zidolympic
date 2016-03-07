@@ -47,7 +47,6 @@ public class spUp extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -68,13 +67,13 @@ public class spUp extends HttpServlet {
 		 * キャパオーバーする(コンソール壊れる)
 		 */
 		int count=0;
-		String name="test";
+		String name="Splatorch";
 		
 		ContributionDAO dao=new ContributionDAO();
 		String filename=dao.select();
 		
 		if(!filename.equals("")){
-			filename=filename.replace("test", "");
+			filename=filename.replace("Splatorch", "");
 			filename=filename.replace(".png", "");
 			
 			try{
@@ -153,20 +152,21 @@ public class spUp extends HttpServlet {
 		if(img_title.equals("") || img_title==null){
 			img_title="無題";
 		}
+
 		String textarea=request.getParameter("textarea");
 		if(textarea==null||textarea.equals("")){
 			textarea="no comment";
 		}
-		int count2=dao.insert(no, score, filename,img_title, 22, sortcount,textarea);
-		if(count2==0){
+		int spCount=dao.insert(no, score, filename, img_title, 3, sortcount, textarea);
+		if(spCount==0){
 			request.setAttribute("mes","<h2>アップロード出来ませんでした</h2>");
 		}
-		if(count2>0){
+		if(spCount>0){
 			request.setAttribute("mes","<h2>アップロード出来ました</h2>");
 		}
 		
+		request.setAttribute("filename", filename);
 		request.setAttribute("grayCt", cv);
-		request.getRequestDispatcher("splatorch.jsp").forward(request,response);
-
+		request.getRequestDispatcher("splatorch_result.jsp").forward(request,response);
 	}
 }
