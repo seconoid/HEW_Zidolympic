@@ -3,6 +3,7 @@
 /.classpath
 /.project
 /WebContent/UploadImages/
+/WebContent/profimg/
 *.properties
 *.db
 /bin
