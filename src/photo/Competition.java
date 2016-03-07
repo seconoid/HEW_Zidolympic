@@ -37,8 +37,5 @@ public class Competition {
 		this.contribution_id = contribution_id;
 	}
 	
-	
-	
-	
-	
 }
+
