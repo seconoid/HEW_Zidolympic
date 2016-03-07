@@ -3,6 +3,10 @@ package user;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -66,8 +70,24 @@ public class ProfImgServlet extends HttpServlet {
 		// 絶対パスからファイル名のみ取り出す
 		filename = new File(filename).getName();
 
+		ResourceBundle bundle = null;
+		try {
+			bundle = ResourceBundle.getBundle("path");
+		}catch (MissingResourceException e) {
+			e.printStackTrace();
+		}
+		String path = bundle.getString("mypageuploadPath");
+		String url = "";
+		
+		// 正規表現で抜き取り(""が入り込んでくるため）
+		Pattern p = Pattern.compile("^\"(.+)\"$");
+		Matcher m = p.matcher(path);
+		if (m.find()){
+			System.out.println(m.group(1));
+			url = m.group(1);
+		}
 		// 画像ファイルをpath+filenameとして保存
-		part.write("C://Users/mikan.shelty/Documents/workspace/HEW_Zidolympic/WebContent/profimg" + "/" + filename);
+		part.write(url + filename);
 		
 		UserDao dao=new UserDao();
 		int count=dao.profimg_update(no,filename);
