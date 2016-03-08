@@ -79,6 +79,33 @@ public class TitleDAO {
 	
 	
 	
+	public String select(int title_id){
+String title_name="";		
+		try(
+				Connection con = getConnection();
+				PreparedStatement ps = con.prepareStatement("select * from title where title_id=?");
+				){
+			//SQL実行と結果セットの受け取り
+			ps.setInt(1, title_id);
+			ResultSet rs = ps.executeQuery();
+			//結果セットからオブジェクトにデータを入れる
+			if(rs.next()){
+				title_name=rs.getString("name");
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+		
+		
+		
+		return title_name;
+		
+	}
 	
 	
 	

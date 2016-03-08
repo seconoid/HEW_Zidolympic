@@ -83,6 +83,8 @@ public class UploadImage extends HttpServlet {
 		 * キャパオーバーする(コンソール壊れる)
 		 */
 		
+		String title_name=adao.select(title_id);
+		
 		HttpSession page_out_session = request.getSession(true);
 		ArrayList<PageOut> page_session = (ArrayList<PageOut>)page_out_session.getAttribute("page_out");
 		ContributionDAO dao=new ContributionDAO();
@@ -165,7 +167,8 @@ public class UploadImage extends HttpServlet {
 	
 /////////////////////////////////////////////////////////////バイナリ終わり
 	int c_id=0;
-
+	int score=0;
+	String s="";
 		if(img_title==null){
 			img_title="無題";
 		}
@@ -181,6 +184,9 @@ public class UploadImage extends HttpServlet {
 		PageOut a=new PageOut();
 		a.setTitle(img_title);
 		a.setPass(filename);
+		a.setTitle_name(title_name);
+		///////////////////////////////////////////
+		
 		
 		if(page_session==null||page_session.equals("")){
 			c_id=dao.no_select(no); 
@@ -237,8 +243,8 @@ public class UploadImage extends HttpServlet {
 				Double s3=Double.parseDouble(s1);
 				Double s4=Double.parseDouble(s2);
 				
-				Double sco=(double) (end - start / 1000);
-				String s=String.valueOf(sco);
+				Double sco=(double) (end - start);
+				s=String.valueOf(sco);
 				System.err.println(s.replace(".","")+"リプレイス");
 				s=s.replace(".","");
 				s = s.substring(0, 9);
@@ -246,7 +252,8 @@ public class UploadImage extends HttpServlet {
 
 				System.out.println(s+"スコアString");
 				
-				int score=Integer.parseInt(s);
+				score=Integer.parseInt(s);
+				score=score/1000000;
 				System.out.println(score);
 				int score_count=dao.score_update(con_id,score);
 				System.out.println("Time:" + score + "ms");
@@ -293,8 +300,9 @@ public class UploadImage extends HttpServlet {
 				try{
 					Thread.sleep(1500);
 				}catch(InterruptedException e){}
+				request.setAttribute("score", score);
 			}
-		}///////
+		}///////s.substring(0, 3)
 		
 		
 				/////////////////////

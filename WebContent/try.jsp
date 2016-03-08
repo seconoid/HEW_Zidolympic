@@ -87,12 +87,12 @@
 	</c:if>
 	<!-- カメラ 終了-->
 	<c:if test="${fn:length(page_out)==3}">
-		<div class="result-score">スコア：</div>
+		<div class="result-score">スコア：${score}</div>
 		<div class="try-result-photo">
 			<div class="row">
 			<c:forEach var="a" items="${ page_out }">
 				<div class="col-xs-4">
-					<p>お題名ほしい</p>
+					<p>${a.title_name}</p>
 					<img src="/HEW_Zidolympic/UploadImages/${a.pass}" class="img-responsive">
 				</div>
 			</c:forEach>
