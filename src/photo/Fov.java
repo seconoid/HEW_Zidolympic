@@ -7,6 +7,8 @@ public class Fov {
 	private String img_pass;
 	private Date date;
 	private String comname;
+	private String comment;
+	
 	public Date getDate() {
 		return date;
 	}
@@ -30,6 +32,12 @@ public class Fov {
 	}
 	public void setImg_pass(String img_pass) {
 		this.img_pass = img_pass;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 	

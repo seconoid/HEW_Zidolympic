@@ -56,9 +56,9 @@ ${fov_out}
 		<c:forEach items="${com}" var="h">
 		<p>${h.comname}</p>
 		<p>${h.date}</p>
+		<p>${h.comment}</p>
 		</c:forEach>
-		<p>コメント（画像タイトル）</p>
-
+		
 
 
 
