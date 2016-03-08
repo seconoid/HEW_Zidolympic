@@ -40,14 +40,27 @@ public class FovServlet extends HttpServlet {
 		User user = (User)session.getAttribute("user");
 		String img_pass=request.getParameter("img_pass");
 		String conid=request.getParameter("con_id");
-		int user_no=user.getNo();
-		
+		boolean Err=false;
+		FavoriteDAO fov=new FavoriteDAO();
 		int con_id=0;
 		try{
 			con_id=Integer.parseInt(conid);
 		}catch(NumberFormatException e){}
 		
-		FavoriteDAO fov=new FavoriteDAO();
+		if(user!=null){
+			
+			if(user.getName().equals("")){
+				request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png>");
+				request.setAttribute("fov_val", "0");
+			Err=true;
+			}
+			
+			if(!Err){
+				
+			
+			int user_no=user.getNo();
+			
+		
 		int count=fov.select(user_no,con_id);
 		if(count==0){
 			System.out.println("000000000");
@@ -61,6 +74,15 @@ public class FovServlet extends HttpServlet {
 		
 		List<Fov> com=fov.com_select(con_id);
 		request.setAttribute("com", com);
+//		List<Fov> com2=fov.com2_select(con_id);
+//		request.setAttribute("com2", com2);
+		}
+		}
+		if(user==null){
+			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png>");
+			request.setAttribute("fov_val", "0");
+			
+		}
 		List<Fov> com2=fov.com2_select(con_id);
 		request.setAttribute("com2", com2);
 		
@@ -89,6 +111,12 @@ public class FovServlet extends HttpServlet {
 			con_id=Integer.parseInt(conid);
 		}catch(NumberFormatException e){}
 		
+			if(user.getName().equals("")){
+				request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png>");
+				request.setAttribute("fov_val", "0");
+			}
+		
+		
 		FavoriteDAO fov=new FavoriteDAO();
 		
 		if(a.equals("0")){
@@ -110,6 +138,11 @@ public class FovServlet extends HttpServlet {
 		
 		List<Fov> com2=fov.com2_select(con_id);
 		request.setAttribute("com2", com2);
+		
+			
+			request.setAttribute("fov_out", "<img src=/HEW_Zidolympic/images/favorite_none.png>");
+			request.setAttribute("fov_val", "0");
+		
 		request.setAttribute("con_id", con_id);
 		request.setAttribute("img_pass", img_pass);
 		request.getRequestDispatcher("photodetails.jsp").forward(request, response);

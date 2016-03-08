@@ -122,9 +122,53 @@ public class PhotoListDAO {
 		
 		return list;
 	}
+///////////////////////
+	public ArrayList<PhotoList> Search_select(String search,String url,int co){
+		ArrayList<PhotoList> list = new ArrayList<PhotoList>();
+		int a=0;
+		//tryの()内に書くと必要に応じてクローズしてくれる
+		try(
+				Connection con = getConnection();
+						
+				PreparedStatement ps = con.prepareStatement(url);
+				
+				){
+			System.out.println("SQL終わり");
+			//SQL実行と結果セットの受け取り
+				ps.setString(1, "%"+search+"%");
+				ps.setString(2, "%"+search+"%");
+				ps.setString(3, "%"+search+"%");
+				if(co==5){
+					ps.setString(4, "%"+search+"%");
+					System.out.println("<><>"+url);
+				}
+			ResultSet rs = ps.executeQuery();
+			//結果セットからオブジェクトにデータを入れる
+			while(rs.next()){
+				//次のデータが存在したらオブジェクトを生成する
+				PhotoList p = new PhotoList();
+				//生成したオブジェクトにデータをセットする
+				if(rs.getInt("contribution_details.contribution_id")!=a){
+					p.setContribution_id(rs.getInt("contribution_details.contribution_id"));
+					p.setImg_pass(rs.getString("contribution_details.img_pass"));
+					p.setImg_title(rs.getString("contribution_details.img_title"));
+					a=rs.getInt("contribution_details.contribution_id");
+					list.add(p);
+				}
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
 
-	
-	
+///////////////////////
 	
 	
 	public ArrayList<PhotoList> mypageSelect(int no){
