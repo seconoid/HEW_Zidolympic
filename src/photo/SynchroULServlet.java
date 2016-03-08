@@ -195,7 +195,7 @@ int score=0;
 			Thread.sleep(2000);
 		}catch(InterruptedException e){}
 		
-		request.getRequestDispatcher("synchroj.jsp").forward(request,response);
+		request.getRequestDispatcher("synchroj_result.jsp").forward(request,response);
 
 	}
 }
