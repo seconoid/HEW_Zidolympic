@@ -88,8 +88,8 @@
 						</c:if>
 						<c:if test="${empty photolist }">
 							<div class="col-xs-12">
-								<div class="pic-area">
-									<a href="./compelist.jsp">競技に参加して写真を投稿しよう！</a>
+								<div class="no-images">
+									<a href="./compelist.jsp">競技に参加して、写真を投稿してみましょう！</a>
 								</div>
 							</div>
 						</c:if>
@@ -121,8 +121,8 @@
 					</c:if>
 					<c:if test="${empty favList }">
 						<div class="col-xs-12">
-							<div class="pic-area">
-								<a href="./compelist.jsp">競技に参加して写真を投稿しよう！</a>
+							<div class="no-images">
+								<a href="./compelist.jsp">写真一覧から、お気に入りの写真を探してみましょう！</a>
 							</div>
 						</div>
 					</c:if>

@@ -292,14 +292,6 @@ ul {
 	font-size: 12px;
 }
 
-.archive {
-	height: 300px;
-}
-
-.favorite {
-	height: 300px;
-}
-
 .mypage-pic {
 	margin: 0;
 }
@@ -318,6 +310,12 @@ ul {
 	margin: 20px;
 }
 
+.no-images {
+	font-size: 16px;
+	padding-left: 20px;
+	height: 100px;
+}
+
 /* 写真リスト */
 .piclist-title {
 	background: #2c2c2c;
@@ -330,8 +328,9 @@ ul {
 	padding: 10px 5px;
 	color: #fcfcfc;
 }
+
 .search-form {
-	margin: 20px auto;
+	margin: 30px auto;
 }
 
 .pic-list {
@@ -362,7 +361,7 @@ ul {
 #contents{
 	margin: 30px 0;
 	width:1000px;
-	height:500px;
+	height: 700px;
 	border-radius: 5px;
 	background-color:rgba(245,245,245,0.9);
 }
@@ -437,9 +436,4 @@ ul {
 
 .form-title {
 	margin: 30px 0;
-}
-
-/*投稿完了ページ*/
-.confirm{
-	margin: 0px 200px;
 }

@@ -66,9 +66,9 @@ public class TryUpdateServlet extends HttpServlet {
 		ContributionDAO dao=new ContributionDAO();
 		int count=dao.try_update(img_title,comment,contribution_id);
 		if(count==0){
-			request.setAttribute("mes", "更新できませんでした");
+			System.out.println("更新できませんでした");
 		}else{
-			request.setAttribute("mes", "更新できました");
+			System.out.println("更新されませんでした");
 			page_session.clear();
 			
 			Random random=new Random();
@@ -79,11 +79,7 @@ public class TryUpdateServlet extends HttpServlet {
 			request.setAttribute("titlename", a.getName());
 			request.setAttribute("title_id", a.getTitle_id());
 		}
-		
-		
-		
-		
-		request.getRequestDispatcher("try.jsp").forward(request, response);
+		request.getRequestDispatcher("try_confirm.jsp").forward(request, response);
 	}
 
 }
