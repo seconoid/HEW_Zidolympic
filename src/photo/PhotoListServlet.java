@@ -27,7 +27,6 @@ public class PhotoListServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-   
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -40,7 +39,13 @@ public class PhotoListServlet extends HttpServlet {
 		String tag=request.getParameter("tag");
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
-		int no = user.getNo();
+		int no=0;
+		boolean flg=false;
+		if(user!=null){
+			no = user.getNo();
+			flg=true;
+		}
+		
 		
 		
 		String check=request.getParameter("check");
@@ -184,6 +189,7 @@ public class PhotoListServlet extends HttpServlet {
 		request.setAttribute("photolist", list);
 		
 		request.getRequestDispatcher("photolist.jsp").forward(request, response);		
+	
 	}
 
 	/**
