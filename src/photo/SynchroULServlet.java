@@ -188,6 +188,13 @@ int score=0;
 			Thread.sleep(1500);
 		}catch(InterruptedException e){}
 		
+		request.setAttribute("filename",filename);
+		request.setAttribute("binary", binary);
+		
+		try{
+			Thread.sleep(2000);
+		}catch(InterruptedException e){}
+		
 		request.getRequestDispatcher("synchroj.jsp").forward(request,response);
 
 	}

@@ -168,6 +168,7 @@ public class spUp extends HttpServlet {
 		try{
 			Thread.sleep(2000); //3000ミリ秒Sleepする
 			request.setAttribute("filename", filename);
+			request.setAttribute("filename", filename);
 			request.setAttribute("grayCt", cv);
 			request.getRequestDispatcher("splatorch_result.jsp").forward(request,response);
 			}catch(InterruptedException e){

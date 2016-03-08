@@ -71,6 +71,11 @@
 		<tr><td><img src="/HEW_Zidolympic/UploadImages/${pass}" width="320" height="240">
 	</td></tr></table>
 </div>
+<form action="/HEW_Zidolympic/CompetitionProfimgServlet" method="post">
+<input type="hidden" name="filename" value="${filename}">
+<input type="hidden" name="binary" value="${binary}">
+<input type="submit" value="この画像をプロフ画像に登録">
+</form>
  </c:if>
 	</c:param>
 </c:import>
