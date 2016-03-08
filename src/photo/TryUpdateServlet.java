@@ -2,6 +2,8 @@ package photo;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,6 +70,13 @@ public class TryUpdateServlet extends HttpServlet {
 		}else{
 			request.setAttribute("mes", "更新できました");
 			page_session.clear();
+			Random random=new Random();
+			TitleDAO adao=new TitleDAO();
+			List<Title> titlelist=adao.random_select();
+			int i=random.nextInt(titlelist.size());
+			Title a=(Title)titlelist.get(i);
+			request.setAttribute("titlename", a.getName());
+			request.setAttribute("title_id", a.getTitle_id());
 		}
 		
 		
