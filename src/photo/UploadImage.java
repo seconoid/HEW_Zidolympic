@@ -167,7 +167,7 @@ public class UploadImage extends HttpServlet {
 	
 /////////////////////////////////////////////////////////////バイナリ終わり
 	int c_id=0;
-
+	int score=0;
 		if(img_title==null){
 			img_title="無題";
 		}
@@ -251,7 +251,7 @@ public class UploadImage extends HttpServlet {
 
 				System.out.println(s+"スコアString");
 				
-				int score=Integer.parseInt(s);
+				score=Integer.parseInt(s);
 				System.out.println(score);
 				int score_count=dao.score_update(con_id,score);
 				System.out.println("Time:" + score + "ms");
@@ -298,6 +298,7 @@ public class UploadImage extends HttpServlet {
 				try{
 					Thread.sleep(1500);
 				}catch(InterruptedException e){}
+				request.setAttribute("score", score);
 			}
 		}///////
 		
