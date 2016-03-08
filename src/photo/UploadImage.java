@@ -83,6 +83,8 @@ public class UploadImage extends HttpServlet {
 		 * キャパオーバーする(コンソール壊れる)
 		 */
 		
+		String title_name=adao.select(title_id);
+		
 		HttpSession page_out_session = request.getSession(true);
 		ArrayList<PageOut> page_session = (ArrayList<PageOut>)page_out_session.getAttribute("page_out");
 		ContributionDAO dao=new ContributionDAO();
@@ -181,6 +183,9 @@ public class UploadImage extends HttpServlet {
 		PageOut a=new PageOut();
 		a.setTitle(img_title);
 		a.setPass(filename);
+		a.setTitle_name(title_name);
+		///////////////////////////////////////////
+		
 		
 		if(page_session==null||page_session.equals("")){
 			c_id=dao.no_select(no); 

@@ -89,7 +89,7 @@
 			<div class="row">
 			<c:forEach var="a" items="${ page_out }">
 				<div class="col-xs-4">
-					<p>お題名ほしい</p>
+					<p>${a.title_name}</p>
 					<img src="/HEW_Zidolympic/UploadImages/${a.pass}" class="img-responsive">
 				</div>
 			</c:forEach>
