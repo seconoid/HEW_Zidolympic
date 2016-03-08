@@ -184,6 +184,9 @@ int score=0;
 			String outtag=tag.replace("#", "");
 			request.setAttribute("tag","<a href=/HEW_Zidolympic/PhotoListServlet?check=1&tag="+outtag+">"+tag+"</a>");
 		}
+		try{
+			Thread.sleep(1500);
+		}catch(InterruptedException e){}
 		
 		request.getRequestDispatcher("synchroj.jsp").forward(request,response);
 

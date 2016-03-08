@@ -289,6 +289,11 @@ public class UploadImage extends HttpServlet {
 			}
 		}
 			}
+			if(page_session.size()==3){
+				try{
+					Thread.sleep(1500);
+				}catch(InterruptedException e){}
+			}
 		}///////
 		
 		
@@ -307,6 +312,9 @@ public class UploadImage extends HttpServlet {
 		request.setAttribute("title_id", p.getTitle_id());
 		
 		request.setAttribute("comment", textarea);
+		
+		
+		
 		request.getRequestDispatcher("try.jsp").forward(request, response);
 
 	}
