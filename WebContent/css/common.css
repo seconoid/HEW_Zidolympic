@@ -319,6 +319,17 @@ ul {
 }
 
 /* é ê^ÉäÉXÉg */
+.piclist-title {
+	background: #2c2c2c;
+	margin: 5px 0 10px;
+	border-radius: 3px;
+}
+
+.piclist-title h2 {
+	font-size: 18px;
+	padding: 10px 5px;
+	color: #fcfcfc;
+}
 .search-form {
 	margin: 20px auto;
 }

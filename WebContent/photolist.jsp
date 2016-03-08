@@ -31,7 +31,9 @@
 	</div>
 	<!-- 写真をリストで表示 -->
 	<div class="pic-list">
-	
+		<div class="piclist-title">
+			<h2>写真一覧</h2>
+		</div>
 		<div class="row">
 		<c:forEach var="p" items="${ photolist }"  begin="0" end="3">
 			<div class="col-xs-3 list-row">
