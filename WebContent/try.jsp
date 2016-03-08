@@ -53,7 +53,8 @@
 	     <input type="hidden" id="titleid" name="titleid" value="${title_id}">
 	     <!-- iphon -->
 	     <img src="./images/iphone.svg" width="580" height="580" class="iphone">
-	     <%--　いらないかも 
+	     
+	     <!-- このへんいらないかも -->
 	   	 <c:if test="${empty page_out}">
 	   	  <textarea placeholder="コメントをつけたい方はこちら" rows="2" cols="20" name="textarea"></textarea>
 	   	  </c:if>
@@ -61,7 +62,9 @@
 	   	  <input type="hidden" name="comment" value="${comment}">
 	   	  ${comment}
 	   	  </c:if>
-	   	  <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね"> --%>
+	   	  <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね">
+	   	  <!-- ここまで -->
+	   	  
 	     </form>
 			<video id="video" autoplay width="320" height="240" class="video-area"></video>
 			<div class="take-area">
