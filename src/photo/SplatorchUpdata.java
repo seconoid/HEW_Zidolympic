@@ -59,6 +59,10 @@ public class SplatorchUpdata extends HttpServlet {
 			}
 			if(spUpdata>0){
 				request.setAttribute("mes","<h1>投稿が完了しました</h1>");
+				String binary=request.getParameter("binary");
+				String filename=request.getParameter("filename");
+				request.setAttribute("binary", binary);
+				request.setAttribute("filename", filename);
 			}
 			
 			request.getRequestDispatcher("confirm.jsp").forward(request, response);

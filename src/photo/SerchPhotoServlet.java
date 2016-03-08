@@ -142,6 +142,7 @@ public class SerchPhotoServlet extends HttpServlet {
 				g.setContribution_id(p.getContribution_id());
 				g.setImg_pass(p.getImg_pass());
 				g.setImg_title(p.getImg_title());
+				g.setTimestamp(p.getTimestamp());
 				
 				list.add(g);
 				i++;
@@ -287,6 +288,7 @@ request.setCharacterEncoding("utf-8");
 				g.setContribution_id(p.getContribution_id());
 				g.setImg_pass(p.getImg_pass());
 				g.setImg_title(p.getImg_title());
+				g.setTimestamp(p.getTimestamp());
 				aaa=p.getContribution_id();
 				list.add(g);
 				i++;

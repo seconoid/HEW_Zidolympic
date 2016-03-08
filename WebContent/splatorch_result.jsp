@@ -11,6 +11,8 @@
 			<a><img src="/HEW_Zidolympic/UploadImages/${ filename }" alt="splatorch" /></a>
 		</div>
 	    <form action="SplatorchUpdata" method="post" name="splatorch">
+	    <input type="hidden" name="filename" value="${filename}">
+<input type="hidden" name="binary" value="${binary}">
 	    <textarea placeholder="コメントをつけたい方はこちら" rows="10" cols="20" name="commnet"></textarea>
 	    <input type="submit" value="投稿完了">
 	    </form>

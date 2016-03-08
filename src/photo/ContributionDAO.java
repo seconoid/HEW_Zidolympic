@@ -276,6 +276,29 @@ public int tag_insert(int id_count,String tag){
 	}
 
 
+public int try_update(String img_pass,String comment,int contribution_id){
+	int count=0; //更新件数（上手くいけば1件）
+	System.out.println(contribution_id+"kjhj");
+					try(
+				Connection con=getConnection();
+				PreparedStatement ps=con.prepareStatement(
+						// 投稿テーブルに新規レコード
+						"update contribution_details,contribution set contribution_details.img_title=?,contribution.comment=? where "
+						+ "contribution_details.contribution_id=contribution.contribution_id and contribution.contribution_id=? ");
+					){
+				//？を置き換える
+				ps.setString(1,img_pass);
+				ps.setString(2,comment);
+				ps.setInt(3, contribution_id);
+				//SQL実行(更新系のSQLはexecuteUpdateで実行)
+				count=ps.executeUpdate();//戻り値は実行件数 基本的には１
+				}catch(SQLException e){
+					e.printStackTrace();
+				}catch(ClassNotFoundException e){
+						e.printStackTrace();
+				}
+	return count;
+	}
 
 
 
