@@ -130,7 +130,7 @@ public class FavoriteDAO {
 		try(
 				Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(
-						"select a.name,b.contribution_timestamp,b.comment from competition a,contribution b,contribution_details c,title d where b.contribution_id=c.contribution_id and c.title_id=d.title_id and d.competition_id=a.competition_id and b.contribution_id=?");
+						"select a.name,b.contribution_timestamp,b.comment,e.name from competition a,contribution b,contribution_details c,title d,member e where b.contribution_id=c.contribution_id and c.title_id=d.title_id and d.competition_id=a.competition_id and b.member_no=e.member_no and b.contribution_id=?");
 				){
 			ps.setInt(1, con_id);
 			
@@ -141,6 +141,7 @@ public class FavoriteDAO {
 				f.setComname(rs.getString("a.name"));
 				f.setDate(rs.getDate("b.contribution_timestamp"));
 				f.setComment(rs.getString("b.comment"));
+				f.setName(rs.getString("e.name"));
 				com.add(f);
 			}
 			
