@@ -35,11 +35,30 @@ public class ContributionDAO extends AbstractDAO{
 			e.printStackTrace();
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
-		}
-		return filename;
-		
 	}
-		
+	return filename;
+	
+}
+	
+	
+	public int updata(String comment, int contribution_id){
+		int count = 0;
+//		commentへの更新処理
+		try(
+				Connection con=getConnection();
+				PreparedStatement ps = con.prepareStatement("update contribution set comment = ? where contribution_id = ?")
+				){
+					ps.setString(1, comment);
+					ps.setInt(2, contribution_id);
+					count=ps.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return count;
+	}
+
 	// 写真を登録
 	public int insert(int no, double score, String filename,String img_title,int title_id,int sortcount,String textarea){
 		int count=0; //更新件数（上手くいけば1件）
@@ -91,8 +110,11 @@ public class ContributionDAO extends AbstractDAO{
 					Connection con=getConnection();
 					PreparedStatement ps=con.prepareStatement(
 							// 投稿テーブルに新規レコード
+
 							"insert into contribution_details(contribution_id,title_id,img_pass,img_title,count) value(?,?,?,?,?) ");
+
 						){
+					
 					//？を置き換える
 					ps.setInt(1,contribution_id);
 					ps.setInt(2,title_id);
@@ -139,9 +161,6 @@ public class ContributionDAO extends AbstractDAO{
 		return count;
 		}
 
-	
-	
-	
 	///////////////////////////////////////////////////////////////////////////
 public int no_select(int no){
 		
@@ -170,11 +189,6 @@ public int no_select(int no){
 		
 	}
 
-	
-	
-	
-	
-	
 public int sort_select(){
 	int count=0; 
 	
@@ -298,16 +312,4 @@ return tag_ranking;
 
 }
 
-
-
-
-
-
-
-
-
-
-
-	
-	
 	}
