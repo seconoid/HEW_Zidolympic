@@ -72,8 +72,7 @@ public class FovServlet extends HttpServlet {
 			request.setAttribute("fov_val", "1");
 		}
 		
-		List<Fov> com=fov.com_select(con_id);
-		request.setAttribute("com", com);
+		
 //		List<Fov> com2=fov.com2_select(con_id);
 //		request.setAttribute("com2", com2);
 		}
@@ -83,6 +82,8 @@ public class FovServlet extends HttpServlet {
 			request.setAttribute("fov_val", "0");
 			
 		}
+		List<Fov> com=fov.com_select(con_id);
+		request.setAttribute("com", com);
 		List<Fov> com2=fov.com2_select(con_id);
 		request.setAttribute("com2", com2);
 		

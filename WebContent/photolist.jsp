@@ -8,12 +8,13 @@
 	<c:param name="content">
 	<!--  検索窓 -->
 	<div class="search-form">
-		<form action="/HEW_Zidolympic/SerchPhotoServlet" method="get">
+	
+		<form action="/HEW_Zidolympic/SerchPhotoServlet" method="post">
 			<div class="form-horizontal">
 				<div class="form-group">
 					<div class="col-xs-offset-2 col-xs-6">
 					<c:if test="${empty texttag}">
-						<input type="text" name="search" class="form-control" name="search"/>
+						<input type="text" name="search" class="form-control" name="search" placeholder="${mes }"/>
 						<input type="hidden" value="1" name="check">
 					</c:if>
 					<c:if test="${!empty texttag}">
