@@ -57,10 +57,13 @@ public class TitleDAO {
 			while(rs.next()){
 				//次のデータが存在したらオブジェクトを生成する
 				Title t = new Title();
+				if(rs.getInt("competition_id")==1){
 				//生成したオブジェクトにデータをセットする
 				t.setTitle_id(rs.getInt("title_id"));
+				t.setCompetition_id(rs.getInt("competition_id"));
 				t.setName(rs.getString("name"));
 					titlelist.add(t);
+				}
 			}
 			
 		}catch(SQLException e){
