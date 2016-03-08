@@ -90,7 +90,7 @@ public class MypageServlet extends HttpServlet {
 		
 		String profimg="";
 		profimg=dao.prof_select(no);
-		if(profimg==null){
+		if(profimg==null || profimg == ""){
 			request.setAttribute("profimg", "noimage.png");
 		}else{
 			request.setAttribute("profimg", profimg);

@@ -98,6 +98,7 @@ public class InsertServlet extends HttpServlet {
 				}else{
 					// セッションに登録
 					user.setPoint(point);
+					user.setNo(no);
 					HttpSession session = request.getSession();
 					session.setAttribute("user", user);
 				}

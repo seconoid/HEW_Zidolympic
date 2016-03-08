@@ -27,7 +27,12 @@
 		<div class="col-xs-3">
 			<div class="profile-box">
 				<!-- ここに写真 -->
-				<img src="/HEW_Zidolympic/profimg/${profimg}" class="img-responsive profile-img"/>${imgmes }
+				<c:if test="${ empty profimg}">
+					<img src="/HEW_Zidolympic/profimg/noimage.png" class="img-responsive profile-img"/>${imgmes }
+				</c:if>
+				<c:if test="${ !empty profimg}">
+					<img src="/HEW_Zidolympic/profimg/${profimg}" class="img-responsive profile-img"/>${imgmes }
+				</c:if>
 				<div class="row mypage-user">
 					<div class="col-xs-7">
 						<div class="user-info">
