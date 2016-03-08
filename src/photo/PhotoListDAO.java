@@ -52,7 +52,7 @@ public class PhotoListDAO {
 		try(
 				Connection con = getConnection();
 						//select * from Contribution_details order by contribution_id desc
-				PreparedStatement ps = con.prepareStatement("SELECT contribution_details.contribution_id, contribution_details.title_id, contribution_details.img_pass, img_title, count, member_no FROM contribution INNER JOIN contribution_details ON contribution.contribution_id = contribution_details.contribution_id WHERE contribution.contribution_id NOT IN (SELECT favorite.contribution_id FROM favorite) order by contribution_details.contribution_id desc");
+				PreparedStatement ps = con.prepareStatement("SELECT contribution_details.contribution_id, contribution_details.title_id, contribution_details.img_pass, img_title, count, member_no, contribution_timestamp FROM contribution INNER JOIN contribution_details ON contribution.contribution_id = contribution_details.contribution_id WHERE contribution.contribution_id NOT IN (SELECT favorite.contribution_id FROM favorite) order by contribution_details.contribution_id desc");
 				
 				){
 			//SQL実行と結果セットの受け取り
@@ -65,6 +65,7 @@ public class PhotoListDAO {
 					p.setContribution_id(rs.getInt("contribution_details.contribution_id"));
 					p.setImg_pass(rs.getString("contribution_details.img_pass"));
 					p.setImg_title(rs.getString("contribution_details.img_title"));
+					p.setTimestamp(rs.getDate("contribution.contribution_timestamp"));
 					a=rs.getInt("contribution_details.contribution_id");
 					list.add(p);
 				}

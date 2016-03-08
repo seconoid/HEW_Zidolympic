@@ -1,5 +1,7 @@
 package photo;
 
+import java.util.Date;
+
 public class PhotoList {
 
 	private int contribution_id;
@@ -9,6 +11,7 @@ public class PhotoList {
 	private String name;
 	private int cnt;
 	private int rank;
+	private Date timestamp;
 	
 
 	public String getImg_pass() {
@@ -67,9 +70,11 @@ public class PhotoList {
 		this.rank = rank;
 	}
 	
+	public Date getTimestamp() {
+		return timestamp;
+	}
 	
-	
-	
-	
-	
+	public void setTimestamp(Date date) {
+		this.timestamp = date;
+	}
 }

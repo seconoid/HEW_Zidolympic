@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="/HEW_Sample/dist/css/lightbox.min.css">
+<link rel="stylesheet" href="/HEW_Zidolympic/dist/css/lightbox.min.css">
 
 <c:import url="./layout/main_layout.jsp">
 	<c:param name="title" value="写真詳細" />

@@ -305,7 +305,7 @@ ul {
 }
 
 .pic {
-	border: 2px solid #f1f1f1;
+	border: 2px solid #fff;
 	border-radius: 2px;
 	margin: 0 auto;
 }
@@ -326,13 +326,13 @@ ul {
 .pic-list {
 	padding: 20px;
 	margin: 20px auto;
-	background: #ac62fe;
+	background: rgba(235,235,235,0.8);
+	border-radius: 5px;
 	overflow: hidden;
 }
 
-.pic-area {
-	padding: 10px;
-	background: #52d26a;
+.list-row {
+	margin: 10px 0;
 }
 
 .paging {
