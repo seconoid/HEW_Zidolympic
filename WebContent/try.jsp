@@ -16,6 +16,7 @@
 	request.getRequestDispatcher("login.jsp").forward(request, response);
 %>
 </c:if>
+
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
 	<c:param name="title" value="トライジドリング"/>
@@ -72,7 +73,8 @@
 	</div>
 </div>
 <!-- カメラ 終了-->
-<c:if test="${fn:length(page_out)>0}">
+<c:if test="${fn:length(page_out)==3}">
+
 <p>保存された画像たちです</p>
 <div id="try_img">
 	<c:forEach var="a" items="${ page_out }">
