@@ -97,7 +97,9 @@
 			</div>
 			<!-- お気に入り -->
 			<div class="favorite mypage-content">
-				<h2>お気に入り写真</h2>
+				<div>
+					<h2 class="bg-yellow">お気に入り写真</h2>
+				</div>
 				<div class="mypage-pic row">
 					<!-- 写真リスト -->
 					<c:if test="${!empty favList }">

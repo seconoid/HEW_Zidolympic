@@ -254,20 +254,25 @@ ul {
 	border-radius: 3px;
 	margin: 5px 10px 10px;
 	padding: 7px;
-	background: rgba(230,230,230, 0.8);
 	font-size: 16px;
-	color: #1c1c1c;
-	font-weight: bold;
+	color: #fcfcfc;
+}
+
+.archive h2 {
+	background: #CC2C37;
+}
+
+.favorite h2 {
+	background: #F8CB33;
 }
 
 .mypage-content h3{
 	border-radius: 3px;
 	margin: 5px 5px 10px;
-	padding: 3px 5px;
-	background: rgba(230,230,230, 0.8);
+	padding: 7px 5px;
+	background:#339966;
 	font-size: 14px;
-	color: #1c1c1c;
-	font-weight: bold;
+	color: #fcfcfc;
 }
 
 .news {
