@@ -25,7 +25,7 @@
 		<c:if test="${!empty loginErr }">
 			<div class="error-area text-danger bg-danger">${ pointErr }</div>
 		</c:if>
-		<form action="PointServlet" method="post">
+		<form action="PointServlet" method="post" class="form-point">
 			<div class="form-group">
 				<div class="row buy-form">
 					<div class="form-inline">
