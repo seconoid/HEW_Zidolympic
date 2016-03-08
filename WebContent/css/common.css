@@ -292,14 +292,6 @@ ul {
 	font-size: 12px;
 }
 
-.archive {
-	height: 300px;
-}
-
-.favorite {
-	height: 300px;
-}
-
 .mypage-pic {
 	margin: 0;
 }
@@ -316,6 +308,12 @@ ul {
 
 .more {
 	margin: 20px;
+}
+
+.no-images {
+	font-size: 16px;
+	padding-left: 20px;
+	height: 100px;
 }
 
 /* é ê^ÉäÉXÉg */
