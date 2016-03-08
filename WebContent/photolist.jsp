@@ -32,9 +32,9 @@
 	<!-- 写真をリストで表示 -->
 	<div class="pic-list">
 	
-		<div class="pic-row">
+		<div class="row">
 		<c:forEach var="p" items="${ photolist }"  begin="0" end="3">
-			<div class="pic-area">
+			<div class="col-xs-3">
 				<div class="pic">
 <!-- 
 <span onmouseover="document.all.item('moji3').style.visibility='visible'" onmouseout="document.all.item('moji3').style.visibility='hidden'">
@@ -46,7 +46,7 @@
 </div> -->
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<figure>
-				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" class="img-responsive">
 				<figcaption>${p.img_title}<br>キャプション表示</figcaption>
 				</figure>
 				</a>
@@ -55,13 +55,13 @@
 			</div>
 			</c:forEach>
 		</div>
-		<div class="pic-row">
+		<div class="row">
 		<c:forEach var="p" items="${ photolist }"  begin="4" end="7">
-			<div class="pic-area">
+			<div class="col-xs-3">
 				<div class="pic">
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<figure>
-				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" class="img-responsive">
 				<figcaption>${p.img_title}<br>キャプション表示</figcaption>
 				</figure>
 				</a>
@@ -70,13 +70,13 @@
 			</div>
 			</c:forEach>
 		</div>
-		<div class="pic-row">
+		<div class="row">
 		<c:forEach var="p" items="${ photolist }"  begin="8" end="11">
-			<div class="pic-area">
+			<div class="col-xs-3">
 				<div class="pic">
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<figure>
-				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" class="img-responsive">
 				<figcaption>${p.img_title}<br>キャプション表示</figcaption>
 				</figure>
 				</a>
@@ -85,13 +85,13 @@
 			</div>
 			</c:forEach>
 		</div>
-		<div class="pic-row">
+		<div class="row">
 		<c:forEach var="p" items="${ photolist }"  begin="12" end="15">
-			<div class="pic-area">
+			<div class="col-xs-3">
 				<div class="pic">
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<figure>
-				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" width="200" height="auto">
+				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" class="img-responsive">
 				 <figcaption>${p.img_title}<br>キャプション表示</figcaption>
 				</figure>
 				</a>

@@ -1,4 +1,29 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic);
+
+/* google icon */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* 推奨サイズ */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+ 
+  /* WebKitブラウザサポート */
+  -webkit-font-smoothing: antialiased;
+  /* Chrome、Safariサポート */
+  text-rendering: optimizeLegibility;
+ 
+  /* Firefoxサポート */
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* IEサポート */
+  font-feature-settings: 'liga';
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -163,37 +188,134 @@ ul {
 	border-radius: 5px;
 }
 
-/* マイページ */
+/****** マイページ *******/
+.mypage {
+	margin: 20px 0;
+}
+
+/* プロフィールボックス */
+.profile-box {
+	border-radius: 5px;
+	padding-bottom: 30px;
+	background: #2397c2;
+	overflow: hidden;
+}
+
+.profile-img {
+	border-radius: 7px;
+	margin: 10px auto 20px;
+	overflow: hidden;
+}
+
+.mypage-user {
+	margin: -5px;
+}
+
+.user-name {
+	color: #1c1c1c;
+	font-size: 28px;
+}
+
+.user-id {
+	color: #3c3c3c;
+}
+
+.user-point {
+	margin: 15px -5px 10px;
+}
+
+.user-point-span {
+	margin-top: 3px;
+	margin-left: -5px;
+}
+
+.edit-btn {
+	margin-top: 10px;
+	height: 25px;
+	line-height: 12px;
+	width: 100%;
+}
+
+.buy-btn {
+	height: 25px;
+	line-height: 12px;
+	width: 100%;
+}
+
+/* マイページコンテンツ */
 .mypage-content {
-	margin: 10px 0;
-	width: 800px;
+	border-radius: 5px;
+	margin-bottom: 40px;
+	background: rgba(248,248,248, 0.9);
+	overflow: hidden;
+}
+
+.mypage-content h2{
+	border-radius: 3px;
+	margin: 5px 10px 10px;
+	padding: 7px;
+	font-size: 16px;
+	color: #fcfcfc;
+}
+
+.archive h2 {
+	background: #CC2C37;
+}
+
+.favorite h2 {
+	background: #F8CB33;
+}
+
+.mypage-content h3{
+	border-radius: 3px;
+	margin: 5px 5px 10px;
+	padding: 7px 5px;
+	background:#339966;
+	font-size: 14px;
+	color: #fcfcfc;
+}
+
+.news {
+	height: 120px;
+}
+
+.news li{
+	list-style-type: none;
+}
+
+.topic {
+	margin: 7px 20px;
+}
+
+.date {
+	margin-left: 20px;
+	font-size: 12px;
+}
+
+.archive {
 	height: 300px;
-	background: #2ec87a;
+}
+
+.favorite {
+	height: 300px;
 }
 
 .mypage-pic {
-	margin: 10px;
-	padding: 10px;
-	width: 760px;
-	height: 250px;
-	background: #4a4a4a;
-	clear: both;
+	margin: 0;
 }
 
-.pic-area {
-	width: 220px;
-	float: left;
-}
 .pic {
-	margin: 0;
-	padding: 0;
-	width: 200px;
-	height: 160px;
-	background: #aaaaaa;
+	border: 2px solid #f1f1f1;
+	border-radius: 2px;
+	margin: 0 auto;
 }
 
 .pic-title {
-	color: #fcfcfc;
+	color: #0c0c0c;
+}
+
+.more {
+	margin: 20px;
 }
 
 /* 写真リスト */
@@ -206,10 +328,6 @@ ul {
 	margin: 20px auto;
 	background: #ac62fe;
 	overflow: hidden;
-}
-
-.pic-row {
-	clear: both;
 }
 
 .pic-area {
@@ -303,17 +421,25 @@ ul {
 }
 
 /* ポイント購入 */
+.form-point {
+	margin: 50px 0;
+}
+
 .buy-form {
 	margin: 30px 0;
 }
 
 .buy-point {
 	margin: 0 auto;
-	width: 550px;
+	width: 600px;
 }
 
 .caution {
 	margin: 0 20px;
 	color: red;
 	font-size: 12px;
+}
+
+.form-title {
+	margin: 30px 0;
 }
