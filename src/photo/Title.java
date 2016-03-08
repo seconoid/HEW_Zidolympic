@@ -4,6 +4,8 @@ public class Title {
 	
 	private int title_id;
 	private String name;
+	private int competition_id;
+	
 	public int getTitle_id() {
 		return title_id;
 	}
@@ -15,6 +17,12 @@ public class Title {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getCompetition_id() {
+		return competition_id;
+	}
+	public void setCompetition_id(int competition_id) {
+		this.competition_id = competition_id;
 	}
 	
 	
