@@ -266,10 +266,10 @@ public class UploadImage extends HttpServlet {
 		}
 		
 		if(count2==0){
-			request.setAttribute("mes","<h1>アップロード出来ませんでした</h1>");
+			System.out.println("アップロード出来ませんでした");
 		}
 		if(count2>0){
-			request.setAttribute("mes","<h2>アップロード出来ました</h2>");
+			System.out.println("アップロード出来ました");
 		}
 		
 		///////////////////////

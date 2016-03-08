@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+.count-box {
+	color: #fff;
+	padding: 20px 0 10px;
+	margin: 20px 0;
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+	letter-spacing: 0.14em;
+	border-radius: 5px 5px 0 0;
+}
+
+.count1{
+	background: #339966;
+}
+
+.count2{
+	background: #F8CB33;
+}
+
+.count3{
+	background: #CC2C37;
+}
+
+.count4{
+	background: #2397C2;
+}
+
+.video-area {
+	position: relative;
+	top: 28px;
+}
+
+.taked {
+	margin-top: -65px;
+}
+
+.taked-pic {
+	border: 5px solid #f3f3f3;
+	 -webkit-box-shadow: 8px 5px 1px rgba(0,0,0,0.6);
+	 -moz-box-shadow: 8px 5px 1px rgba(0,0,0,0.6);
+	 box-shadow: 8px 5px 1px rgba(0,0,0,0.6);
+}
+
+.taking-btn {
+	margin: 0px 120px 0;
+	height: 50px;
+	line-height: 15px;
+	width: 120px;
+}
+
+.next-btn {
+	margin: 5px 70px;
+	height: 50px;
+	width: 120px;
+}
+
+.try-result-photo {
+	margin: 10px 20px;
+}
+
+.result-score {
+	padding: 10px 0;
+	margin: 20px 0;
+	text-align: center;
+	background: rgba(253,253,253,0.8);
+	font-size: 20px;
+}
+
+/*iphone*/
+.iphone {
+	position: relative;
+	margin-top: -142px;
+	margin-left: -80px;
+	transform: rotate(90deg);
+}

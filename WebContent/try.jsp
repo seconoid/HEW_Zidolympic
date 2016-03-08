@@ -2,13 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<link rel="stylesheet" href="./css/take_photo.css">
+
 <!-- 非ログイン時はログイン画面に遷移 -->
 <c:if test="${ sessionScope.user == null }">
 <%
@@ -29,17 +24,36 @@
 <!-- 下の保存押したらフォームが起動する -->
    
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+
 <div id="contents">
+	<c:if test="${page_out.size()==null || page_out.size()==0}" >
+	<div class="count-box count1">
+		お題①：${titlename}
+	</div>
+	</c:if>
+	<c:if test="${page_out.size()==1}" >
+	<div class="count-box count2">
+		お題②：${titlename}
+	</div>
+	</c:if>
+	<c:if test="${page_out.size()==2}" >
+	<div class="count-box count3">
+		お題③：${titlename}
+	</div>
+	</c:if>
+	<c:if test="${page_out.size()>=3}" >
+	<div class="count-box count4">
+		競技終了！
+	</div>
+	</c:if>
+	<c:if test="${page_out.size()<3 || page_out.size() == null}" >
 	<div id="maincapt">
 		 <form action="/HEW_Zidolympic/UploadImage" method="post" name="x">
 	     <input type="hidden" id="h" name="h">
 	     <input type="hidden" id="titleid" name="titleid" value="${title_id}">
-	     <font color="#ffffff">${titlename}</font>
-	     
-	     
-	     
-	     
-	   	 <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね">
+	     <!-- iphon -->
+	     <img src="./images/iphone.svg" width="580" height="580" class="iphone">
+	     <%--　いらないかも 
 	   	 <c:if test="${empty page_out}">
 	   	  <textarea placeholder="コメントをつけたい方はこちら" rows="2" cols="20" name="textarea"></textarea>
 	   	  </c:if>
@@ -47,44 +61,42 @@
 	   	  <input type="hidden" name="comment" value="${comment}">
 	   	  ${comment}
 	   	  </c:if>
+	   	  <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね"> --%>
 	     </form>
-			<video id="video" autoplay width="320" height="240"></video>
-		    <button id="capture">capture</button>
+			<video id="video" autoplay width="320" height="240" class="video-area"></video>
+			<div class="take-area">
+			    <button id="capture" class="btn btn-primary taking-btn">撮影！</button>
+		    </div>
 		    <!-- 保存押したら上のフォームが起動する -->
-		    
-		    <c:if test="${save == null||page_out.size()<3}" >
-			<button id="hozon" onClick="kakunin()">ほぞん</button>
-		    <c:if test="${page_out.size()>=3}" >
-			<button id="hozon">保存できません</button>
-			</c:if>
-			
-			</c:if>${save}
-		    
-		    ${revenge}
 		    <!-- 保存を押されたらアップロードできるようにしないといけない -->
 	</div>
-	
 	<div id="capture_images" style="visibility:hidden">
-			<p class="text_box">いま撮った画像です。よければ「保存」を押して</p><!-- 表示用 -->
-			<img id="img02" width="320" height="240"/>
+			<img id="img02" width="320" height="240" class="taked-pic"/>
 		    <img id="img01" width="600" height="480" hidden="img01"/><!-- 画像化用 -->
-		    <canvas id="canvas" width="600" height="480" hidden="canvas"></canvas><!-- 画像化用 -->
+		    <div class="taked">
+			    <canvas id="canvas" width="600" height="480" hidden="canvas"></canvas><!-- 画像化用 -->
+		    </div>
+		    <c:if test="${save == null||page_out.size()<3}" >
+			<button id="hozon" onClick="kakunin()" class="btn btn-primary next-btn">次のお題</button>
+			</c:if>
 		    <script type="text/javascript" src="./js/js.js"></script>   
 	</div>
-</div>
-<!-- カメラ 終了-->
-<c:if test="${fn:length(page_out)==3}">
-
-<p>保存された画像たちです</p>
-<div id="try_img">
-	<c:forEach var="a" items="${ page_out }">
-	<table>
-		<tr><td>${a.title}</td></tr>
-		<tr><td><img src="/HEW_Zidolympic/UploadImages/${a.pass}" width="320" height="240">
-	</td></tr></table>
-	</c:forEach>
-</div>
- </c:if>
+	</c:if>
+	<!-- カメラ 終了-->
+	<c:if test="${fn:length(page_out)==3}">
+		<div class="result-score">スコア：</div>
+		<div class="try-result-photo">
+			<div class="row">
+			<c:forEach var="a" items="${ page_out }">
+				<div class="col-xs-4">
+					<p>お題名ほしい</p>
+					<img src="/HEW_Zidolympic/UploadImages/${a.pass}" class="img-responsive">
+				</div>
+			</c:forEach>
+			</div>
+		</div>
+	 </c:if>
+ </div>
 </c:param>
 </c:import>
 
