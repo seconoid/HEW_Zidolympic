@@ -105,7 +105,6 @@ public class PhotoListDAO {
 				PhotoList p = new PhotoList();
 				//生成したオブジェクトにデータをセットする
 				p.setContribution_id(rs.getInt("x.contribution_id"));
-				System.out.println("きてるっぽい"+rs.getInt("x.contribution_id"));
 				p.setImg_pass(rs.getString("x.img_pass"));
 				p.setImg_title(rs.getString("x.img_title"));
 				//生成したオブジェクトをリストに追加
@@ -122,9 +121,53 @@ public class PhotoListDAO {
 		
 		return list;
 	}
+///////////////////////
+	public ArrayList<PhotoList> Search_select(String search,String sql,int co){
+		ArrayList<PhotoList> list = new ArrayList<PhotoList>();
+		int a=0;
+		//tryの()内に書くと必要に応じてクローズしてくれる
+		try(
+				Connection con = getConnection();
+						
+				PreparedStatement ps = con.prepareStatement(sql);
+				
+				){
+			//SQL実行と結果セットの受け取り
+				ps.setString(1, "%"+search+"%");
+				ps.setString(2, "%"+search+"%");
+				ps.setString(3, "%"+search+"%");
+				if(co==5){
+					ps.setString(4, "%"+search+"%");
+				}
+			ResultSet rs = ps.executeQuery();
+			//結果セットからオブジェクトにデータを入れる
+			while(rs.next()){
+				//次のデータが存在したらオブジェクトを生成する
+				PhotoList p = new PhotoList();
+				//生成したオブジェクトにデータをセットする
+				if(rs.getInt("c.contribution_id")==a){
+					System.out.println("djflahgoih");
+				}else if(rs.getInt("c.contribution_id")!=a){
+					System.out.println("とおおｒた");
+					p.setContribution_id(rs.getInt("c.contribution_id"));
+					p.setImg_pass(rs.getString("c.img_pass"));
+					p.setImg_title(rs.getString("c.img_title"));
+					list.add(p);
+					a=rs.getInt("c.contribution_id");
+				}
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
 
-	
-	
+///////////////////////
 	
 	
 	public ArrayList<PhotoList> mypageSelect(int no){

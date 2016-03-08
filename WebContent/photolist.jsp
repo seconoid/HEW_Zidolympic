@@ -4,23 +4,26 @@
 
 <!-- main_layout.jspにコンテンツとタイトルを渡す -->
 <c:import url="./layout/main_layout.jsp">
-	<c:param name="title" value="写真一覧"/>
+	<c:param name="title" value="${fovname}写真一覧"/>
 	<c:param name="content">
 	<!--  検索窓 -->
 	<div class="search-form">
-		<form action="#" method="GET">
+	
+		<form action="/HEW_Zidolympic/SerchPhotoServlet" method="post">
 			<div class="form-horizontal">
 				<div class="form-group">
 					<div class="col-xs-offset-2 col-xs-6">
 					<c:if test="${empty texttag}">
-						<input type="text" name="search" class="form-control"/>
+						<input type="text" name="search" class="form-control" name="search" placeholder="${mes }"/>
+						<input type="hidden" value="1" name="check">
 					</c:if>
 					<c:if test="${!empty texttag}">
-					<input type="text" name="search" class="form-control" placeholder="${texttag }"/>
+					<input type="hidden" value="1" name="check">
+					<input type="text" name="search" class="form-control" name="search" placeholder="${texttag }"/>
 					</c:if>
 					</div>
 					<div class="col-xs-2">
-						<button type="submit" class="btn">検索</button>
+						<input type="submit" class="btn" value="検索"/>
 					</div>
 				</div>
 			</div>
