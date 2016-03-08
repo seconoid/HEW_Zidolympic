@@ -70,6 +70,7 @@ public class TryUpdateServlet extends HttpServlet {
 		}else{
 			System.out.println("更新されませんでした");
 			page_session.clear();
+			
 			Random random=new Random();
 			TitleDAO adao=new TitleDAO();
 			List<Title> titlelist=adao.random_select();

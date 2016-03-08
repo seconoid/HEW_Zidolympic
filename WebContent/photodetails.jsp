@@ -52,13 +52,13 @@ ${fov_out}
 
 
 		<h3>画像詳細</h3>
-		<p>${ sessionScope.user.getName() }</p>
 		<c:forEach items="${com}" var="h">
+		<p>${h.name}</p>
 		<p>${h.comname}</p>
 		<p>${h.date}</p>
+		<p>${h.comment}</p>
 		</c:forEach>
-		<p>コメント（画像タイトル）</p>
-
+		
 
 
 
