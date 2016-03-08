@@ -16,10 +16,18 @@
 <input type="hidden" name="binary" value="${binary}">
 <input type="submit" value="この画像をプロフ画像に登録">
 </form>
-
-	
-	<p class="confirm"><a href="/HEW_Zidolympic/WebContent/mypage.jsp">マイページへ移動</a></p>
-	<p class="confirm"><a href="/HEW_Zidolympic/WebContent/compelist.jsp">別の競技へ参加してみる</a></p>
-	
+<div class="comfirm-box">
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="confirm text-center"><a href="MyServlet">マイページへ移動</a></div>
+		</div>
+		<div class="col-xs-6">
+			<div class="confirm text-center"><a href="/HEW_Zidolympic/WebContent/compelist.jsp">別の競技へ参加する</a></div>
+		</div>
+	</div>
+</div>
 	</c:param>
 </c:import>
+
+
+
