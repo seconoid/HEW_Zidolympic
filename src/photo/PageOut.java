@@ -7,6 +7,7 @@ public class PageOut{
 	private String pass;
 	private String title;
 	private int titleid;
+	private String title_name;
 	
 	public String getPass() {
 		return pass;
@@ -31,6 +32,12 @@ public class PageOut{
 	}
 	public void setTitleid(int titleis) {
 		this.titleid = titleis;
+	}
+	public String getTitle_name() {
+		return title_name;
+	}
+	public void setTitle_name(String title_name) {
+		this.title_name = title_name;
 	}
 	
 	
