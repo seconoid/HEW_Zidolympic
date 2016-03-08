@@ -52,7 +52,7 @@ public class PhotoListDAO {
 		try(
 				Connection con = getConnection();
 						//select * from Contribution_details order by contribution_id desc
-				PreparedStatement ps = con.prepareStatement("SELECT contribution_details.contribution_id, contribution_details.title_id, contribution_details.img_pass, img_title, count, member_no, contribution_timestamp FROM contribution INNER JOIN contribution_details ON contribution.contribution_id = contribution_details.contribution_id WHERE contribution.contribution_id NOT IN (SELECT favorite.contribution_id FROM favorite) order by contribution_details.contribution_id desc");
+				PreparedStatement ps = con.prepareStatement("SELECT contribution_details.contribution_id, contribution_details.title_id, contribution_details.img_pass, img_title, count, member_no, contribution.contribution_timestamp FROM contribution INNER JOIN contribution_details ON contribution.contribution_id = contribution_details.contribution_id WHERE contribution.contribution_id NOT IN (SELECT favorite.contribution_id FROM favorite) order by contribution_details.contribution_id desc");
 				
 				){
 			//SQL実行と結果セットの受け取り
@@ -65,6 +65,7 @@ public class PhotoListDAO {
 					p.setContribution_id(rs.getInt("contribution_details.contribution_id"));
 					p.setImg_pass(rs.getString("contribution_details.img_pass"));
 					p.setImg_title(rs.getString("contribution_details.img_title"));
+					System.out.println(rs.getDate("contribution.contribution_timestamp"));
 					p.setTimestamp(rs.getDate("contribution.contribution_timestamp"));
 					a=rs.getInt("contribution_details.contribution_id");
 					list.add(p);
@@ -108,6 +109,7 @@ public class PhotoListDAO {
 				p.setContribution_id(rs.getInt("x.contribution_id"));
 				p.setImg_pass(rs.getString("x.img_pass"));
 				p.setImg_title(rs.getString("x.img_title"));
+				p.setTimestamp(rs.getDate("y.contribution_timestamp"));
 				//生成したオブジェクトをリストに追加
 					list.add(p);
 			}
@@ -153,6 +155,7 @@ public class PhotoListDAO {
 					p.setContribution_id(rs.getInt("c.contribution_id"));
 					p.setImg_pass(rs.getString("c.img_pass"));
 					p.setImg_title(rs.getString("c.img_title"));
+					p.setTimestamp(rs.getDate("d.contribution_timestamp"));
 					list.add(p);
 					a=rs.getInt("c.contribution_id");
 				}
@@ -224,7 +227,7 @@ public ArrayList<PhotoList> mypageFovSelect(int no){
 						
 				// ログインしているユーザが投稿した写真を取得
 				PreparedStatement ps = con.prepareStatement(
-						"select x.img_pass,x.img_title,x.contribution_id from Favorite w,contribution_details x,contribution y,member z where z.member_no=w.member_no and y.member_no=z.member_no and y.contribution_id=w.contribution_id and x.contribution_id=y.contribution_id and z.member_no=?"
+						"select x.img_pass,x.img_title,x.contribution_id,y.contribution_timestamp from Favorite w,contribution_details x,contribution y,member z where z.member_no=w.member_no and y.member_no=z.member_no and y.contribution_id=w.contribution_id and x.contribution_id=y.contribution_id and z.member_no=?"
 						);
 				){
 			// ?の置換
@@ -239,6 +242,7 @@ public ArrayList<PhotoList> mypageFovSelect(int no){
 					p.setContribution_id(rs.getInt("x.contribution_id"));
 					p.setImg_pass(rs.getString("x.img_pass"));
 					p.setImg_title(rs.getString("x.img_title"));
+					p.setTimestamp(rs.getDate("y.contribution_timestamp"));
 					a=rs.getInt("x.contribution_id");
 					favList.add(p);
 

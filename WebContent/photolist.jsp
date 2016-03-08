@@ -39,7 +39,7 @@
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<figure>
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" class="img-responsive">
-				<figcaption>${p.img_title}</figcaption>
+				<figcaption>${p.img_title}<br/>${p.timestamp}</figcaption>
 				</figure>
 				</a>
 				</div>
@@ -53,7 +53,7 @@
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}\">
 				<figure>
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" class="img-responsive">
-				<figcaption>${p.img_title}</figcaption>
+				<figcaption>${p.img_title}<br/>${p.timestamp}</figcaption>
 				</figure>
 				</a>
 				</div>
@@ -67,7 +67,7 @@
 				<a href="/HEW_Zidolympic/FovServlet?img_pass=${p.img_pass}&con_id=${p.contribution_id}">
 				<figure>
 				<img src="/HEW_Zidolympic/UploadImages/${p.img_pass }" class="img-responsive">
-				<figcaption>${p.img_title}</figcaption>
+				<figcaption>${p.img_title}<br/>${p.timestamp}</figcaption>
 				</figure>
 				</a>
 				</div>
