@@ -94,7 +94,15 @@
 				</div>
 			</c:forEach>
 			</div>
+		
+		<form action="/HEW_Zidolympic/TryUpdateServlet" method="post">
+		<input type="text" name="img_title" placeholder="投稿のタイトルを入れてね">
+		<textarea cols="20"rows="2" name="comment" placeholder="投稿のコメントを入れられるよ"></textarea>
+		<input type="submit" value="送信">
+		</form>
+		
 		</div>
+		
 	 </c:if>
  </div>
 </c:param>
