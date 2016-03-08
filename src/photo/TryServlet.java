@@ -62,10 +62,6 @@ public class TryServlet extends HttpServlet {
 		System.out.println("TryServletにはきてる");
 		
 		request.getRequestDispatcher("try.jsp").forward(request, response);
-
-		
-		
-		
 	}
 
 	/**

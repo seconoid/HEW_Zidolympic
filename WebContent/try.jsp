@@ -53,22 +53,12 @@
 	     <input type="hidden" id="titleid" name="titleid" value="${title_id}">
 	     <!-- iphon -->
 	     <img src="./images/iphone.svg" width="580" height="580" class="iphone">
-	     
-	     <!-- このへんいらないかも -->
-	   	 <c:if test="${empty page_out}">
-	   	  <textarea placeholder="コメントをつけたい方はこちら" rows="2" cols="20" name="textarea"></textarea>
-	   	  </c:if>
-	   	  <c:if test="${!empty page_out}">
-	   	  <input type="hidden" name="comment" value="${comment}">
-	   	  ${comment}
-	   	  </c:if>
-	   	  <input type="text" name="title" id="title" placeholder="画像タイトルを入力してね">
-	   	  <!-- ここまで -->
+	   	  <input type="hidden" name="title" id="title">
 	   	  
 	     </form>
 			<video id="video" autoplay width="320" height="240" class="video-area"></video>
 			<div class="take-area">
-			    <button id="capture" class="btn btn-primary taking-btn">撮影！</button>
+			    <button id="capture" class="btn btn-info taking-btn">撮影！</button>
 		    </div>
 		    <!-- 保存押したら上のフォームが起動する -->
 		    <!-- 保存を押されたらアップロードできるようにしないといけない -->
@@ -79,8 +69,11 @@
 		    <div class="taked">
 			    <canvas id="canvas" width="600" height="480" hidden="canvas"></canvas><!-- 画像化用 -->
 		    </div>
-		    <c:if test="${save == null||page_out.size()<3}" >
-			<button id="hozon" onClick="kakunin()" class="btn btn-primary next-btn">次のお題</button>
+		    <c:if test="${save == null||page_out.size()<2}" >
+			<button id="hozon" onClick="kakunin()" class="btn btn-success next-btn">次のお題</button>
+			</c:if>
+			<c:if test="${page_out.size()==2}" >
+			<button id="hozon" onClick="kakunin()" class="btn btn-primary next-btn">FINISH!</button>
 			</c:if>
 		    <script type="text/javascript" src="./js/js.js"></script>   
 	</div>
@@ -97,15 +90,29 @@
 				</div>
 			</c:forEach>
 			</div>
-		
-		<form action="/HEW_Zidolympic/TryUpdateServlet" method="post">
-		<input type="text" name="img_title" placeholder="投稿のタイトルを入れてね">
-		<textarea cols="20"rows="2" name="comment" placeholder="投稿のコメントを入れられるよ"></textarea>
-		<input type="submit" value="送信">
-		</form>
-		
+			<div class="row">
+				<div class="col-xs-offset-3 col-xs-6">
+					<div class="update-form">
+						<form action="/HEW_Zidolympic/TryUpdateServlet" method="post">
+							<div class="form-group">
+								<input type="text" name="img_title" placeholder="タイトル" class="form-control">
+							</div>
+							<div class="form-group">
+								<textarea cols="20"rows="4" name="comment" placeholder="コメント" class="form-control"></textarea>
+							</div>
+							<div class="use-point">
+								消費ポイント： <span style="color:orange">150pt</span>
+							</div>
+							<div class="form-group">
+								<div class="text-center">
+									<button class="btn btn-primary text-right photo_btn">投稿</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
-		
 	 </c:if>
  </div>
 </c:param>
