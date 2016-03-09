@@ -95,13 +95,36 @@ ul {
 }
 
 /* メインビジュアル */
-.mv{
-	background-image: url(../images/bg_mainimg01.png);
-	background-repeat-x: no-repeat;
-	background-repeat-y: no-repeat;
+.mv-area{
 	position: relative;
-	width: 1000px;
 	height: 700px;
+}
+
+.up-frame {
+	width: 100%;
+	z-index: 2;
+}
+
+.mv{
+	position: absolute;
+	top: 0;
+	width: 1000px;
+	z-index: 1;
+}
+
+.down-frame {
+	position: relative;
+	top: 258px;
+	width: 100%;
+	z-index: 2;
+	transform: rotate(180deg);
+}
+
+.up-frame2 {
+	position: relative;
+	width: 100%;
+	z-index: 2;
+	top: 258px;
 }
 
 .mv01{

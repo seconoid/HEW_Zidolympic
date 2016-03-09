@@ -12,10 +12,10 @@
 	<div class="posted text-center">投稿が完了しました！</div>
 	<div class="row">
 		<div class="col-xs-6">
-			<div class="confirm text-center"><a href="MyServlet">マイページへ移動</a></div>
+			<div class="confirm text-center"><a href="MypageServlet">マイページへ移動</a></div>
 		</div>
 		<div class="col-xs-6">
-			<div class="confirm text-center"><a href="/HEW_Zidolympic/WebContent/compelist.jsp">別の競技へ参加する</a></div>
+			<div class="confirm text-center"><a href="./compelist.jsp">別の競技へ参加する</a></div>
 		</div>
 	</div>
 </div>

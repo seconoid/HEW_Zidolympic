@@ -1,0 +1,81 @@
+﻿@charset "utf-8";
+
+/* =======================================
+
+	CommonElements
+
+======================================= */
+
+
+a:link { text-decoration:none; color: #000;}
+a:visited { text-decoration:none; color: #000;}
+a:active { text-decoration:none; color: #000;}
+a:hover { text-decoration:none; color: #000;}
+
+#container {
+	width: 100%;
+	text-align: center;
+}
+
+#loopslider {
+	margin: 0 auto;
+	width: 100%;
+	height: 105px;
+	position: relative;
+	overflow: hidden;
+	
+}
+
+#loopslider ul {
+/*	width: 100%;*/
+	height: 100px;
+	float: left;
+	display: inline;
+	overflow: hidden;
+}
+#loopslider ul li {
+	width: 140px;
+	height: 105px;
+	float: left;
+	display: inline;
+	overflow: hidden;
+}
+
+
+/* =======================================
+	ClearFixElements
+======================================= */
+#loopslider ul:after {
+	content: ".";
+	height: 0;
+	clear: both;
+	display: block;
+	visibility: hidden;
+}
+
+#loopslider ul {
+	display: inline-block;
+	overflow: hidden;
+}
+
+.header{
+	background: #fffc00;
+	height: 80px;
+	line-height: 80px;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.header.gnavi {
+	height: 80px;
+	width: 100%;
+}
+
+.nav-item {
+	display: block;
+	float: left;
+	width: 120px;
+}
