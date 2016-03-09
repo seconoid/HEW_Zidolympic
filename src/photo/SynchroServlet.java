@@ -39,9 +39,7 @@ public class SynchroServlet extends HttpServlet {
 		if(page_session!=null){
 			page_session.clear();
 		}
-		
-		
-		
+
 		TitleDAO dao=new TitleDAO();
 		List<Title> titlelist=dao.random_select();
 		Random random=new Random();

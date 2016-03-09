@@ -41,15 +41,17 @@ public class ContributionDAO extends AbstractDAO{
 }
 
 	
-	public int updata(String comment, int contribution_id){
+	public int updata(String img_title ,String comment, int contribution_id){
 		int count = 0;
 //		commentへの更新処理
 		try(
 				Connection con=getConnection();
-				PreparedStatement ps = con.prepareStatement("update contribution set comment = ? where contribution_id = ?")
+				PreparedStatement ps = con.prepareStatement("update contribution_details,contribution set contribution_details.img_title=?,contribution.comment=? where "
+						+ "contribution_details.contribution_id=contribution.contribution_id and contribution.contribution_id=?");
 				){
-					ps.setString(1, comment);
-					ps.setInt(2, contribution_id);
+					ps.setString(1, img_title);
+					ps.setString(2, comment);
+					ps.setInt(3, contribution_id);
 					count=ps.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();

@@ -39,9 +39,10 @@ public class SplatorchUpdata extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		ｺﾒﾝﾄの更新
 		request.setCharacterEncoding("utf8");
-		String comment = request.getParameter("commnet");
+		String comment = request.getParameter("comment");
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
+		String img_title = request.getParameter("filename");
 		int no = user.getNo();
 
 		System.out.println("No:" + no);
@@ -49,11 +50,16 @@ public class SplatorchUpdata extends HttpServlet {
 		ContributionDAO dao=new ContributionDAO();
 		int contribution_id = dao.no_select(no);
 		System.out.println(contribution_id);
+		
 		String textarea=request.getParameter("textarea");
 		if(textarea==null||textarea.equals("")){
 			textarea="no comment";
-	
-			int spUpdata = dao.updata(comment, contribution_id);
+		}
+		
+		if(img_title.equals("") || img_title==null){
+			img_title="無題";
+		}
+		int spUpdata=dao.updata(img_title, comment, contribution_id);
 			if(spUpdata==0){
 				request.setAttribute("mes","<h1>投稿ができませんでした！</h1>");
 			}
@@ -68,4 +74,4 @@ public class SplatorchUpdata extends HttpServlet {
 			request.getRequestDispatcher("confirm.jsp").forward(request, response);
 		}
 	}
-}
+
