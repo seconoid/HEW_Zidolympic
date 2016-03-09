@@ -9,7 +9,7 @@
 	<div class="compe-list">
 		<div class="content-box list-try"><a href="/HEW_Zidolympic/TryServlet"><img src="./images/try.png" alt="トライジドリング" width="333px"/></a></div>
 		<div class="content-box list-sync"><a href="/HEW_Zidolympic/SynchroServlet"><img src="./images/sync.png" alt="シンクロジドリング" width="333px"/></a></div>
-		<div class="content-box list-spl"><a href="./splatorch.jsp"><img src="./images/spl.jpg" alt="スプラトゥーン" width="333px" /></a></div>
+		<div class="content-box list-spl"><a href="/HEW_Zidolympic/splatorch.jsp"><img src="./images/spl.jpg" alt="スプラトゥーン" width="333px" /></a></div>
 	</div>
 	</c:param>
 </c:import>
